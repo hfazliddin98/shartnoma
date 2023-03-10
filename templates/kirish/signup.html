@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <form method="post">{% csrf_token %}
+        
+        {% if habar %}
+            {{habar}}
+        {% endif %}
+        <div class="container row">
+          <div class="col-6">
+            <h3>Talaba ma’lumotlari</h3>
+            <input class="form-control" name="username" placeholder="User ID" type="text">
+            <input class="form-control" name="familya" placeholder="familya" type="text">
+            <input class="form-control" name="ism" placeholder="ism" type="text">
+            <input class="form-control" name="sharif" placeholder="sharif" type="text">
+            <input class="form-control" name="t_yil" placeholder="tug`lgan yil" type="text">
+            <input class="form-control" name="yonalish" placeholder="Yo`nalish" type="text">
+            <input class="form-control" name="k_yil" placeholder="O`qishga kirgan yili" type="text">
+            <input class="form-control" name="viloyat" placeholder="viloyat" type="text">
+            <input class="form-control" name="shahar" placeholder="shahar" type="text">
+            <input class="form-control" name="kocha" placeholder="kocha" type="text">
+            <input class="form-control" name="uy_nomer" placeholder="uy_nomer" type="text">
+            <input class="form-control" name="telefon" placeholder="telefon" type="text">
+            <input class="form-control" name="password1" placeholder="password1" type="password">
+            <input class="form-control" name="password2" placeholder="password2" type="password">
+          </div>
+          <div class="col-6">
+            <h3>Tashkilot rahbarini kiriting</h3>
+            <input class="form-control" name="familya_i" placeholder="familya" type="text">
+            <input class="form-control" name="ism_i" placeholder="ism" type="text">
+            <input class="form-control" name="sharif_i" placeholder="sharif" type="text">   
+          </div>
+        </div>        
+        <button type="submit" class="btn btn-primary">Saqlash</button>
+      </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
