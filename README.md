@@ -1,1 +1,1 @@
-# pdf2023
+# Sharnomalarni pdf variatga o`tkazish uchun
