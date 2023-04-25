@@ -6,7 +6,6 @@ from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.contrib.staticfiles import finders
 from reportlab.lib.pagesizes import letter
-from .models import Oliy_yurt, Ish
 from users.models import User
 
 
