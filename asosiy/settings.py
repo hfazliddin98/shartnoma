@@ -26,7 +26,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # men qoshgan applar
     'users',
+    'viloyat',
+    'fakultet',
+    'amaliyot',
     'pdf',
 ]
 

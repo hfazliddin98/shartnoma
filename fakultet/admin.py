@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Fakultet, Fakultetlar, Talim_turi, Yonalish, Kurs
 
-# Register your models here.
+
+admin.site.register([Fakultetlar,Fakultet,Talim_turi,Yonalish,Kurs])

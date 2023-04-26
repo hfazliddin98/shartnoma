@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import Viloyat, Viloyatlar, Tuman
 
-# Register your models here.
+admin.site.register([Viloyat,Viloyatlar,Tuman])
