@@ -29,7 +29,7 @@ class Amaliyot(models.Model):
     t_sana = models.CharField(max_length=100)
 
 class Pdf(models.Model):
-    talaba_id = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
-    fakultet_id = models.OneToOneField(Fakultet, on_delete=models.CASCADE)
-    amaliyot_id = models.OneToOneField(Amaliyot, on_delete=models.CASCADE)
+    talaba_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    fakultet_id = models.ForeignKey(Fakultet, on_delete=models.CASCADE)
+    amaliyot_id = models.ForeignKey(Amaliyot, on_delete=models.CASCADE)
 
