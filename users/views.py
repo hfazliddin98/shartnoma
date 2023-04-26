@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate, get_user_model
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from .models import User
+from pdf.models import Pdf
 
 
 # def kirish(request):
@@ -21,8 +22,12 @@ from .models import User
 #     return render(request, 'kirish/login.html')
 
 
-# def home(request):
-#     return render(request, 'boshi/home.html')
+def home(request):
+    pdf = Pdf.objects.all
+    contex = {
+        'pdf': pdf,
+    }
+    return render(request, 'boshi/home.html', contex)
 
 # def royhat(request):
 #     habar = ''

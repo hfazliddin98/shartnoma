@@ -17,33 +17,33 @@ from users.models import User
 
      
 
-# Create your views here.
-def pdf(request):
-    template_path = 'test.html' 
-    # sayt foydalanuvchisini aniq ko`rsatish uchun ishlatiladi`   
-    foydalanuvchi = User.objects.get(pk=request.user.id)
+# # Create your views here.
+# def pdf(request):
+#     template_path = 'test.html' 
+#     # sayt foydalanuvchisini aniq ko`rsatish uchun ishlatiladi`   
+#     foydalanuvchi = User.objects.get(pk=request.user.id)
     
     
-    context = {'myvar': 'Qo`qon davlat pedagokika instituti' , 'userlar': foydalanuvchi,}
-    # Create a Django response object, and specify content_type as pdf
-    response = HttpResponse(content_type='application/pdf')
-    # korib keyin saqlab olish
-    response['Content-Disposition'] = 'filename="shartnoma.pdf"'
-#     avto saqlab olish
-#     response['Content-Disposition'] = 'attachment; filename="report.pdf"
+#     context = {'myvar': 'Qo`qon davlat pedagokika instituti' , 'userlar': foydalanuvchi,}
+#     # Create a Django response object, and specify content_type as pdf
+#     response = HttpResponse(content_type='application/pdf')
+#     # korib keyin saqlab olish
+#     response['Content-Disposition'] = 'filename="shartnoma.pdf"'
+# #     avto saqlab olish
+# #     response['Content-Disposition'] = 'attachment; filename="report.pdf"
 
 
-    # find the template and render it.
-    template = get_template(template_path)
-    html = template.render(context)
+#     # find the template and render it.
+#     template = get_template(template_path)
+#     html = template.render(context)
 
-    # create a pdf
-    pisa_status = pisa.CreatePDF(
-       html, dest=response)
-    # if error then show some funny view
-    if pisa_status.err:
-       return HttpResponse("Bizda ba'zi xatolar bor edi " + html + " serverda texnik ish lar olib borilmoqda !!!")
-    return response
+#     # create a pdf
+#     pisa_status = pisa.CreatePDF(
+#        html, dest=response)
+#     # if error then show some funny view
+#     if pisa_status.err:
+#        return HttpResponse("Bizda ba'zi xatolar bor edi " + html + " serverda texnik ish lar olib borilmoqda !!!")
+#     return response
 
 
 

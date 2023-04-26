@@ -2,13 +2,20 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 
+class Yonalish(models.Model):
+    yonalish = models.CharField(max_length=100)
+
+class Kurs(models.Model):
+    kurs = models.CharField(max_length=100)
+
+class Talim_turi(models.Model):
+    t_turi = models.CharField(max_length=100)
 
 class Fakultet(models.Model):
     fakultet = models.CharField(max_length=100)
-    kafedra = models.CharField(max_length=100)
-    guruh = models.CharField(max_length=100)
-    kurs = models.CharField(max_length=100)
-    talim_turi = models.CharField(max_length=100)
+    
+class Fakultetlar(models.Model):
+    fakultet_id = models.ForeignKey(Fakultet, on_delete=models.CASCADE)
 
 
 class Viloyat(models.Model):
