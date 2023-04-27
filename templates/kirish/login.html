@@ -1,22 +1,139 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  </head>
-  <body>
-    <form method="post">{% csrf_token %}
-        <h3>login</h3>
-        {% for h in messages %}
-            {{h}}
-        {% endfor %}
-        <input name="username" type="text" class="form-control" placeholder="User ID">
-        <input name="password" type="password" class="form-control" placeholder="Parol">        
-        <button type="submit" class="btn btn-primary">Saqlash</button>
-      </form>
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  </body>
-</html>
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- BOOTSTRAP-CSS -->
+    
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- STYLE-CSS -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}"> 
+    <link rel="stylesheet" href="{% static '/css/login.css' %}"> 
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
+    
+    <title>Kirish</title>
+</head>
+<body>  
+    
+       
+
+    <div class="add-cricle">
+        <span class="add-cricle-bg"></span>
+    </div>
+    <!-- Header section -->
+    <header class="header">
+        <nav class="navbar navbar-bg pt-4">
+            <div class="container">
+                <a class="navbar-brand row align-items-center" href="index.html">
+                    <img src="{% static '/img/kspi-logo.png' %}" alt="Logo" class="logo-img col">
+                    <div class="logo-title col">KSPI <br>Shartnomalar</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+
+    
+    
+    <!-- MAIN-CONTENT -->
+    <section class="sign-section">
+        <div class="text-center h4 text-primary">
+            {% for h in messages %}
+                {{h}}
+            {% endfor %}
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="container">
+                <div class="row d-flex align-items-center flex-lg-row flex-column-reverse">
+            
+                    <div class="col-sm-12 col-lg-4 sign-in">
+                        <div class="form needs-validation" novalidate>
+                            <div class="form-floating mb-3">
+                                <input name="username" type="text" class="form-control" id="floatingInput" placeholder="ID" required>
+                                <label for="floatingInput">ID</label>
+                                <div class="invalid-feedback">
+                                    ID ni kiriting!
+                                </div>
+                            </div>
+                            <div class="form-floating">
+                                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Parol"  required>
+                                <label for="floatingPassword">Parol</label>
+                                <div class="invalid-feedback">
+                                    Parolni kiriting!
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-sty col-12">Kirish</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-8 sign-img__section">
+                        <img class="sign-img img-fluid" src="{% static '/img/signin-img2.png' %}" alt="Sign in images">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-lg-4 col-md-12">
+                    <div class=" row logo mb-4">
+                        <div class="col-2">
+                            <span class="img-bg">
+                                <img src="{% static '/img/kspi-logo.png' %}" alt="kspi logotip">
+                            </span>
+                        </div>
+                        <h5 class="col-9">kspi.amaliyot.uz</h5>
+                    </div>
+                    <p>"Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi" dasturiy majmuasi</p>
+                </div>
+                <div class="col-lg-4 col-md-6 connect">
+                    <h4>Bog'lanish</h4>
+                    <p>Ishonch telefoni: +998(90) 567 12 75</p>
+                    <p>Qo'qon shahar, Turon ko'chasi, 23-uy</p>
+                    <a href="https://kspi.uz/">www.kspi.uz</a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4>Bizning ijtimoiy tarmoqlar</h4>
+                    <a href="https://www.facebook.com/kspi.uz.56" class="socials">
+                        <i class="fa-brands fa-facebook"></i>
+                        <p>Facebook</p>
+                    </a>
+                    <a href="https://t.me/kspi_official" class="socials">
+                        <i class="fa-brands fa-telegram"></i>
+                        <p>Telegram</p>
+                    </a>
+                    <a href="https://www.instagram.com/kspi_uz/" class="socials">
+                        <i class="fa-brands fa-instagram"></i>
+                        <p>Instagram</p>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC6ThR8cLnJmdWDGDz9PR85Q/featured" class="socials">
+                        <i class="fa-brands fa-youtube"></i>
+                        <p>YouTube</p>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="by">
+            <h5 class="col">2023 &#169 QDPI IT-park</h5>
+        </div>
+    </footer>
+    
+    
+    <!-- BOOTSTRAP-JAVASCRIPT -->
+    <link rel="stylesheet" href="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"> 
+    <script src=""></script>
+    
+    <!-- JAVASCRIPT -->
+    <script src="{% static '/js/login.js' %}"></script>
+</body>
+</html> 

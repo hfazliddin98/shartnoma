@@ -1,0 +1,13 @@
+
+
+
+
+@media screen and (max-width:767px) {
+    #region, #district, #village, #region ~ .invalid-feedback, #district ~ .invalid-feedback, #village ~ .invalid-feedback {
+        margin-bottom: 15px;
+    }
+    button {
+    display: inline-block;
+    width: 100%;
+}
+}

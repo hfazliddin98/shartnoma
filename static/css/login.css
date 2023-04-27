@@ -1,0 +1,33 @@
+.sign-section {
+    padding: 100px 0;
+    
+}
+.form {
+    border: 2px solid #699EEE;
+    padding: 50px 30px;
+    border-radius: 10px;
+}
+
+.btn-sty {
+    background-color: #699EEE;
+    color: #ffffff;
+    font-weight: 500;
+    margin-top: 15px;
+}
+.btn-sty:hover {
+    background-color: #fff;
+    color: #699EEE;
+    border: 1px solid #699EEE;
+}
+
+.btn-sty:active {
+    background-color: #fff;
+    color: #699EEE;
+    border: 1px solid #699EEE;
+}
+.sign-img__section {
+    text-align: center;
+}
+.sign-img {
+    width: 600px;
+}
