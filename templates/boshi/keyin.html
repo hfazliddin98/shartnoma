@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+     <!-- BOOTSTRAP-CSS -->    
+     <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}"> 
+    
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+     <!-- STYLE-CSS -->
+     <link rel="stylesheet" href="{% static '/css/style.css' %}"> 
+     <link rel="stylesheet" href="{% static '/css/contract.css' %}"> 
+     <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
+    
+    <title>Contract</title>
+</head>
+<body>
+    <!-- Header section -->
+    <header class="header">
+        <nav class="navbar navbar-bg pt-4">
+            <div class="container">
+                <a class="navbar-brand row align-items-center" href="{% url 'home' %}">
+                    <img src="{% static '/img/kspi-logo.png' %}" alt="Logo" class="logo-img col">
+                    <div class="logo-title col">KSPI <br>Shartnomalar</div>
+                </a>
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="account-img" src="{% static '/img/account.png' %}" alt="Account" width="48">
+                        <span>Name</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Name Surname</a></li>
+                        <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish <img src="{% static '/img/logout.svg' %}" alt="Chiqish" width="20"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <picture>
+                    <source srcset="{% static '/img/extra.jpg' %}" media="(min-width: 1000px)" />
+                    <source class="medium" srcset="img/medium.jpg" media="(min-width: 700px)" />
+                    <img src="{% static '/img/small.jpg' %}" alt="contract picture" width="100%"/>
+                </picture>
+            </div>
+            <div class="carousel-item">
+                <picture>
+                    <source srcset="{% static '/img/extra2.jpg' %}" media="(min-width: 1000px)" />
+                    <source class="medium" srcset="img/medium2.jpg" media="(min-width: 700px)" />
+                    <img src="{% static '/img/small2.jpg' %}" alt="contract picture" width="100%"/>
+                </picture>
+            </div>
+            <div class="carousel-item">
+                <picture>
+                    <source srcset="{% static '/img/extra3.jpg' %}" media="(min-width: 1000px)" />
+                    <source class="medium" srcset="img/medium3.jpg" media="(min-width: 700px)" />
+                    <img src="{% static '/img/small3.jpg' %}" alt="contract picture" width="100%"/>
+                </picture>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container">
+            <div class="my-2 text-danger"><strong>Eslatma.!</strong> Amaliyot o'tash shartnomasini yuklab olishingizdan oldin, amaliyot o'tash joyingiz haqidagi so'ralgan ma'lumotlarni to'ldiring.!</div>
+            <!-- AMALIYOT -->
+            <div class="amaliyot">
+                <div class="d-flex flex-column flex-md-row justify-content-between text-center align-items-center border border-primary rounded-3 p-2 w-100">
+                    <h5 class="amaliyot-text mb-0">
+                        Amaliyot o'tash joyi haqidagi ma'lumotlarni to'ldirish
+                    </h5>
+                    <a class="amaliyot-btn btn btn-primary" href="{% url 'amaliyot' %}">Kiritish</a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- SHARTNOMA -->
+        <div class="container d-flex flex-column align-items-center">            
+            <h1 class="contract-heading text-center">Shartnoma</h1>
+            <div class="contract-wrapper">
+                <div class="contract">
+                    <div class="contract-img">
+                        <img class="img-fluid w-100" src="{% static '/img/shartnoma1.jpg' %}" alt="Shartnoma rasmi">
+                        <img class="img-fluid w-100" src="{% static '/img/shartnoma2.jpg' %}" alt="Shartnoma rasmi">
+                    </div>
+                </div>
+                <div class="contract-info">
+                    <h5 class="bg-dark-button-inner-text">Amaliyot o'tash to'g'risidagi shartnoma namunasi</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-lg-4 col-md-12">
+                    <div class=" row logo mb-4">
+                        <div class="col-2">
+                            <span class="img-bg">
+                                <img src="{% static '/img/kspi-logo.png' %}" alt="kspi logotip">
+                            </span>
+                        </div>
+                        <h5 class="col-9">kspi.amaliyot.uz</h5>
+                    </div>
+                    <p>"Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi" dasturiy majmuasi</p>
+                </div>
+                <div class="col-lg-4 col-md-6 connect">
+                    <h4>Bog'lanish</h4>
+                    <p>Ishonch telefoni: +998(90) 567 12 75</p>
+                    <p>Qo'qon shahar, Turon ko'chasi, 23-uy</p>
+                    <a href="https://kspi.uz/">www.kspi.uz</a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4>Bizning ijtimoiy tarmoqlar</h4>
+                    <a href="https://www.facebook.com/kspi.uz.56" class="socials">
+                        <i class="fa-brands fa-facebook"></i>
+                        <p>Facebook</p>
+                    </a>
+                    <a href="https://t.me/kspi_official" class="socials">
+                        <i class="fa-brands fa-telegram"></i>
+                        <p>Telegram</p>
+                    </a>
+                    <a href="https://www.instagram.com/kspi_uz/" class="socials">
+                        <i class="fa-brands fa-instagram"></i>
+                        <p>Instagram</p>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC6ThR8cLnJmdWDGDz9PR85Q/featured" class="socials">
+                        <i class="fa-brands fa-youtube"></i>
+                        <p>YouTube</p>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="by">
+            <h5 class="col">2023 &#169 QDPI IT-park</h5>
+        </div>
+    </footer>
+    
+
+    <!-- BOOTSTRAP-JAVASCRIPT -->
+    <link rel="stylesheet" href="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"> 
+        
+      
+</body>
+</html>

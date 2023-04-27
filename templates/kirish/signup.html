@@ -1,45 +1,265 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  </head>
-  <body>
-    <form method="post">{% csrf_token %}
-        
-        {% if habar %}
-            {{habar}}
-        {% endif %}
-        <div class="container row">
-          <div class="col-6">
-            <h3>Talaba ma’lumotlari</h3>
-            <input class="form-control" name="username" placeholder="User ID" type="text">
-            <input class="form-control" name="familya" placeholder="familya" type="text">
-            <input class="form-control" name="ism" placeholder="ism" type="text">
-            <input class="form-control" name="sharif" placeholder="sharif" type="text">
-            <input class="form-control" name="t_yil" placeholder="tug`lgan yil" type="text">
-            <input class="form-control" name="yonalish" placeholder="Yo`nalish" type="text">
-            <input class="form-control" name="k_yil" placeholder="O`qishga kirgan yili" type="text">
-            <input class="form-control" name="viloyat" placeholder="viloyat" type="text">
-            <input class="form-control" name="shahar" placeholder="shahar" type="text">
-            <input class="form-control" name="kocha" placeholder="kocha" type="text">
-            <input class="form-control" name="uy_nomer" placeholder="uy_nomer" type="text">
-            <input class="form-control" name="telefon" placeholder="telefon" type="text">
-            <input class="form-control" name="password1" placeholder="password1" type="password">
-            <input class="form-control" name="password2" placeholder="password2" type="password">
-          </div>
-          <div class="col-6">
-            <h3>Tashkilot rahbarini kiriting</h3>
-            <input class="form-control" name="familya_i" placeholder="familya" type="text">
-            <input class="form-control" name="ism_i" placeholder="ism" type="text">
-            <input class="form-control" name="sharif_i" placeholder="sharif" type="text">   
-          </div>
-        </div>        
-        <button type="submit" class="btn btn-primary">Saqlash</button>
-      </form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- BOOTSTRAP-CSS -->
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- STYLE-CSS -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}"> 
+    <link rel="stylesheet" href="{% static '/css/register.css' %}"> 
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
+    
+    <title>Ro'yxatdan o'tish</title>
+</head>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  </body>
-</html>
+<body>
+    <div class="add-cricle">
+        <span class="add-cricle-bg"></span>
+    </div>
+    <!-- Header section -->
+    <header class="header">
+        <nav class="navbar navbar-bg pt-4">
+            <div class="container">
+                <a class="navbar-brand row align-items-center" href="{% url 'home' %}">
+                    <img src="{% static '/img/kspi-logo.png' %}" alt="Logo" class="logo-img col">
+                    <div class="logo-title col">KSPI <br>Shartnomalar</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- MAIN-CONTENT -->
+    <div class="main-content">
+        <div class="container">
+            <h1>Ro'yxatdan o'tish</h1>
+            <!-- LOGIN -->
+            <form action="https://echo.htmlacademy.ru" method="POST" class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom01" class="form-label">Talaba IDsi</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="ID..." required>
+                    <div class="invalid-feedback">
+                        IDni kiriting.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom02" class="form-label">Ismingiz</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Ism..." required>
+                    <div class="invalid-feedback">
+                        Ismingizni kiriting.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom03" class="form-label">Familiyangiz</label>
+                    <input type="text" class="form-control" id="validationCustom03" placeholder="Familiya..." required>
+                    <div class="invalid-feedback">
+                        Familiyangizni kiriting.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom04" class="form-label">Otangizning ismi</label>
+                    <input type="text" class="form-control" id="validationCustom04" placeholder="Sharif..." required>
+                    <div class="invalid-feedback">
+                        Otangizning ismini kiriting.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom05" class="form-label">Telefon raqamingiz</label>
+                    <input type="text" class="form-control" id="validationCustom05" data-mdb-input-mask="+998 90 000 00 00" placeholder="+998 (Telefon raqam)" required>
+                    <div class="invalid-feedback">
+                        Telefon raqamingizni kiriting.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom06" class="form-label">Tug'ilgan kuningiz</label>
+                    <input type="date" class="form-control" id="validationCustom06" placeholder="kun/oy/yil" required>
+                    <div class="invalid-feedback">
+                        Tug'ilgan kuningizni kiriting.!
+                    </div>
+                </div>
+                    <div class="col-md-4 col-sm-6">
+                        <label for="jins" class="form-label">Jinsingiz</label>
+                        <select id="jins" class="form-select" size="1" required aria-label="select example">
+                            <option selected="selected" value="" disabled>Jins</option>
+                            <option >Erkak</optionselected=>
+                            <option >Ayol</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Jinsingizni tanlang.!
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <label for="jins" class="form-label">Ta'lim shakli</label>
+                        <select id="jins" class="form-select" size="1" required aria-label="select example">
+                            <option selected="selected" value="" disabled>Ta'lim shakli</option>
+                            <option >Kunduzgi</optionselected=>
+                            <option >Sirtqi</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Ta'lim shaklini tanlang.!
+                        </div>
+                    </div>
+                
+
+                <!-- FAKULTET -->
+                <div class="fakultet">
+                    <h3>Fakultet(yo'nalish va guruh)</h3>
+                    <div class="fakultet-info row">
+                        
+                        <div class="col-md-4 col-sm-6">
+                            <label for="fakultet" class="form-label">Fakultetingiz</label>
+                            <select id="fakultet" class="form-select" size="1" required aria-label="select example">
+                                <option selected="selected" value="" disabled>Fakultet</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Fakultetingizni tanlang.!
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <label for="major" class="form-label">Yo'nalishingiz</label>
+                            <select id="major" class="form-select col-md-4" size="1" required aria-label="select example">
+                                <option selected="selected" value="" disabled>Yo'nalish</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Yo'nalishingizni tanlang.!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="guruh" class="form-label">Guruhingiz</label>
+                            <input type="text" id="guruh"  class="form-control" placeholder=" " required>
+                            <div class="invalid-feedback">
+                                Guruhingizni kiriting.!
+                            </div>
+                        </div>
+                                                
+                    </div>
+                </div>
+                
+                <!-- MANZIL -->
+                <div class="address">
+                    <h3>Manzilingizni kiriting</h3>
+                    <div class="address-info row">
+                        
+                        <div class="col-md-4 col-sm-6">
+                            <label for="region" class="form-label">Viloyatingiz</label>
+                            <select id="region" class="form-select" size="1" required aria-label="select example">
+                                <option selected="selected" value="" disabled>Viloyat</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Viloyatingizni tanlang.!
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <label for="district" class="form-label">Tumaningiz</label>
+                            <select id="district" class="form-select col-md-4" size="1" required aria-label="select example">
+                                <option selected="selected" value="" disabled>Tuman</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Tumaningizni tanlang.!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="village" class="form-label">MFY</label>
+                            <input type="text" id="village"  class="form-control" placeholder="MFY" required>
+                            <div class="invalid-feedback">
+                                Yashash manzilingizni kiriting.!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="village" class="form-label">Ko'cha va uyingiz raqami</label>
+                            <input type="text" id="village"  class="form-control" placeholder="Ko'changiz va uy nomeringiz" required>
+                            <div class="invalid-feedback">
+                                Yashash manzilingizni kiriting.!
+                            </div>
+                        </div>
+                                             
+                        <div class="col-md-4 col-sm-6">
+                            <label for="password" class="form-label">Parol</label>
+                            <input type="password" class="form-control" id="password" placeholder="Parol o'ylab toping..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                            <div class="invalid-feedback">
+                                Parolni kiriting.!
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <label for="confirm-password" class="form-label">Parolni takrorlang</label>
+                            <input type="password" id="confirm-password" class="form-control" placeholder="Parolni qayta kiriting..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                            <div class="invalid-feedback">
+                                Parolni tekshiring va qayta kiriting.!
+                            </div>  
+                        </div>
+                    </div>
+                </div>  
+                
+               
+                
+                <div class="col-12 text-center mb-4">
+                    <button class="btn btn-primary" type="submit">Saqlash</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+
+<!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-lg-4 col-md-12">
+                    <div class=" row logo mb-4">
+                        <div class="col-2">
+                            <span class="img-bg">
+                                <img src="{% static '/img/kspi-logo.png' %}" alt="kspi logotip">
+                            </span>
+                        </div>
+                        <h5 class="col-9">kspi.amaliyot.uz</h5>
+                    </div>
+                    <p>"Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi" dasturiy majmuasi</p>
+                </div>
+                <div class="col-lg-4 col-md-6 connect">
+                    <h4>Bog'lanish</h4>
+                    <p>Ishonch telefoni: +998(90) 567 12 75</p>
+                    <p>Qo'qon shahar, Turon ko'chasi, 23-uy</p>
+                    <a href="https://kspi.uz/">www.kspi.uz</a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4>Bizning ijtimoiy tarmoqlar</h4>
+                    <a href="https://www.facebook.com/kspi.uz.56" class="socials">
+                        <i class="fa-brands fa-facebook"></i>
+                        <p>Facebook</p>
+                    </a>
+                    <a href="https://t.me/kspi_official" class="socials">
+                        <i class="fa-brands fa-telegram"></i>
+                        <p>Telegram</p>
+                    </a>
+                    <a href="https://www.instagram.com/kspi_uz/" class="socials">
+                        <i class="fa-brands fa-instagram"></i>
+                        <p>Instagram</p>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC6ThR8cLnJmdWDGDz9PR85Q/featured" class="socials">
+                        <i class="fa-brands fa-youtube"></i>
+                        <p>YouTube</p>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="by">
+            <h5 class="col">2023 &#169 QDPI IT-park</h5>
+        </div>
+    </footer>
+    
+    
+    <!-- BOOTSTRAP-JAVASCRIPT -->
+    <link rel="stylesheet" href="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"> 
+        
+    <!-- JAVASCRIPT -->
+    <script src="{% static '/js/register.js' %}"></script>    
+</body>
+</html> 

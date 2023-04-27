@@ -28,9 +28,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # men qoshgan applar
-    'users',
-    'viloyat',
-    'fakultet',
+    'users',   
     'amaliyot',
     'pdf',
 ]
@@ -137,3 +135,6 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User' 
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

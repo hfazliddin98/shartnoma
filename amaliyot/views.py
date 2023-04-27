@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def amaliyot(request):
+    return render(request, 'amaliyot/amaliyot.html')

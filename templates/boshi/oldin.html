@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+     <!-- BOOTSTRAP-CSS -->    
+     <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}"> 
+    
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+     <!-- STYLE-CSS -->
+     <link rel="stylesheet" href="{% static '/css/style.css' %}"> 
+     <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
+    
+    <title>Shartnomalar-Home</title>
+    
+</head>
+<body>
+    <div class="add-cricle">
+        <span class="add-cricle-bg"></span>
+    </div>
+
+    <!-- Header section -->
+    <header class="header">
+        <nav class="navbar navbar-bg pt-4">
+            <div class="container">
+                <a class="navbar-brand row align-items-center" href="{% url 'home' %}">
+                    <img src="{% static '/img/kspi-logo.png' %}" alt="Logo" class="logo-img col">
+                    <div class="logo-title col">KSPI <br>Shartnomalar</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="section-bg align-items-center pb-0">
+        <div class="container">
+            <div class="hero">
+                <div class="col col-md-4 col-lg-6 col-xl-5 col-xxl-4">
+                    <h1 class="section-title">Amaliyotga marxamat</h1>
+                    <p class="section-info">Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi</p>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class="btn section-btn col" type="button"><a class="link" href="{% url 'kirish' %}">Kirish</a></button>
+                        <button class="btn section-btn col" type="button"><a class="link" href="{% url 'royhat' %}">Ro'yxatdan o'tish</a></button>
+                    </div>
+                </div>
+                <div class="col col-md-8 col-lg-6 col-xl-7 col-xxl-8">
+                    <img src="{% static '/img/section-img.png' %}" alt="Section iamge" class="section-img img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NIZOM -->
+    <section class="statute-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2 class="statute-title">Amaliyot o'tash nizomi</h2>
+                <div class="row justify-content-center statute-items">
+                    <img src="{% static '/img/nizom1.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom2.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom3.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom4.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom5.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom6.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom7.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom8.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom9.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom10.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                    <img src="{% static '/img/nizom11.png' %}" alt="Amaliyot nizomi" class="statute-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-lg-4 col-md-12">
+                    <div class=" row logo mb-4">
+                        <div class="col-2">
+                            <span class="img-bg">
+                                <img src="{% static '/img/kspi-logo.png' %}" alt="kspi logotip">
+                            </span>
+                        </div>
+                        <h5 class="col-9">kspi.amaliyot.uz</h5>
+                    </div>
+                    <p>"Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi" dasturiy majmuasi</p>
+                </div>
+                <div class="col-lg-4 col-md-6 connect">
+                    <h4>Bog'lanish</h4>
+                    <p>Ishonch telefoni: +998(90) 567 12 75</p>
+                    <p>Qo'qon shahar, Turon ko'chasi, 23-uy</p>
+                    <a href="https://kspi.uz/">www.kspi.uz</a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4>Bizning ijtimoiy tarmoqlar</h4>
+                    <a href="https://www.facebook.com/kspi.uz.56" class="socials">
+                        <i class="fa-brands fa-facebook"></i>
+                        <p>Facebook</p>
+                    </a>
+                    <a href="https://t.me/kspi_official" class="socials">
+                        <i class="fa-brands fa-telegram"></i>
+                        <p>Telegram</p>
+                    </a>
+                    <a href="https://www.instagram.com/kspi_uz/" class="socials">
+                        <i class="fa-brands fa-instagram"></i>
+                        <p>Instagram</p>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC6ThR8cLnJmdWDGDz9PR85Q/featured" class="socials">
+                        <i class="fa-brands fa-youtube"></i>
+                        <p>YouTube</p>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="by">
+            <h5 class="col">2023 &#169 QDPI IT-park</h5>
+        </div>
+    </footer>
+    
+     <!-- BOOTSTRAP-JAVASCRIPT -->
+     <link rel="stylesheet" href="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"> 
+        
+     
+</body>
+</html>

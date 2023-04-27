@@ -1,5 +1,4 @@
 from django.urls import path
-from .views import home, kirish
 from .views import kirish, home, royhat
 
 urlpatterns = [
