@@ -17,15 +17,15 @@ def kirish(request):
             return redirect('/')
         else:
             messages.warning(request, 'Id yoki parol xato')
-            return redirect('/kirish/')
+            return redirect('/kirish')
 
     return render(request, 'kirish/login.html')
 
 
 def home(request):
-    pdf = Pdf.objects.all
+    userlar = User.objects.all
     contex = {
-        'pdf': pdf,
+        'userlar': userlar,
     }
     return render(request, 'boshi/home.html', contex)
 
@@ -45,7 +45,7 @@ def royhat(request):
         fakultet = request.POST['fakultet']
         yonalish = request.POST['yonalish']
         kurs = request.POST['kurs']
-        guruh = request.POST['guruh']#           
+        guruh = request.POST['guruh']           
 
         viloyat = request.POST['viloyat']
         tuman = request.POST['tuman']

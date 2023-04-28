@@ -52,13 +52,14 @@
             <!-- AMALIYOT -->
             <div class="amaliyot">
                 <!-- FORM -->
-                <form class="amaliyot-form row g-3 needs-validation mt-2" action="#" novalidate>
+                <form method="POST" class="amaliyot-form row g-3 needs-validation mt-2" novalidate>
+                    {% csrf_token %}
                     <h4 class="amaliyot-title text-center">Amaliyot o'tash joyi haqida</h4>
                     <div class="address-info row">
                     
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="region" class="form-label">Viloyat</label>
-                            <select id="region" class="form-select" size="1" required aria-label="select example">
+                            <select name="viloyat_a" id="region" class="form-select" size="1" required aria-label="select example">
                                 <option selected="selected" value="" disabled>Viloyat</option>
                             </select>
                             <div class="invalid-feedback">
@@ -67,7 +68,7 @@
                         </div>
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="district" class="form-label">Tuman</label>
-                            <select id="district" class="form-select col-md-4" size="1" required aria-label="select example">
+                            <select name="tuman_a" id="district" class="form-select col-md-4" size="1" required aria-label="select example">
                                 <option selected="selected" value="" disabled>Tuman</option>
                             </select>
                             <div class="invalid-feedback">
@@ -76,42 +77,42 @@
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="village" class="form-label">MFY</label>
-                            <input type="text" id="village"  class="form-control" placeholder="MFY" required>
+                            <input name="mfy_a" type="text" id="village"  class="form-control" placeholder="MFY" required>
                             <div class="invalid-feedback">
                                 Muassasa joylashgan MFYni kiriting.!
                             </div>
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="street" class="form-label">Ko'cha va uy raqami</label>
-                            <input type="text" id="street"  class="form-control" placeholder="Ko'cha va uy raqami" required>
+                            <input name="kocha_uy_a" type="text" id="street"  class="form-control" placeholder="Ko'cha va uy raqami" required>
                             <div class="invalid-feedback">
                                 Ko'cha va uy raqamini kiriting.!
                             </div>
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="validationCustom01" class="form-label">Muassasa nomi</label>
-                            <input type="text" class="form-control" id="validationCustom01" placeholder="Muassasa nomi" required>
+                            <input name="muassasa" type="text" class="form-control" id="validationCustom01" placeholder="Muassasa nomi" required>
                             <div class="invalid-feedback">
                                 Muassasa nomini kiriting.!
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="validationCustom02" class="form-label">Direktor ismi</label>
-                            <input type="text" class="form-control" id="validationCustom02" placeholder="Ismi..." required>
+                            <input name="d_ism" type="text" class="form-control" id="validationCustom02" placeholder="Ismi..." required>
                             <div class="invalid-feedback">
                                 Direktor ismini kiriting.!
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="validationCustom03" class="form-label">Telefon raqami</label>
-                            <input type="text" class="form-control" id="validationCustom03" data-mdb-input-mask="+998 90 000 00 00" placeholder="+998 (Telefon raqam)" required>
+                            <input name="d_nomeri" type="text" class="form-control" id="validationCustom03" data-mdb-input-mask="+998 90 000 00 00" placeholder="+998 (Telefon raqam)" required>
                             <div class="invalid-feedback">
                                 Telefon raqamini kiriting.!
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="kurs" class="form-label">Kursingizni tanlang</label>
-                            <select id="kurs" class="form-select" size="1" aria-label="select example" required>
+                            <select name="kurs" id="kurs" class="form-select" size="1" aria-label="select example" required>
                                 <option selected="selected" value="" disabled>Nechanchi kurs</option>
                                 <option value="" disabled>1-kurs</option>
                                 <option value="">2-kurs</option>
@@ -124,21 +125,21 @@
                         </div>
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="validationCustom04" class="form-label">Tashkilotdagi amaliyot rahbari</label>
-                            <input type="text" class="form-control" id="validationCustom04" placeholder="Amaliyot rahbari ismi..." required>
+                            <input name="a_rahbari" type="text" class="form-control" id="validationCustom04" placeholder="Amaliyot rahbari ismi..." required>
                             <div class="invalid-feedback">
                                 Amaliyot o'tash joyi(korxona, tashkilot)dagi amaliyot rahbari ismini kiriting.!
                             </div>
                         </div>                  
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="validationCustom05" class="form-label">OTMdagi amaliyot rahbari</label>
-                            <input type="text" class="form-control" id="validationCustom05" placeholder="Amaliyot rahbari ismi..." required>
+                            <input name="o_a_rahbari" type="text" class="form-control" id="validationCustom05" placeholder="Amaliyot rahbari ismi..." required>
                             <div class="invalid-feedback">
                                 OTMdan biriktirilgan amaliyot rahbari ismini kiriting.!
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="amaliyot" class="form-label">Amaliyot turi</label>
-                            <select id="amaliyot" class="form-select" aria-label="select example" required>
+                            <select name="a_turi" id="amaliyot" class="form-select" aria-label="select example" required>
                                 <option selected="selected" value="" disabled>Amaliyot turini tanlang</option>
                                 <option>Malakaviy-o'quv amaliyoti</option>
                                 <option>Amaliy</option>
@@ -149,14 +150,14 @@
                         </div>                  
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="validationCustom06" class="form-label">Amaliyotning boshlanish sanasi</label>
-                            <input type="date" class="form-control" id="validationCustom06" required>
+                            <input name="b_sana" type="date" class="form-control" id="validationCustom06" required>
                             <div class="invalid-feedback">
                                 Amaliyotning boshlanish sanasini kiriting.!
                             </div>
                         </div>                  
                         <div class="col-md-4 col-sm-6 mb-2">
                             <label for="validationCustom07" class="form-label">Amaliyotning tugash sanasi</label>
-                            <input type="date" class="form-control" id="validationCustom07" required>
+                            <input name="t_sana" type="date" class="form-control" id="validationCustom07" required>
                             <div class="invalid-feedback">
                                 Amaliyotning tugash sanasini kiriting.!
                             </div>
@@ -226,7 +227,7 @@
     
     
     <!-- BOOTSTRAP-JAVASCRIPT -->
-    <link rel="stylesheet" href="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"> 
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
         
     <!-- JAVASCRIPT -->
     <script src="{% static '/js/amaliyot.js' %}"></script>
