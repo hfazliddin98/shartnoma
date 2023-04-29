@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
+from users.models import User
 from .models import Amaliyot
 
 def amaliyot(request):
-    habar = ''
+    userlar = User.objects.all()
     if request.method == 'POST':
         viloyat_a = request.POST['viloyat_a']
         tuman_a = request.POST['tuman_a']
@@ -16,12 +17,15 @@ def amaliyot(request):
         o_a_rahbari = request.POST['o_a_rahbari']
         a_turi = request.POST['a_turi']
         b_sana = request.POST['b_sana']
-        t_sana = request.POST['t_sana']           
-        
-        Amaliyot.objects.create(viloyat_a = viloyat_a, tuman_a = tuman_a, mfy_a = mfy_a, kocha_uy_a=kocha_uy_a, muassasa=muassasa, d_ism=d_ism, d_nomeri=d_nomeri, b_sana=b_sana, a_rahbari=a_rahbari, o_a_rahbari=o_a_rahbari, a_turi=a_turi, kurs=kurs, t_sana=t_sana) 
-        return redirect('/') 
+        t_sana = request.POST['t_sana'] 
+        if Amaliyot.objects.filter(muassasa==muassasa or kurs==kurs):
+            Amaliyot.objects.update(viloyat_a=viloyat_a,tuman_a=tuman_a,mfy_a=mfy_a, kocha_uy_a=kocha_uy_a, muassasa=muassasa, d_ism=d_ism, d_nomeri=d_nomeri, b_sana=b_sana, a_rahbari=a_rahbari, o_a_rahbari=o_a_rahbari, a_turi=a_turi, kurs=kurs, t_sana=t_sana) 
+    
+        else:
+            Amaliyot.objects.create(viloyat_a=viloyat_a,tuman_a=tuman_a,mfy_a=mfy_a, kocha_uy_a=kocha_uy_a, muassasa=muassasa, d_ism=d_ism, d_nomeri=d_nomeri, b_sana=b_sana, a_rahbari=a_rahbari, o_a_rahbari=o_a_rahbari, a_turi=a_turi, kurs=kurs, t_sana=t_sana) 
+            return redirect('/') 
     
     contex = {
-        'habar':habar,
+        'userlar':userlar,
     }     
     return render(request, 'amaliyot/amaliyot.html', contex)
