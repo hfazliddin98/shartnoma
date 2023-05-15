@@ -1,5 +1,19 @@
-{% if user.is_authenticated %}    
-  {% include 'boshi/keyin.html' %}
+{% if user.is_authenticated %} 
+
+  {% if user.is_superuser or user.lavozim == 'superadmin' %}
+  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
+    {% include 'adminlar/superadmin/home.html' %}
+  {% endif %}  
+  
+  {% if user.lavozim == 'dekanat' %}
+  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
+    salom dekanat
+  {% endif %}  
+
+  {% if user.lavozim == 'talaba'%}
+    {% include 'boshi/keyin.html' %}
+  {% endif %}  
+ 
 {% else %}
   {% include 'boshi/oldin.html' %}
 {% endif%}

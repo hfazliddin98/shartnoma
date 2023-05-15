@@ -56,18 +56,67 @@ def royhat(request):
         password2 = request.POST['password2']
         if User.objects.filter(username=username):
             habar = 'Bunday ID mavjud'        
-        elif len(password1) < 8 or password1 == familya or password1 == ism:
-            habar = 'Parol 8 tadan kam bolmasligi kerak'
-        elif password1 != password2:
-            habar = 'Tasdiqlash parolini to`gri kiritish'
         else:
-            user = get_user_model().objects.create(username = username, last_name = familya, first_name = ism, sharif=sharif, t_yil=t_yil, t_nomer=t_nomer, k_yil=k_yil, gender=gender, talim_turi=talim_turi, fakultet=fakultet, yonalish=yonalish, kurs=kurs, guruh=guruh, viloyat=viloyat, tuman=tuman, mfy=mfy, kocha_uy=kocha_uy, password = make_password(password1), parol=password2) 
+            user = get_user_model().objects.create(lavozim='talaba', username = username, last_name = familya, first_name = ism, sharif=sharif, t_yil=t_yil, t_nomer=t_nomer, k_yil=k_yil, gender=gender, talim_turi=talim_turi, fakultet=fakultet, yonalish=yonalish, kurs=kurs, guruh=guruh, viloyat=viloyat, tuman=tuman, mfy=mfy, kocha_uy=kocha_uy, password = make_password(password1), parol=password2) 
             user.is_active = False
             user.is_staff = False
-            user.sana = True
+            
             return redirect('/')
     
-    return render(request, 'kirish/signup.html', {'habar':habar})
+    return render(request, 'kirish/talaba.html', {'habar':habar})
+
+
+def superadmin(request):
+    habar = ''
+    if request.method == 'POST':
+        username = request.POST['username']
+        familya = request.POST['familya']
+        ism = request.POST['ism']        
+        t_nomer = request.POST['t_nomer']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if User.objects.filter(username=username):
+            habar = 'Bunday id mavjud'  
+        elif User.objects.filter(t_nomer=t_nomer):
+            habar = 'Bunday telaefon nomer mavjud '         
+        else:
+            user = get_user_model().objects.create(lavozim='superadmin', username = username, last_name = familya, first_name = ism, t_nomer=t_nomer,password = make_password(password1), parol=password2)
+            user.is_active = False
+            user.is_staff = False 
+            return redirect('/')          
+
+    contex = {
+        'habar':habar,
+    }
+    return render(request, 'kirish/superadmin.html', contex)
+
+
+
+def dekanat(request):
+    habar = ''
+    if request.method == 'POST':
+        username = request.POST['username']
+        familya = request.POST['familya']
+        ism = request.POST['ism']       
+        t_nomer = request.POST['t_nomer']
+        dekanat_fakultet = request.POST['dekanat_fakultet']
+        dekanat_kafedra = request.POST['dekanat_kafedra']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if User.objects.filter(username=username):
+            habar = 'Bunday id mavjud'
+        elif User.objects.filter(t_nomer=t_nomer):
+            habar = 'Bunday telaefon nomer mavjud '
+        else:
+            user = get_user_model().objects.create(lavozim='dekanat', username = username, last_name = familya, first_name = ism, t_nomer=t_nomer, dekanat_fakultet=dekanat_fakultet, dekanat_kafedra=dekanat_kafedra, password = make_password(password1), parol=password2)
+            user.is_active = False
+            user.is_staff = False 
+            return redirect('/')          
+
+    contex = {
+        'habar':habar,
+    }
+    return render(request, 'kirish/dekanat.html', contex)
 
 
 # def sinov(request):

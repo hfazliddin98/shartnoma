@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- BOOTSTRAP-CSS -->
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- STYLE-CSS -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}"> 
+    <link rel="stylesheet" href="{% static '/css/register.css' %}"> 
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
+    
+    <title>Ro'yxatdan o'tish</title>
+</head>
+
+<body>
+    <div class="add-cricle">
+        <span class="add-cricle-bg"></span>
+    </div>
+    <!-- Header section -->
+    <header class="header">
+        <nav class="navbar navbar-bg pt-4">
+            <div class="container">
+                <a class="navbar-brand row align-items-center" href="{% url 'home' %}">
+                    <img src="{% static '/img/kspi-logo.png' %}" alt="Logo" class="logo-img col">
+                    <div class="logo-title col">KSPI <br>Shartnomalar</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- MAIN-CONTENT -->
+    <div class="main-content">
+        <div class="container">
+            <h1 class="text-center">Superadmin qo`shish</h1>
+            <div class="text-center h4 text-primary">
+                {% for h in habar %}
+                    {{h}}
+                {% endfor %}
+            </div>
+            <!-- LOGIN -->
+            <form method="POST" class="row g-3 needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom01" class="form-label">Superadmin ID</label>
+                    <input name="username" type="text" class="form-control" id="validationCustom01" placeholder="ID..." required>
+                    <div class="invalid-feedback">
+                        IDni kiriting.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom02" class="form-label">Ismi</label>
+                    <input name="ism" type="text" class="form-control" id="validationCustom02" placeholder="Ism..." required>
+                    <div class="invalid-feedback">
+                        Ismini kiriting.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom03" class="form-label">Familiyasi</label>
+                    <input name="familya" type="text" class="form-control" id="validationCustom03" placeholder="Familiya..." required>
+                    <div class="invalid-feedback">
+                        Familiyasini kiriting.!
+                    </div>
+                </div>
+               
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom05" class="form-label">Telefon raqami</label>
+                    <input name="t_nomer" type="text" class="form-control" id="validationCustom05" data-mdb-input-mask="+998 90 000 00 00" placeholder="+998 (Telefon raqam)" required>
+                    <div class="invalid-feedback">
+                        Telefon raqamini kiriting.!
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <label for="password" class="form-label">Parol</label>
+                    <input name="password1" type="password" class="form-control" id="password" placeholder="Parol o'ylab toping..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <div class="invalid-feedback">
+                        Parolni kiriting.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="confirm-password" class="form-label">Parolni takrorlang</label>
+                    <input name="password2" type="password" id="confirm-password" class="form-control" placeholder="Parolni qayta kiriting..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <div class="invalid-feedback">
+                        Parolni tekshiring va qayta kiriting.!
+                    </div>  
+                </div>
+                
+
+                <div class="col-12 text-center mb-4">
+                    <button class="btn btn-primary" type="submit">Saqlash</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+
+<!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-lg-4 col-md-12">
+                    <div class=" row logo mb-4">
+                        <div class="col-2">
+                            <span class="img-bg">
+                                <img src="{% static '/img/kspi-logo.png' %}" alt="kspi logotip">
+                            </span>
+                        </div>
+                        <h5 class="col-9">kspi.amaliyot.uz</h5>
+                    </div>
+                    <p>"Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi" dasturiy majmuasi</p>
+                </div>
+                <div class="col-lg-4 col-md-6 connect">
+                    <h4>Bog'lanish</h4>
+                    <p>Ishonch telefoni: +998(90) 567 12 75</p>
+                    <p>Qo'qon shahar, Turon ko'chasi, 23-uy</p>
+                    <a href="https://kspi.uz/">www.kspi.uz</a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4>Bizning ijtimoiy tarmoqlar</h4>
+                    <a href="https://www.facebook.com/kspi.uz.56" class="socials">
+                        <i class="fa-brands fa-facebook"></i>
+                        <p>Facebook</p>
+                    </a>
+                    <a href="https://t.me/kspi_official" class="socials">
+                        <i class="fa-brands fa-telegram"></i>
+                        <p>Telegram</p>
+                    </a>
+                    <a href="https://www.instagram.com/kspi_uz/" class="socials">
+                        <i class="fa-brands fa-instagram"></i>
+                        <p>Instagram</p>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC6ThR8cLnJmdWDGDz9PR85Q/featured" class="socials">
+                        <i class="fa-brands fa-youtube"></i>
+                        <p>YouTube</p>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="by">
+            <h5 class="col">2023 &#169 QDPI IT-park</h5>
+        </div>
+    </footer>
+    
+    
+    <!-- BOOTSTRAP-JAVASCRIPT -->
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+            
+    <!-- JAVASCRIPT -->
+    <script src="{% static '/js/register.js' %}"></script>    
+</body>
+</html> 
