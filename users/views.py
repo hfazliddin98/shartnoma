@@ -119,6 +119,13 @@ def dekanat(request):
     return render(request, 'kirish/dekanat.html', contex)
 
 
+def dekanat_admin(request):
+    return render(request, 'adminlar/superadmin/adminlar.html')
+
+def talabalar(request):
+    return render(request, 'adminlar/talaba/talabalar.html')
+
+
 # def sinov(request):
 #     habar = ''
 #     if request.method == 'POST':
