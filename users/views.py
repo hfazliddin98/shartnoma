@@ -133,7 +133,28 @@ def dekanat_admin(request):
     return render(request, 'adminlar/dekanat/adminlar.html', context)
 
 def talabalar(request):
-    return render(request, 'adminlar/talaba/talabalar.html')
+    data = User.objects.filter(lavozim='talaba')    
+    context = {
+        'data':data,
+    }
+    return render(request, 'adminlar/talaba/talabalar.html', context)
+
+def dekanat_shartnoma_olgan(request):
+    user = User.objects.get(pk=request.user.id)
+    data = Pdf.objects.all()
+    contex = {
+        'data':data,
+        'user':user,
+    }
+    return render(request, 'adminlar/dekanat/shartnoma_olgan.html', contex)
+
+
+def shartnoma_olgan(request):
+    data = Pdf.objects.all()
+    contex = {
+        'data':data,
+    }
+    return render(request, 'amaliyot/shartnoma_olgan.html', contex)
 
 def adminlar(request):
     return render(request, 'adminlar/admin/adminlar.html')
