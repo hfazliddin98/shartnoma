@@ -118,12 +118,25 @@ def dekanat(request):
     }
     return render(request, 'kirish/dekanat.html', contex)
 
+def super_admin(request):
+    data = User.objects.filter(lavozim='superadmin')    
+    context = {
+        'data':data,
+    }
+    return render(request, 'adminlar/superadmin/adminlar.html', context)
 
 def dekanat_admin(request):
-    return render(request, 'adminlar/superadmin/adminlar.html')
+    data = User.objects.filter(lavozim='dekanat')    
+    context = {
+        'data':data,
+    }
+    return render(request, 'adminlar/dekanat/adminlar.html', context)
 
 def talabalar(request):
     return render(request, 'adminlar/talaba/talabalar.html')
+
+def adminlar(request):
+    return render(request, 'adminlar/admin/adminlar.html')
 
 
 # def sinov(request):

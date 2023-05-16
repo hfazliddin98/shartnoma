@@ -1,1 +1,7 @@
  adminlar uchun asosiy sahifa bu yerda yangi admin qoshish ham munkun
+<a href="{% url 'superadmin' %}"> yangi admin kiritish</a>
+
+<hr>
+{% for s in data %}
+    {{s}}
+{% endfor %}
