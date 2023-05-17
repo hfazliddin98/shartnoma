@@ -140,7 +140,7 @@ def talabalar(request):
     return render(request, 'adminlar/talaba/talabalar.html', context)
 
 def dekanat_shartnoma_olgan(request):
-    user = User.objects.get(pk=request.user.id)
+    user = User.objects.get(id=request.user.id)
     data = Pdf.objects.all()
     contex = {
         'data':data,
