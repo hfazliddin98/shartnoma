@@ -7,21 +7,14 @@ from xhtml2pdf import pisa
 from django.contrib.staticfiles import finders
 from reportlab.lib.pagesizes import letter
 from users.models import User
+from .models import Pdf
 
 
 
-
-
-
-
-
-     
-
-# # Create your views here.
 # def pdf(request):
 #     template_path = 'test.html' 
 #     # sayt foydalanuvchisini aniq ko`rsatish uchun ishlatiladi`   
-#     foydalanuvchi = User.objects.get(pk=request.user.id)
+#     foydalanuvchi = Pdf.objects.get(id=request.user.id)
     
     
 #     context = {'myvar': 'Qo`qon davlat pedagokika instituti' , 'userlar': foydalanuvchi,}
