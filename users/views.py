@@ -24,11 +24,11 @@ def kirish(request):
 
 
 def home(request):
-    userlar = User.objects.all
-    amaliyot = Amaliyot.objects.all
+    userlar = User.objects.all()
+    amaliyotlar = Amaliyot.objects.all()
     contex = {
         'userlar': userlar,
-        'amaliyot':amaliyot,
+        'amaliyotlar':amaliyotlar,
     }
     return render(request, 'boshi/home.html', contex)
 
