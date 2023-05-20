@@ -92,6 +92,10 @@
                     <h5 class="amaliyot-text mb-0">
                         Amaliyot o'tash joyi haqidagi ma'lumotlarni to'ldirish
                     </h5>
+                    {% for a in uamaliyot %}
+                    <a href="{% url 'update_amaliyot' %}">update</a>
+                    {% endfor %}
+                    
                     <a class="amaliyot-btn btn btn-primary" href="{% url 'amaliyot' %}">Kiritish</a>
                 </div>
 
