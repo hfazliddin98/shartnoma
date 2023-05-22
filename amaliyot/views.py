@@ -4,6 +4,8 @@ from .models import Amaliyot
 
 def amaliyotlar(request):
     userlar = User.objects.all()
+    user = request.user.id
+    habar = ''
     if request.method == 'POST':
         viloyat_a = request.POST['viloyat_a']
         tuman_a = request.POST['tuman_a']
@@ -18,17 +20,21 @@ def amaliyotlar(request):
         a_turi = request.POST['a_turi']
         b_sana = request.POST['b_sana']
         t_sana = request.POST['t_sana'] 
-        
-        Amaliyot.objects.create(viloyat_a=viloyat_a,tuman_a=tuman_a,mfy_a=mfy_a, kocha_uy_a=kocha_uy_a, muassasa=muassasa, d_ism=d_ism, d_nomeri=d_nomeri, kurs=kurs, a_rahbari=a_rahbari, o_a_rahbari=o_a_rahbari, a_turi=a_turi, b_sana=b_sana, t_sana=t_sana) 
-        return redirect('/') 
+        if Amaliyot.objects.filter(talaba=user):
+            habar = 'Sizga shartnoma berilgan yangilashingiz munkun'   
+        else:        
+            Amaliyot.objects.create(talaba=user, viloyat_a=viloyat_a,tuman_a=tuman_a,mfy_a=mfy_a, kocha_uy_a=kocha_uy_a, muassasa=muassasa, d_ism=d_ism, d_nomeri=d_nomeri, kurs=kurs, a_rahbari=a_rahbari, o_a_rahbari=o_a_rahbari, a_turi=a_turi, b_sana=b_sana, t_sana=t_sana) 
+            return redirect('/') 
     
     contex = {
         'userlar':userlar,
+        'user':user,
+        'habar':habar,
     }     
     return render(request, 'amaliyot/amaliyot.html', contex)
 
 def update_amaliyot(request, pk):
-    data = get_object_or_404(Amaliyot, pk=pk)
+    data = get_object_or_404(Amaliyot, pk=pk)    
     if request.method == 'POST':
         viloyat_a = request.POST['viloyat_a']
         tuman_a = request.POST['tuman_a']
@@ -62,6 +68,6 @@ def update_amaliyot(request, pk):
 
 
     contex = {
-
+       
     }
     return render(request, 'amaliyot/update_amaliyot.html', contex)

@@ -14,3 +14,4 @@ class Amaliyot(models.Model):
     a_turi = models.CharField(max_length=100)
     b_sana = models.CharField(max_length=100)
     t_sana = models.CharField(max_length=100)
+    talaba = models.CharField(max_length=10)
