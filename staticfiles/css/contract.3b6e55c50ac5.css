@@ -1,0 +1,141 @@
+/* FONTS */
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url("../fonts/NunitoSans-Light.fcac69a3c68e.woff2") format('woff2'),
+    url("../fonts/NunitoSans-Light.77f51516151d.woff") format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url("../fonts/NunitoSans-ExtraBold.e1c1f780e44a.woff2") format('woff2'),
+    url("../fonts/NunitoSans-ExtraBold.a95b8c3c9c08.woff") format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url("../fonts/NunitoSans-SemiBold.14e4e7fabc4d.woff2") format('woff2'),
+    url("../fonts/NunitoSans-SemiBold.4fcaed86cc53.woff") format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url("../fonts/NunitoSans-Regular.fb5bf6a0e888.woff2") format('woff2'),
+    url("../fonts/NunitoSans-Regular.a13acaaa4855.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* GLOBAL */
+html {
+    box-sizing: border-box;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: #fff;
+    color: #111;
+    transition: background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.account-img {
+    width: 48px;
+}
+
+/* MAIN-CONTENT */
+.main-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-grow: 1;
+}
+.contract-wrapper {
+    border: 1px solid #2B468B;
+    border-radius: 25px;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.contract {
+    margin-right: auto;
+    margin-left: auto;
+    overflow: auto;
+    width: 800px;
+    height: 800px;
+    background-color: #ffffff88;
+}
+
+.contract-info {
+    border-top: 1px solid #000;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+/* SITE-HEADER */
+
+picture {
+    background-position: center center;
+    background-size: cover;
+}
+@media screen and (max-width: 1400px) {
+    .contract {
+    }
+    .account-img {
+        width: 35px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .contract {
+        width: 650px;
+        height: 650px;
+    }
+    picture img {
+        height: 281px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .contract-wrapper {
+        padding: 10px;
+    }
+    .contract {
+        width: 350px;
+        height: 550px;
+    }
+    .account-img {
+        width: 30px;
+    }
+}
