@@ -163,13 +163,3 @@ def adminlar(request):
     return render(request, 'adminlar/admin/adminlar.html')
 
 
-# def sinov(request):
-#     habar = ''
-#     if request.method == 'POST':
-#         kirish = request.POST['kirish']  
-#         if User.objects.get(pk=request.user.id):      
-#             User.objects.create(kirish=kirish)
-            
-#         return redirect('/kirish/')
-    
-#     return render(request, 'sinov.html', {'habar':habar})
