@@ -96,20 +96,19 @@
                 </div>
 
             </div>
-            <div class="amaliyot mt-2">
-                <div class="d-flex flex-column flex-md-row justify-content-between text-center align-items-center border border-primary rounded-3 p-2 w-100">
-                    <h5 class="amaliyot-text mb-0">
-                        Amaliyot o'tash joyi haqidagi shartnoma ma'lumotlarini yangilash
-                    </h5>
-                    <div>
-                        {% for i in amaliyotlar %}
-                            <a class="amaliyot-btn btn btn-primary" href="{% url 'update_amaliyot' i.pk %}">Yangilash</a>                            
-                        {% endfor %}
-                        
-                        <a class="amaliyot-btn btn btn-primary" href="{% url 'pdf' %}">Yuklab olish</a>
+            {% for i in amaliyotlar %}
+                <div class="amaliyot mt-2">
+                    <div class="d-flex flex-column flex-md-row justify-content-between text-center align-items-center border border-primary rounded-3 p-2 w-100">
+                        <h5 class="amaliyot-text mb-0">
+                            Amaliyot o'tash joyi haqidagi shartnoma ma'lumotlarini yangilash
+                        </h5>
+                        <div>                            
+                            <a class="amaliyot-btn btn btn-primary" href="{% url 'update_amaliyot' i.pk %}">Yangilash</a>                        
+                            <a class="amaliyot-btn btn btn-primary" href="{% url 'pdf' %}">Yuklab olish</a>                            
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
 
 

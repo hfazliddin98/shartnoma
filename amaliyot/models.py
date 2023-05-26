@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 class Amaliyot(models.Model):
     viloyat_a = models.CharField(max_length=100)
@@ -14,4 +15,4 @@ class Amaliyot(models.Model):
     a_turi = models.CharField(max_length=100)
     b_sana = models.CharField(max_length=100)
     t_sana = models.CharField(max_length=100)
-    talaba = models.CharField(max_length=10)
+    talaba = models.IntegerField()

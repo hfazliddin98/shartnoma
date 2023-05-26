@@ -19,7 +19,7 @@ def amaliyotlar(request):
         o_a_rahbari = request.POST['o_a_rahbari']
         a_turi = request.POST['a_turi']
         b_sana = request.POST['b_sana']
-        t_sana = request.POST['t_sana'] 
+        t_sana = request.POST['t_sana']         
         if Amaliyot.objects.filter(talaba=user):
             habar = 'Sizga shartnoma berilgan yangilashingiz munkun'   
         else:        
