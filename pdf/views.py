@@ -80,20 +80,21 @@ def malumot_csv(request):
 
     writer = csv.writer(response)
     
+    def javob():
+        talabalar = User.objects.all()
+        for t in talabalar:                
+            amaliyotlar = Amaliyot.objects.filter(talaba=t.id)
+            if amaliyotlar:
+                amaliyot = amaliyotlar
+                for a in amaliyot:
+                    a.id
+        return a.id
+    t = javob()
+  
+  
+    print(f'javob {t}')
 
-    talabalar = User.objects.all()
-    for t in talabalar:
-             
-        amaliyotlar = Amaliyot.objects.filter(talaba=t.id)
-        if amaliyotlar:
-            amaliyot = amaliyotlar
-            for a in amaliyot:
-                talaba = f'{t.first_name} {t.last_name} {t.sharif}'
-                print(a.talaba)
-                print(t.id)
-
-                
-                writer.writerow([
+    writer.writerow([
                     'Shartnoma raqami',
                     'Talaba F.I.SH',
                     'Talabaning yashash manzili',
@@ -111,9 +112,9 @@ def malumot_csv(request):
                     
                 ])    
             
-                writer.writerow([
-                    t.id,
-                    talaba,
+    writer.writerow([
+                    t,
+                    # talaba,
                     # talaba.familya,
                     # talaba.sharif,
                     # talaba.kurs,
@@ -168,6 +169,20 @@ def malumot_csv(request):
                     # talaba.tyutr_sharif,         
                     # talaba.tyutr_telefon,
                 ])
+    
+    talabalar = User.objects.all()
+    for t in talabalar:
+             
+        amaliyotlar = Amaliyot.objects.filter(talaba=t.id)
+        if amaliyotlar:
+            amaliyot = amaliyotlar
+            for a in amaliyot:
+                talaba = f'{t.first_name} {t.last_name} {t.sharif}'
+                print(a.talaba)
+                print(t.id)
+
+                
+                
 
     return response
 
