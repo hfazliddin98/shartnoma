@@ -2,6 +2,9 @@
 
 
 <hr>
-{% for sh in data %}
+{% for sh in pdf %}
     {{sh}}
 {% endfor %}
+
+<hr>
+<a class="small text-white stretched-link" href="{% url 'malumot_csv' %}">Ko'rish</a>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, get_user_model
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
@@ -24,11 +24,13 @@ def kirish(request):
 
 
 def home(request):
+    talaba = request.user.id
     userlar = User.objects.all()
-    amaliyotlar = Amaliyot.objects.all()
+    amaliyotlar = Amaliyot.objects.filter(talaba=talaba)
     contex = {
         'userlar': userlar,
         'amaliyotlar':amaliyotlar,
+        'talaba':talaba,
     }
     return render(request, 'boshi/home.html', contex)
 
@@ -153,9 +155,66 @@ def dekanat_shartnoma_olgan(request):
 
 
 def shartnoma_olgan(request):
-    data = Pdf.objects.all()
+    pdf = Pdf.objects.all()
+    talaba_id = User.objects.all()
+    for t in talaba_id:
+        amaliyotlar = Amaliyot.objects.filter(talaba=t.id)
+        if amaliyotlar:
+            for a in  amaliyotlar:  
+                shifr = ''
+                buyruq_raqam = ''             
+                talabalar = Pdf.objects.filter(talaba_id=t.id)
+                if talabalar:
+                    # update qilyapti
+                    talaba = f'{t.first_name} {t.last_name} {t.sharif}'                        
+                    data = get_object_or_404(Pdf, talaba_id=t.id)
+                    data.talaba_f_i_sh = talaba
+                    data.talaba_manzil = t.tuman
+                    data.talaba_kurs = t.kurs
+                    data.talaba_shifr=shifr
+                    data.talaba_yonalishi=t.yonalish
+                    data.amaliyot_joyi=a.muassasa
+                    data.amaliyot_manzili=a.tuman_a
+                    data.amaliyot_rahbari=a.a_rahbari
+                    data.biriktirilgan_rahbar=a.o_a_rahbari
+                    data.amaliyot_turi=a.a_turi
+                    data.amaliyot_boshlanishi=a.b_sana
+                    data.amaliyot_tugashi=a.t_sana
+                    data.amaliyot_buyruq_raqami=buyruq_raqam
+                    data.save()                        
+                    print('update qilindi ')
+                else:
+                    # create qilyapti                    
+                    shifr = ''
+                    buyruq_raqam = ''
+                    talaba= f'{t.first_name} {t.last_name} {t.sharif}'
+                    data = Pdf.objects.create(
+                        talaba_id=t.id, 
+                        shartnoma_raqami=a.id,
+                        talaba_f_i_sh=talaba, 
+                        talaba_manzil=t.tuman, 
+                        talaba_kurs=t.kurs, 
+                        talaba_shifr=shifr, 
+                        talaba_yonalishi=t.yonalish, 
+                        amaliyot_joyi=a.muassasa, 
+                        amaliyot_manzili=a.tuman_a, 
+                        amaliyot_rahbari=a.a_rahbari, 
+                        biriktirilgan_rahbar=a.o_a_rahbari, 
+                        amaliyot_turi=a.a_turi, 
+                        amaliyot_boshlanishi=a.b_sana, 
+                        amaliyot_tugashi=a.t_sana, 
+                        amaliyot_buyruq_raqami=buyruq_raqam
+                        )
+                    data.save()
+                    print('create qilindi ')
+        else:
+            amaliyot = 'Hozirda mavjud emas'
+     
+          
+
     contex = {
-        'data':data,
+        'pdf':pdf,
+        'amaliyot':amaliyot,
     }
     return render(request, 'amaliyot/shartnoma_olgan.html', contex)
 

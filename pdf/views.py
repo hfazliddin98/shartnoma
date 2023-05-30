@@ -1,5 +1,5 @@
 import os
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -10,36 +10,6 @@ from reportlab.lib.pagesizes import letter
 from amaliyot.models import Amaliyot
 from users.models import User
 from .models import Pdf
-
-
-
-def shartnoma(request):    
-    talaba_id = User.objects.all()
-    def qaytar():
-        talaba_id = User.objects.all()
-        for t in talaba_id:
-            amaliyotlar = Amaliyot.objects.filter(talaba=t.id)
-            if amaliyotlar:
-                amaliyot = amaliyotlar
-        return amaliyot
-    def talaba():
-        t = request.user.id
-        return t    
-    print(f'qaytaryapti {qaytar()}')
-    print(f'talaba {talaba()}')
-    # data = Pdf.objects.create(talaba_id=[lambda :t for t in talaba_id], amaliyot_id='a')
-    # data.save()    
-    # for t in talaba_id:
-    #     amaliyotlar = Amaliyot.objects.filter(talaba=t)
-    #     for a in amaliyotlar:
-    #         print(f'salom {a}')
-            
-
-    contex = {
-
-    }
-    return render(request, 'sinov.html', contex)
-
 
 
 
@@ -80,96 +50,48 @@ def malumot_csv(request):
 
     writer = csv.writer(response)
     
-
-    talabalar = User.objects.all()
+    writer.writerow([
+        'Shartnoma raqami',
+        'Talaba F.I.SH',
+        'Talabaning yashash manzili',
+        'Kursi',
+        'Talaba yo`nalish shifri',
+        'Talaba yo`nalish nomi',
+        'Amaliyot o`tash joyi (korxona, tashkilot)ning nomi',
+        'Amaliyot o`tash joyi (korxona, tashkilot)ning manzili',
+        'Amaliyot o`tash joyi (korxona, tashkilot)dagi amaliyot rahbari',
+        'OTMdan biriktirilgan amaliyot rahbari F.I.SH',
+        'Amaliyot turi',
+        'Amaliyotning boshlanish muddati',
+        'Amaliyotning tugash muddati',
+        'Amaliyot bo`yicha buyruq raqami, sanasi'                    
+    ])  
+    talabalar = Pdf.objects.all()
     for t in talabalar:
-             
-        amaliyotlar = Amaliyot.objects.filter(talaba=t.id)
-        if amaliyotlar:
-            amaliyot = amaliyotlar
-            for a in amaliyot:
-                talaba = f'{t.first_name} {t.last_name} {t.sharif}'
-                print(a.talaba)
-                print(t.id)
-
-                
-                writer.writerow([
-                    'Shartnoma raqami',
-                    'Talaba F.I.SH',
-                    'Talabaning yashash manzili',
-                    'Kursi',
-                    'Talaba yo`nalish shifri',
-                    'Talaba yo`nalish nomi',
-                    'Amaliyot o`tash joyi (korxona, tashkilot)ning nomi',
-                    'Amaliyot o`tash joyi (korxona, tashkilot)ning manzili',
-                    'Amaliyot o`tash joyi (korxona, tashkilot)dagi amaliyot rahbari',
-                    'OTMdan biriktirilgan amaliyot rahbari F.I.SH',
-                    'Amaliyot turi',
-                    'Amaliyotning boshlanish muddati',
-                    'Amaliyotning tugash muddati',
-                    'Amaliyot bo`yicha buyruq raqami, sanasi',
-                    
-                ])    
+         
             
-                writer.writerow([
-                    t.id,
-                    talaba,
-                    # talaba.familya,
-                    # talaba.sharif,
-                    # talaba.kurs,
-                    # talaba.guruh,
-                    # talaba.yonalish,
-                    # talaba.smeta,
-                    # talaba.raqam,
-                    # talaba.tatil,
-                    # talaba.reting,            
-                    # talaba.millat,
-                    # talaba.jinsi,
-                    # talaba.t_yil,
-                    # talaba.t_oy,
-                    # talaba.t_kun,
-                    # talaba.t_viloyat,
-                    # talaba.t_tuman,
-                    # talaba.p_viloyat,
-                    # talaba.p_tuman,
-                    # talaba.p_kocha,
-                    # talaba.p_uy,
-                    # talaba.p_serya,
-                    # talaba.p_raqam,
-                    # talaba.p_jshr,
-                    # talaba.tavsiyanoma,
-                    # talaba.qism,
-                    # talaba.talaba_uy,
-                    # talaba.tuman,
-                    # talaba.kocha,
-                    # talaba.raqam,
-                    # talaba.ijtimoiy,
-                    # talaba.nogironligi,
-                    # talaba.nogironligi_ftek,
-                    # talaba.ahvoli,
-                    # talaba.soni,
-                    # talaba.telefon,
-                    # talaba.talaba_ish,
-                    # talaba.talaba_manzil,
-                    # talaba.ota_ism,
-                    # talaba.ota_familya,
-                    # talaba.ota_sharif,
-                    # talaba.ota_lavozim,
-                    # talaba.ota_manzil,
-                    # talaba.ota_telefon,
-                    # talaba.ona_ism,
-                    # talaba.ona_familya,
-                    # talaba.ona_sharif,
-                    # talaba.ona_lavozim,
-                    # talaba.ona_manzil,
-                    # talaba.ona_telefon,
-                    # talaba.tyutr_ism,
-                    # talaba.tyutr_familya,
-                    # talaba.tyutr_sharif,         
-                    # talaba.tyutr_telefon,
-                ])
+        writer.writerow([
+            t.shartnoma_raqami,
+            t.talaba_f_i_sh,
+            t.talaba_manzil,
+            t.talaba_kurs,
+            t.talaba_shifr,
+            t.talaba_yonalishi,
+            t.amaliyot_joyi,
+            t.amaliyot_manzili,
+            t.amaliyot_rahbari,
+            t.biriktirilgan_rahbar,
+            t.amaliyot_turi,
+            t.amaliyot_boshlanishi,
+            t.amaliyot_tugashi,
+            t.amaliyot_buyruq_raqami
+        ])
 
     return response
+       
+
+                
+                
 
 
 
