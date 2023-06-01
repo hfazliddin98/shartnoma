@@ -50,93 +50,50 @@ def malumot_csv(request):
 
     writer = csv.writer(response)
     
+    
+    writer.writerow([
+        'Shartnoma raqami',
+        'Talaba F.I.SH',
+        'Talabaning yashash manzili',
+        'Kursi',
+        'Talaba yo`nalish shifri',
+        'Talaba yo`nalish nomi',
+        'Amaliyot o`tash joyi (korxona, tashkilot)ning nomi',
+        'Amaliyot o`tash joyi (korxona, tashkilot)ning manzili',
+        'Amaliyot o`tash joyi (korxona, tashkilot)dagi amaliyot rahbari',
+        'OTMdan biriktirilgan amaliyot rahbari F.I.SH',
+        'Amaliyot turi',
+        'Amaliyotning boshlanish muddati',
+        'Amaliyotning tugash muddati',
+        'Amaliyot bo`yicha buyruq raqami, sanasi',                    
+    ])   
+    
 
     talabalar = User.objects.all()
-    for t in talabalar:
-             
-        amaliyotlar = Amaliyot.objects.filter(talaba=t.id)
-        if amaliyotlar:
-            amaliyot = amaliyotlar
-            for a in amaliyot:
-                talaba = f'{t.first_name} {t.last_name} {t.sharif}'
-                print(a.talaba)
+    for t in talabalar:             
+        shartnoma = Pdf.objects.filter(talaba_id=t.id)
+        if shartnoma:            
+            for s in shartnoma:               
+                print(s.talaba_id)
                 print(t.id)
-
-                
-                writer.writerow([
-                    'Shartnoma raqami',
-                    'Talaba F.I.SH',
-                    'Talabaning yashash manzili',
-                    'Kursi',
-                    'Talaba yo`nalish shifri',
-                    'Talaba yo`nalish nomi',
-                    'Amaliyot o`tash joyi (korxona, tashkilot)ning nomi',
-                    'Amaliyot o`tash joyi (korxona, tashkilot)ning manzili',
-                    'Amaliyot o`tash joyi (korxona, tashkilot)dagi amaliyot rahbari',
-                    'OTMdan biriktirilgan amaliyot rahbari F.I.SH',
-                    'Amaliyot turi',
-                    'Amaliyotning boshlanish muddati',
-                    'Amaliyotning tugash muddati',
-                    'Amaliyot bo`yicha buyruq raqami, sanasi',
-                    
-                ])    
+                print(s.amaliyot_buyruq_raqami)              
+                 
             
                 writer.writerow([
-                    t.id,
-                    talaba,
-                    # talaba.familya,
-                    # talaba.sharif,
-                    # talaba.kurs,
-                    # talaba.guruh,
-                    # talaba.yonalish,
-                    # talaba.smeta,
-                    # talaba.raqam,
-                    # talaba.tatil,
-                    # talaba.reting,            
-                    # talaba.millat,
-                    # talaba.jinsi,
-                    # talaba.t_yil,
-                    # talaba.t_oy,
-                    # talaba.t_kun,
-                    # talaba.t_viloyat,
-                    # talaba.t_tuman,
-                    # talaba.p_viloyat,
-                    # talaba.p_tuman,
-                    # talaba.p_kocha,
-                    # talaba.p_uy,
-                    # talaba.p_serya,
-                    # talaba.p_raqam,
-                    # talaba.p_jshr,
-                    # talaba.tavsiyanoma,
-                    # talaba.qism,
-                    # talaba.talaba_uy,
-                    # talaba.tuman,
-                    # talaba.kocha,
-                    # talaba.raqam,
-                    # talaba.ijtimoiy,
-                    # talaba.nogironligi,
-                    # talaba.nogironligi_ftek,
-                    # talaba.ahvoli,
-                    # talaba.soni,
-                    # talaba.telefon,
-                    # talaba.talaba_ish,
-                    # talaba.talaba_manzil,
-                    # talaba.ota_ism,
-                    # talaba.ota_familya,
-                    # talaba.ota_sharif,
-                    # talaba.ota_lavozim,
-                    # talaba.ota_manzil,
-                    # talaba.ota_telefon,
-                    # talaba.ona_ism,
-                    # talaba.ona_familya,
-                    # talaba.ona_sharif,
-                    # talaba.ona_lavozim,
-                    # talaba.ona_manzil,
-                    # talaba.ona_telefon,
-                    # talaba.tyutr_ism,
-                    # talaba.tyutr_familya,
-                    # talaba.tyutr_sharif,         
-                    # talaba.tyutr_telefon,
+                    s.shartnoma_raqami,
+                    s.talaba_f_i_sh,
+                    s.talaba_manzil,
+                    s.talaba_kurs,
+                    s.talaba_shifr,
+                    s.talaba_yonalishi,
+                    s.amaliyot_joyi,
+                    s.amaliyot_manzili,
+                    s.amaliyot_rahbari,
+                    s.biriktirilgan_rahbar,
+                    s.amaliyot_turi,
+                    s.amaliyot_boshlanishi,
+                    s.amaliyot_tugashi,
+                    s.amaliyot_buyruq_raqami
                 ])
 
     return response
