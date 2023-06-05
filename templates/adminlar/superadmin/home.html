@@ -46,10 +46,10 @@
                     <div class="sb-sidenav-menu">
                         <div class="info text-center mt-3 px-2">
                             <img class="rounded-circle mx-auto d-block img-fluid" src="{% static '/superadmin/img/account.png' %}" alt="Admin picture">
-                            <h5 class="mt-1">Name Surname</h5>
+                            <h5 class="mt-1">{{user.last_name}} {{user.first_name}}</h5>
                         </div>
                         <div class="nav">
-                                <div class="px-3">Asosiy</div>
+                            <div class="px-3">Asosiy</div>
                             <a class="nav-link" href="{% url 'adminlar' %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Adminlar
@@ -58,7 +58,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Talabalar
                             </a>
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="{% url 'shartnoma_olgan' %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Shartnoma olganlar
                             </a>

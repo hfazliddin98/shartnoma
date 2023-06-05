@@ -23,7 +23,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark d-flex justify-content-between">
         <div>
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">KSPI Shartnomalar</a>
+            <a class="navbar-brand ps-3" href="{% url 'home' %}">KSPI Shartnomalar</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 mx-2" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         </div>
@@ -44,8 +44,8 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="info text-center mt-3 px-2">
-                        <img class="rounded-circle mx-auto d-block img-fluid" src="img/account.png" alt="Admin picture">
-                        <h5 class="mt-1">Name Surname</h5>
+                        <img class="rounded-circle mx-auto d-block img-fluid" src="{% static '/superadmin/img/account.png' %}" alt="Admin picture">
+                        <h5 class="mt-1">{{user.last_name}} {{user.first_name}}</h5>
                     </div>
                     <div class="nav">
                         <div class="px-3">Asosiy</div>
@@ -57,7 +57,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Talabalar
                         </a>
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{% url 'shartnoma_olgan' %}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Shartnoma olganlar
                         </a>
@@ -97,7 +97,7 @@
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
-                                        <th>T/r</th>
+                                        <th>User id</th>
                                         <th>Familiyasi</th>
                                         <th>Ismi</th>
                                         <th>Telefon raqami</th>
@@ -105,7 +105,7 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>T/r</th>
+                                        <th>User id</th>
                                         <th>Familiyasi</th>
                                         <th>Ismi</th>
                                         <th>Telefon raqami</th>
@@ -114,7 +114,7 @@
                                 {% for s in data %}
                                     <tbody>
                                         <tr>
-                                            <td>{{s.id}}</td>
+                                            <td>{{s.username}}</td>
                                             <td>{{s.first_name}}</td>
                                             <td>{{s.last_name}}</td>                                            
                                             <td>{{s.t_nomer}}</td>

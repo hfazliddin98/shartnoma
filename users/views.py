@@ -138,9 +138,11 @@ def dekanat_admin(request):
     return render(request, 'adminlar/dekanat/adminlar.html', context)
 
 def talabalar(request):
-    data = User.objects.filter(lavozim='talaba')    
+    data = User.objects.filter(lavozim='talaba') 
+    talaba = Pdf.objects.all()   
     context = {
         'data':data,
+        'talaba':talaba,
     }
     return render(request, 'adminlar/talaba/talabalar.html', context)
 
