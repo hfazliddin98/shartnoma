@@ -1,9 +1,3 @@
-talabalar ni joylastiriladi
-
-<hr>
-
-
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +27,8 @@ talabalar ni joylastiriladi
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">{{user.last_name}} {{user.first_name}}</a></li>
-                    <li><hr class="dropdown-divider"/></li>
+                    <li><a class="dropdown-item" href="#">{{user.last_name}} {{user.first_name}}</a></li>
+                    <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish</a></li>
                 </ul>
             </li>
@@ -113,11 +107,11 @@ talabalar ni joylastiriladi
                                     {% for t in data %}
                                         <tr>                                            
                                             <td>{{t.username}}</td>
-                                            <td>{{t.last_name}}</td>
-                                            <td>{{t.username}}</td>
-                                            <td>{{t.username}}</td>
-                                            <td>{{t.username}}</td>
-                                            <td>{{t.username}}</td>
+                                            <td>{{t.last_name}} {{t.first_name}} {{t.sharif}}</td>
+                                            <td>{{t.tuman}}</td>
+                                            <td>{{t.kurs}}</td>
+                                            <td>{{t.yonalish}}</td>
+                                            <td>{{t.t_nomer}}</td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>

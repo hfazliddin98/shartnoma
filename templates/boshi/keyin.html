@@ -31,11 +31,10 @@
                 <div class="btn-group">
                     <button class="btn dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="account-img" src="{% static '/img/account.png' %}" alt="Account" width="48">
-                        <span>Name</span>
+                        <span>{{user.last_name}} {{user.first_name}}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Name Surname</a></li>
-                        <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                        <li><a class="dropdown-item" href="#">{{user.last_name}} {{user.first_name}}</a></li>                        
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish <img src="{% static '/img/logout.svg' %}" alt="Chiqish" width="20"></a></li>
                     </ul>
                 </div>

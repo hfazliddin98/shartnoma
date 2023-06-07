@@ -32,11 +32,10 @@
                 <div class="btn-group">
                     <button class="btn dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="account-img" src="{% static '/img/account.png' %}" alt="Account" width="48">
-                        <span>Name</span>
+                        <span>{{user.last_name}} {{user.first_name}}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Name Surname</a></li>
-                        <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                        <li><a class="dropdown-item" href="#">{{user.last_name}} {{user.first_name}}</a></li>                        
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish <img src="{% static '/img/logout.svg' %}" alt="Chiqish" width="20"></a></li>
                     </ul>
                 </div>
@@ -149,20 +148,7 @@
                                 Amaliyot turini tanlang.!
                             </div>
                         </div>                  
-                        <div class="col-md-4 col-sm-6 mb-2">
-                            <label for="validationCustom06" class="form-label">Amaliyotning boshlanish sanasi</label>
-                            <input name="b_sana" type="date" class="form-control" id="validationCustom06" required>
-                            <div class="invalid-feedback">
-                                Amaliyotning boshlanish sanasini kiriting.!
-                            </div>
-                        </div>                  
-                        <div class="col-md-4 col-sm-6 mb-2">
-                            <label for="validationCustom07" class="form-label">Amaliyotning tugash sanasi</label>
-                            <input name="t_sana" type="date" class="form-control" id="validationCustom07" required>
-                            <div class="invalid-feedback">
-                                Amaliyotning tugash sanasini kiriting.!
-                            </div>
-                        </div>                  
+                                         
                     </div>
             
             

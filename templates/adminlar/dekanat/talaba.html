@@ -44,15 +44,12 @@
                     </div>
                     <div class="nav">
                         <div class="px-3">Asosiy</div>
-                        <a class="nav-link" href="{% url 'adminlar' %}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Adminlar
-                        </a>
-                        <a class="nav-link" href="{% url 'talabalar' %}">
+                        
+                        <a class="nav-link" href="{% url 'dekanat_talaba' %}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Talabalar
                         </a>
-                        <a class="nav-link" href="{% url 'shartnoma_olgan' %}">
+                        <a class="nav-link" href="{% url 'dekanat_shartnoma_olgan' %}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Shartnoma olganlar
                         </a>
@@ -69,24 +66,16 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Jadval</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">Asosiy</li>
-                        <li class="breadcrumb-item">Adminlar</li>
-                        <li class="breadcrumb-item active">Superadmin</li>
+                        <li class="breadcrumb-item">Asosiy</li>                    
+                        <li class="breadcrumb-item active">Talabalar</li>
                     </ol>
                     <!-- TABLES -->
                     <div class="card mb-4">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <div>
                                 <i class="fas fa-table me-1"></i>
-                                Dekanatadminlar ro'yxati
-                            </div>
-                            <a href="{% url 'dekanat' %}" class="icon-link border border-primary rounded bgcolor text-bg-primary p-2 d-flex align-items-center">
-                                <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
-                                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-                                    <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
-                                </svg>
-                                Admin qo'shish
-                            </a>
+                                Talabalarlar ro'yxati
+                            </div>                            
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
@@ -106,13 +95,13 @@
                                         <th>Telefon raqami</th>
                                     </tr>
                                 </tfoot>
-                                {% for s in data %}
+                                {% for t in talaba %}
                                     <tbody>
                                         <tr>
-                                            <td>{{s.username}}</td>
-                                            <td>{{s.first_name}}</td>
-                                            <td>{{s.last_name}}</td>                                            
-                                            <td>{{s.t_nomer}}</td>
+                                            <td>{{t.username}}</td>
+                                            <td>{{t.first_name}}</td>
+                                            <td>{{t.last_name}}</td>                                            
+                                            <td>{{t.t_nomer}}</td>
                                         </tr>
                                     </tbody>
                                 {% endfor %}

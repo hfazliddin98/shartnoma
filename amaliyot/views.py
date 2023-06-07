@@ -18,12 +18,11 @@ def amaliyotlar(request):
         a_rahbari = request.POST['a_rahbari']
         o_a_rahbari = request.POST['o_a_rahbari']
         a_turi = request.POST['a_turi']
-        b_sana = request.POST['b_sana']
-        t_sana = request.POST['t_sana']         
+               
         if Amaliyot.objects.filter(talaba=user):
             habar = 'Sizga shartnoma berilgan yangilashingiz munkun'   
         else:        
-            Amaliyot.objects.create(talaba=user, viloyat_a=viloyat_a,tuman_a=tuman_a,mfy_a=mfy_a, kocha_uy_a=kocha_uy_a, muassasa=muassasa, d_ism=d_ism, d_nomeri=d_nomeri, kurs=kurs, a_rahbari=a_rahbari, o_a_rahbari=o_a_rahbari, a_turi=a_turi, b_sana=b_sana, t_sana=t_sana) 
+            Amaliyot.objects.create(talaba=user, viloyat_a=viloyat_a,tuman_a=tuman_a,mfy_a=mfy_a, kocha_uy_a=kocha_uy_a, muassasa=muassasa, d_ism=d_ism, d_nomeri=d_nomeri, kurs=kurs, a_rahbari=a_rahbari, o_a_rahbari=o_a_rahbari, a_turi=a_turi) 
             return redirect('/') 
     
     contex = {
@@ -46,9 +45,8 @@ def update_amaliyot(request, pk):
         kurs = request.POST['kurs']
         a_rahbari = request.POST['a_rahbari']
         o_a_rahbari = request.POST['o_a_rahbari']
-        a_turi = request.POST['a_turi']
-        b_sana = request.POST['b_sana']
-        t_sana = request.POST['t_sana'] 
+        a_turi = request.POST['a_turi']  
+            
 
         data.viloyat_a = viloyat_a
         data.tuman_a = tuman_a
@@ -60,9 +58,7 @@ def update_amaliyot(request, pk):
         data.kurs = kurs
         data.a_rahbari = a_rahbari
         data.o_a_rahbari = o_a_rahbari
-        data.a_turi = a_turi
-        data.b_sana = b_sana
-        data.t_sana = t_sana
+        data.a_turi = a_turi        
         data.save()
         return redirect('/', pk=data.id)
 

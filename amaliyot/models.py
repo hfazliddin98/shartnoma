@@ -13,6 +13,6 @@ class Amaliyot(models.Model):
     a_rahbari =models.CharField(max_length=100)
     o_a_rahbari = models.CharField(max_length=100)
     a_turi = models.CharField(max_length=100)
-    b_sana = models.CharField(max_length=100)
-    t_sana = models.CharField(max_length=100)
+    b_sana = models.CharField(max_length=100, blank=True)
+    t_sana = models.CharField(max_length=100, blank=True)
     talaba = models.IntegerField()
