@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from users.models import User
 from .models import Amaliyot
 
+
+@csrf_exempt
 def amaliyotlar(request):
     userlar = User.objects.all()
     user = request.user.id
@@ -32,6 +35,8 @@ def amaliyotlar(request):
     }     
     return render(request, 'amaliyot/amaliyot.html', contex)
 
+
+@csrf_exempt
 def update_amaliyot(request, pk):
     data = get_object_or_404(Amaliyot, pk=pk)    
     if request.method == 'POST':

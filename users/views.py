@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, get_user_model
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
@@ -6,7 +7,7 @@ from .models import User
 from amaliyot.models import Amaliyot
 from pdf.models import Pdf
 
-
+@csrf_exempt
 def kirish(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -22,7 +23,7 @@ def kirish(request):
 
     return render(request, 'kirish/login.html')
 
-
+@csrf_exempt
 def home(request):
     talaba = request.user.id
     userlar = User.objects.all()
@@ -34,6 +35,7 @@ def home(request):
     }
     return render(request, 'boshi/home.html', contex)
 
+@csrf_exempt
 def royhat(request):
     habar = ''
     if request.method == 'POST':
@@ -71,6 +73,8 @@ def royhat(request):
     return render(request, 'kirish/talaba.html', {'habar':habar})
 
 
+
+@csrf_exempt
 def superadmin(request):
     habar = ''
     if request.method == 'POST':
@@ -96,7 +100,7 @@ def superadmin(request):
     return render(request, 'kirish/superadmin.html', contex)
 
 
-
+@csrf_exempt
 def dekanat(request):
     habar = ''
     if request.method == 'POST':
@@ -123,6 +127,7 @@ def dekanat(request):
     }
     return render(request, 'kirish/dekanat.html', contex)
 
+@csrf_exempt
 def super_admin(request):
     data = User.objects.filter(lavozim='superadmin')    
     context = {
@@ -137,6 +142,8 @@ def dekanat_admin(request):
     }
     return render(request, 'adminlar/dekanat/adminlar.html', context)
 
+
+@csrf_exempt
 def talabalar(request):
     data = User.objects.filter(lavozim='talaba') 
     talaba = Pdf.objects.all()   
@@ -147,6 +154,8 @@ def talabalar(request):
     return render(request, 'adminlar/talaba/talabalar.html', context)
 
 
+
+@csrf_exempt
 def dekanat_talaba(request):
     fakultet = request.user.dekanat_fakultet
     talaba = User.objects.filter(fakultet=fakultet)
@@ -156,6 +165,8 @@ def dekanat_talaba(request):
     return render(request, 'adminlar/dekanat/talaba.html', contex)
 
 
+
+@csrf_exempt
 def dekanat_shartnoma_olgan(request):
     fakultet = request.user.dekanat_fakultet
     talabalar = User.objects.filter(fakultet=fakultet)
@@ -169,6 +180,8 @@ def dekanat_shartnoma_olgan(request):
     return render(request, 'adminlar/dekanat/shartnoma_olgan.html', contex)
 
 
+
+@csrf_exempt
 def shartnoma_olgan(request):
     pdf = Pdf.objects.all()
     talaba_id = User.objects.all()
@@ -233,6 +246,8 @@ def shartnoma_olgan(request):
     }
     return render(request, 'amaliyot/shartnoma_olgan.html', contex)
 
+
+@csrf_exempt
 def adminlar(request):
     return render(request, 'adminlar/admin/adminlar.html')
 

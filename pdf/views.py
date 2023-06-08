@@ -1,5 +1,6 @@
 import os
 import datetime as dt
+from   django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.http import HttpResponse
@@ -13,7 +14,7 @@ from users.models import User
 from .models import Pdf
 
 
-
+@csrf_exempt
 def pdf(request):   
     template_path = 'amaliyot/shartnoma.html' 
     # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
@@ -56,6 +57,8 @@ def pdf(request):
        return HttpResponse("Bizda ba'zi xatolar bor edi " + html + " serverda texnik ish lar olib borilmoqda !!!")
     return response
 
+
+@csrf_exempt
 def malumot_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=talabalar.csv'
@@ -110,6 +113,8 @@ def malumot_csv(request):
 
     return response
 
+
+@csrf_exempt
 def dekanat_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=talabalar.csv'
