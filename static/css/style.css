@@ -1,3 +1,7 @@
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+}
 /* Header section  */
 .navbar-bg {
     background-color: #f5f5f581;
@@ -102,7 +106,7 @@ button:hover .link {
     width: 800px;
     margin-bottom: 50px;
     background-color: #fff;
-}
+} 
 
 
 /* Footer  */

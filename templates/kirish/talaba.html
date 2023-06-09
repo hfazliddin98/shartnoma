@@ -11,7 +11,10 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- STYLE-CSS -->
+    <!-- STYLE-CSS --->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static '/css/style.css' %}"> 
     <link rel="stylesheet" href="{% static '/css/register.css' %}"> 
     <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
@@ -38,7 +41,7 @@
     <!-- MAIN-CONTENT -->
     <div class="main-content">
         <div class="container">
-            <h1>Ro'yxatdan o'tish</h1>
+            <h1 class="text-center">Ro'yxatdan o'tish</h1>
             <div class="text-center h4 text-primary">
                 {% for h in habar %}
                     {{h}}
@@ -48,56 +51,56 @@
             <form method="POST" class="row g-3 needs-validation" novalidate>
                 {% csrf_token %}
                 <div class="col-md-4 col-sm-6">
-                    <label for="validationCustom01" class="form-label">Talaba IDsi</label>
-                    <input name="username" type="text" class="form-control" id="validationCustom01" placeholder="ID..." required>
+                    <label for="validationCustom01" class="form-label">Talaba ID</label>
+                    <input name="username" type="text" class="form-control" id="validationCustom01" placeholder="ID" required>
                     <div class="invalid-feedback">
                         IDni kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <label for="validationCustom02" class="form-label">Ismingiz</label>
-                    <input name="ism" type="text" class="form-control" id="validationCustom02" placeholder="Ism..." required>
+                    <label for="validationCustom02" class="form-label">Ism</label>
+                    <input name="ism" type="text" class="form-control" id="validationCustom02" placeholder="Ism" required>
                     <div class="invalid-feedback">
                         Ismingizni kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <label for="validationCustom03" class="form-label">Familiyangiz</label>
-                    <input name="familya" type="text" class="form-control" id="validationCustom03" placeholder="Familiya..." required>
+                    <label for="validationCustom03" class="form-label">Familiya</label>
+                    <input name="familya" type="text" class="form-control" id="validationCustom03" placeholder="Familiya" required>
                     <div class="invalid-feedback">
                         Familiyangizni kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <label for="validationCustom04" class="form-label">Otangizning ismi</label>
-                    <input name="sharif" type="text" class="form-control" id="validationCustom04" placeholder="Sharif..." required>
+                    <input name="sharif" type="text" class="form-control" id="validationCustom04" placeholder="Sharif" required>
                     <div class="invalid-feedback">
                         Otangizning ismini kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <label for="validationCustom05" class="form-label">Telefon raqamingiz</label>
+                    <label for="validationCustom05" class="form-label">Telefon raqam</label>
                     <input name="t_nomer" type="text" class="form-control" id="validationCustom05" data-mdb-input-mask="+998 90 000 00 00" placeholder="+998 (Telefon raqam)" required>
                     <div class="invalid-feedback">
                         Telefon raqamingizni kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <label for="validationCustom06" class="form-label">Tug'ilgan kuningiz</label>
+                    <label for="validationCustom06" class="form-label">Tug'ilgan kun</label>
                     <input name="t_yil" type="date" class="form-control" id="validationCustom06" placeholder="kun/oy/yil" required>
                     <div class="invalid-feedback">
                         Tug'ilgan kuningizni kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <label for="validationCustom06" class="form-label">Tug'ilgan kuningiz</label>
+                    <label for="validationCustom06" class="form-label">O'qishga kirgan yil</label>
                     <input name="k_yil" type="date" class="form-control" id="validationCustom06" placeholder="kun/oy/yil" required>
                     <div class="invalid-feedback">
                         O`qishga kirgan yilingizni kiriting.!
                     </div>
                 </div>
                     <div class="col-md-4 col-sm-6">
-                        <label for="jins" class="form-label">Jinsingiz</label>
+                        <label for="jins" class="form-label">Jins</label>
                         <select name="gender" id="jins" class="form-select" size="1" required aria-label="select example">
                             <option selected="selected" value="" disabled>Jins</option>
                             <option >Erkak</option>
@@ -122,11 +125,11 @@
 
                 <!-- FAKULTET -->
                 <div class="fakultet">
-                    <h3>Fakultet(yo'nalish va guruh)</h3>
+                    <h3 class="text-center">Fakultet(yo'nalish va guruh)</h3>
                     <div class="fakultet-info row">
                         
                         <div class="col-md-4 col-sm-6">
-                            <label for="fakultet" class="form-label">Fakultetingiz</label>
+                            <label for="fakultet" class="form-label">Fakultet</label>
                             <select name="fakultet" id="fakultet" class="form-select" size="1" required aria-label="select example">
                                 <option selected="selected" value="" disabled>Fakultet</option>
                             </select>
@@ -135,24 +138,31 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <label for="major" class="form-label">Yo'nalishingiz</label>
-                            <select name="yonalish" id="major" class="form-select col-md-4" size="1" required aria-label="select example">
+                            <label for="major" class="form-label">Yo'nalish</label>
+                            <select name="yonalish" id="major" class="form-select col-md-4" size="1" required akuningizria-label="select example">
                                 <option selected="selected" value="" disabled>Yo'nalish</option>
                             </select>
                             <div class="invalid-feedback">
                                 Yo'nalishingizni tanlang.!
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <label for="kurs" class="form-label">Guruhingiz</label>
-                            <input name="kurs" type="text" id="kurs"  class="form-control" placeholder=" " required>
+                       
+                        <div class="col-md-4 col-sm-6">
+                            <label for="kurs" class="form-label">Kurs</label>
+                            <select name="kurs" id="kurs" class="form-select" size="1" required aria-label="select example">
+                                <option selected="selected" disabled>Kurs</option>
+                                <option disabled>1</option>
+                                <option >2</option>
+                                <option >3</option>
+                                <option >4</option>
+                            </select>
                             <div class="invalid-feedback">
-                                Guruhingizni kiriting.!
+                                Kursingizni tanlang.!
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="guruh" class="form-label">Guruhingiz</label>
-                            <input name="guruh" type="text" id="guruh"  class="form-control" placeholder=" " required>
+                            <label for="guruh" class="form-label">Guruh</label>
+                            <input name="guruh" type="text" id="guruh"  class="form-control" placeholder="01/23" required>
                             <div class="invalid-feedback">
                                 Guruhingizni kiriting.!
                             </div>
@@ -163,11 +173,11 @@
                 
                 <!-- MANZIL -->
                 <div class="address">
-                    <h3>Manzilingizni kiriting</h3>
+                    <h3 class="text-center">Manzilingizni kiriting</h3>
                     <div class="address-info row">
                         
                         <div class="col-md-4 col-sm-6">
-                            <label for="region" class="form-label">Viloyatingiz</label>
+                            <label for="region" class="form-label">Viloyat</label>
                             <select name="viloyat" id="region" class="form-select" size="1" required aria-label="select example">
                                 <option selected="selected" value="" disabled>Viloyat</option>
                             </select>
@@ -176,7 +186,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <label for="district" class="form-label">Tumaningiz</label>
+                            <label for="district" class="form-label">Tuman</label>
                             <select name="tuman" id="district" class="form-select col-md-4" size="1" required aria-label="select example">
                                 <option selected="selected" value="" disabled>Tuman</option>
                             </select>
@@ -192,7 +202,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="village" class="form-label">Ko'cha va uyingiz raqami</label>
+                            <label for="village" class="form-label">Ko'cha va uy raqami</label>
                             <input name="kocha_uy" type="text" id="village"  class="form-control" placeholder="Ko'changiz va uy nomeringiz" required>
                             <div class="invalid-feedback">
                                 Yashash manzilingizni kiriting.!
@@ -201,21 +211,21 @@
                                              
                         <div class="col-md-4 col-sm-6">
                             <label for="password" class="form-label">Parol</label>
-                            <input name="password1" type="password" class="form-control" id="password" placeholder="Parol o'ylab toping..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                            <input name="password1" type="password" class="form-control" id="password" placeholder="Parol o'ylab toping" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                             <div class="invalid-feedback">
                                 Parolni kiriting.!
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <label for="confirm-password" class="form-label">Parolni takrorlang</label>
-                            <input name="password2" type="password" id="confirm-password" class="form-control" placeholder="Parolni qayta kiriting..." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                            <input name="password2" type="password" id="confirm-password" class="form-control" placeholder="Parolni qayta kiriting" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                             <div class="invalid-feedback">
                                 Parolni tekshiring va qayta kiriting.!
                             </div>  
                         </div>
                     </div>
                 </div>  
-                
+
                
                 
                 <div class="col-12 text-center mb-4">
