@@ -33,6 +33,7 @@ def pdf(request):
                     data.talaba_manzil = t.tuman
                     data.talaba_kurs = t.kurs
                     data.talaba_shifr=shifr
+                    data.talaba_fakulteti = t.fakultet
                     data.talaba_yonalishi=t.yonalish
                     data.amaliyot_joyi=a.muassasa
                     data.amaliyot_manzili=a.tuman_a
@@ -56,7 +57,8 @@ def pdf(request):
                         talaba_manzil=t.tuman, 
                         talaba_kurs=t.kurs, 
                         talaba_shifr=shifr, 
-                        talaba_yonalishi=t.yonalish, 
+                        talaba_yonalishi=t.yonalish,
+                        talaba_fakulteti = t.fakultet, 
                         amaliyot_joyi=a.muassasa, 
                         amaliyot_manzili=a.tuman_a, 
                         amaliyot_rahbari=a.a_rahbari, 

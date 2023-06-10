@@ -7,20 +7,27 @@
     <title>Shartnoma</title>
 </head>
 <body> 
-    <div style="max-width: 23cm; margin-left:1.5cm;margin-right:1cm;">
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;line-height:90%;'>
+    {% for p in pdf %}
+    <div style="max-width: 21cm; margin-left:1.5cm;margin-right:1cm;">
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
             <strong>
                 O'ZBEKISTON RESPUBLIKASI OLIY VA O'RTA MAXSUS TA’LIM VAZIRLIGI
                 YOSH MUTAXASSISNI MALAKA AMALIYOTINI O'TASH VA KELGUSIDA ISH BILAN
                 TA’MINLASHGA KO'MAKLASHISH TO'G'RISIDA
             </strong>
         </p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;line-height:90%;'>
+        <p style='margin-top:2pt;margin-bottom:15pt;font-size:13px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
             <strong>
-                Shartnoma _________
+                SHARTNOMA {{p.id}}
             </strong>
         </p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:10px;font-family:"Times New Roman",serif;text-align:justify;text-indent:14.2pt;'>
+
+        <p style='margin:0pt;font-size:13px;font-family:"Times New Roman",serif;text-align:right;text-indent:10.2pt;'>
+            {{hozir}}
+        </p>
+
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
             O'zbekiston Respublikasi Prezidentining 2017-yil 27-iyuldagi PQ-3151-sonli, 2018-yil 5-iyundagi PQ-3775-sonli,
             2021-yil 24-dekabrdagi PQ-60-son qarorlari va O'zbekiston Respublikasi Prezidenti Administratsiyasining 2022-yil
             15-martdagi 04-593-sonli topshiriqlari ijrosi yuzasidan O'zbekiston Respublikasi Oliy va o'rta maxsus ta’lim
@@ -28,185 +35,349 @@
             talabalarining malaka amaliyotini o'tash tartibi to'g'risidagi namunaviy Nizomga asosan bitiruvchilarni malaka
             amaliyotini o'tkazish va ularni kelgusidagi ishga joylashishiga ko'maklashish maqsadida Qo'qon davlat pedagogika
             instituti (keyingi o'rinlarda “QDPI” deb yuritiladi) nomidan ta’lim muassasasi Ustavi hamda Talabalarining malaka
-            amaliyotini o'tash tartibi to'g'risidagi Nizomiga asoslanib ish yurituvchi rektor Xodjayeva Dilnoza Shavkatovna bir
-            tomondan, ish beruvchi Ustaviga asoslanib
-            ______________________________________________________________________________________________
-            nomidan
-            (korxona, tashkilot, muassasa nomi)
-            _______________________________________________________________________ ikkinchi tomondan,
-            (keyingi o'rinlarda
-            (muassasa rahbari ismi, familiyasi, otasining ismi)
-            “Qabul qiluvchi muassasa” deb yuritiladi) va oliy ta’lim muassasasi fakulteti
-            (fakultet nomi)
-            _________________________________________________________________________ ta’lim yo'nalishi bitiruvchi
-            talabasi (ta’lim yo'nalishi nomi)
-            ________________________________________________________________________________________________________
-            (talabaning ismi, familiyasi, otasining ismi)
-            (keyingi o'rinlarda “Amaliyotchi-talaba” deb yuritiladi) uchinchi tomondan ushbu shartnomani quyidagilar haqida
-            tuzdilar.
-
+            amaliyotini o'tash tartibi to'g'risidagi Nizomiga asoslanib ish yurituvchi rektor <strong>Xodjayeva Dilnoza Shavkatovna</strong> 
+            bir tomondan, ish beruvchi Ustaviga asoslanib <strong>{{p.amaliyot_joyi}}</strong> nomidan <strong>{{p.amaliyot_rahbari}}</strong> 
+            ikkinchi tomondan, (keyingi o'rinlarda <strong>“Qabul qiluvchi muassasa”</strong> deb yuritiladi) va oliy ta’lim muassasasi 
+            <strong>{{p.talaba_fakulteti}}</strong> fakulteti <strong>{{p.talaba_yonalishi}}</strong> ta’lim yo'nalishi bitiruvchi talabasi 
+            <strong>{{p.talaba_f_i_sh}}</strong> (keyingi o'rinlarda <strong>“Amaliyotchi-talaba”</strong> deb yuritiladi) uchinchi tomondan 
+            ushbu shartnomani quyidagilar haqida tuzdilar.
         </p>
 
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:left;line-height:90%;'>
+        <p style='margin:0pt;font-size:13px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
             <strong>
             1. SHARTNOMANING PREDMETI
             </strong>
         </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:justify;text-indent:14.2pt;'>
+            O'zbekiston Respublikasi Oliy va o'rta maxsus ta’lim vazirligining 2022 yil 13-iyundagi “Oliy ta’lim muassasalari
+            talabalarining malaka amaliyotini o'tash tartibini takomillashtirish to'g'risida”gi 202-sonli buyrug'i ijrosini ta’minlash
+            maqsadida amalyotchi-talabani malaka amaliyotini o'tashi, oliy ma’lumotga ega bo'lgan yosh mutaxassis
+            (bakalavr)larning intellektual salohiyatidan unumli foydalanish va ularni ish bilan ta’minlashga ko'maklashish.
+
+        </p>
+
+        <p style='margin:0pt;font-size:13px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
+            <strong>
+                2. TOMONLARNING MAJBURIYATLAR
+            </strong>
+           
+        </p>
+        <p style='margin:0pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            
+            <strong>
+                2.1. QDPI:
+            </strong>
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotini o'tash joylariga talabalarni taqsimlashda ishtirok etish;
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotiga ketayotgan talabalarga oldindan malaka amaliyoti o'tkazish tartiblari, xavfsizlik texnikasi 
+            haqida zarur ko'rsatmalar va yo'l-yo'riqlar ko'rsatish;
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - zaruriyatga muvofiq Qabul qiluvchi tashkilotga malaka amaliyoti boshlanishidan oldin borib, talabalar kelishiga
+            zaruriy tayyorgarlik ishlarini tashkil etish;
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotining butun davri uchun talabalarga malaka amaliyoti dasturi asosida reja-jadvalini tuzish, qabul
+            qiluvchi tashkilotdan malaka amaliyoti rahbari bilan birgalikda ishning hajmi va tarkibini belgilash;
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - talabalarni malaka amaliyoti reja-jadvali va dasturi bilan ta’minlash;
+        </p>
+            
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - talabalarning malaka amaliyoti o'tash joyiga yetib borishi va qaytishini nazorat qilish;
+        </p>
+        
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - qabul qiluvchi tashkilotdan malaka amaliyoti rahbari bilan talabaning malaka amaliyotini o'tashi holati bo'yicha 
+            muntazam ravishda aloqada bo'lish;
+        </p> 
+            
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyoti muddatlariga rioya qilinishini, shuningdek, malaka amaliyoti reja-jadvali va dasturi bajarilishini
+            hamda kundalikni har kunlik to'ldirishini nazoratini olib borish, uslubiy yordam ko'rsatish ishlarini, zarur hollarda, 
+            talabalarning malaka amaliyoti o'tash joylariga borib ko'rish yo'li bilan amalga oshirish;
+        </p>   
+            
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - talabalarning malaka amaliyoti hisobotini yozishga ko'rsatma va tavsiyalar berish;
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - talabalarning malaka amaliyoti bo'yicha hisobot himoyasida ishtirok etish va baholash;
+        </p>  
+            
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>    
+            - malaka amaliyotini o'tashni takomillashtirish yuzasidan zarur hollarda o'z taklif va mulohazalarini kafedra mudiriga
+            (fakultet va oliy ta’lim muassasasi Kengashida ko'rib chiqish uchun) taqdim etish;
+        </p>  
+
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - professor-o'qituvchining malaka amaliyotiga rahbarlik qilganligi oliy ta’lim muassasasi rektorining malaka 
+            amaliyoti o'tash bo'yicha buyrug'i, talabaning malaka amaliyoti kundaligi, hisoboti va malaka amaliyoti uchun baho qo'yilgan
+            tegishli qaydnomalar asosida aniqlanadi.
+        </p>  
+
+        <p style='margin:0pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            
+            <strong>
+                2.2. “QABUL QILUVCHI MUASSASA”:
+            </strong>
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - oliy ta’lim muassasalari bilan talabalar malaka amaliyotini o'tashi to'g'risida shartnomalar tuzadi;
+        </p>
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotini o'tash davrida talabalarga amaliyotchi maqomini beradi;
+        </p>
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotini tashkil etishga ko'maklashadi, malakali va tajribali mutaxassislar orasidan amaliyotchi bilan
+            ishlash ko'nikmasiga ega bo'lgan malaka amaliyoti rahbarini tayinlaydi;
+        </p>
+
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - amaliyotchilar uchun ish joyi va amaliyot davrida foydalanish uchun zaruriy materiallar ajratilishini tashkil etadi,
+            faoliyati doirasida amaliyotchi talabalarga oylik maoshlar belgilashi mumkin;
+
+        </p>
+
+        
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - amaliyotchiga biriktirilgan mas’ul xodimlarni moliyaviy imkoniyatlardan kelib chiqib moddiy rag'batlantirish
+            ishlarini yo'lga qo'yadi;
+        </p>
+
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - hayot faoliyati va texnika xavfsizligi bo'yicha zaruriy ko'rsatmalar beradi, zarur bo'lgan hollarda talabalarga
+            mehnatning xavfsiz usullarini o'rgatadi va bu haqda tegishli hujjatlami rasmiylashtiradi;
+        </p>
+
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyoti dasturiga muvofiq talabalarga joriy qilinadigan shart-sharoitlar (shaxsiy himoya vositalari, maxsus
+            ovqat va boshqalar)ni yaratadi;
+        </p>
+
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - talabalarga mavjud adabiyotlar, texnik va boshqa hujjatlardan foydalanish imkoniyatlarini beradi; 
+        </p>
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyoti dasturiga muvofiq talabalar malaka amaliyoti o'tkazishining samaradorligini ta’minlovchi ish
+            joylari sharoitini ta’minlaydi;
+        </p>
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - amaliyotchiga malaka amaliyoti davri davomida moliyaviy imkoniyat doirasida ish haqi to'lanadigan lavozimga
+            ishga qabul qilish masalasini hal qiladi;
+
+        </p>
+
+        
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - tashkilotning ichki mehnat intizomini buzgan talaba haqida oliy ta’lim muassasasi rektoriga xabar qiladi;
+        </p>
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - talaba malaka amaliyotini o'tash davrida amaliyot o'tash joyida baxtsiz hodisaga uchragan holatlar bo'yicha 
+            javobgarlik masalalarini qonunchilik hujjatlari asosida ko'rib chiqadi;
+
+        </p>
+
+        
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - shartnoma asosida talabalar yashashi uchun qulay sharoitli vaqtinchalik turar joylar bilan ta’minlashi mumkin.
+        Qabul qiluvchi tashkilot rahbari talaba ta’lim olayotgan yo'nalishi (mutaxassisligi) bo'yicha bo'sh ish joylari mavjud
+        bo'lgan taqdirda, uni vaqtinchalik ish haqi to'lanadigan lavozimga tayinlashi hamda talaba o'qishni bitirgandan so'ng
+        to'liq ish bilan ta’minlashi mumkin.
+        </p>
+
+
+        <p style='margin:0pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            
+            <strong>
+                2.3. “AMALIYOTCHI-TALABA”:
+            </strong>
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotini o'tash joyi, reja-jadvali, dasturi va tartibi bilan oldindan tanishish;
+        </p>
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotini o'tkazish bo'yicla o'z fikr-mulohazalarni bildirish;
+        </p>
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotini o'tash yuzasidan zarur axborotlar olish;
+        </p>
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyoti bo'yicha uslubiy materiallar bilan tanishish hamda malaka amaliyoti rahbarlaridan 
+            yo'l-yo'riqlar olish huquqlariga ega;  
+        </p>
+
+       
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotini uzrli sabablarga ko'ra o'tay olmagan talabalar oliy ta’lim muassasasi rektorining buyrug'iga
+            muvofiq belgilangan boshqa muddatda amaliyotni o'tashi shart;
+        </p>
+
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyoti dasturida nazarda tutilgan barcha topshiriqlami reja-jadvaliga muvofiq to'liq hajmda va
+            sifatli bajarish;
+        </p>
+
+       
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyoti kundaligini har kuni va tartibli yuritish; 
+        </p>
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - oliy ta’lim muassasasi va qabul qiluvchi tashkilotdan tayinlangan malaka amaliyoti rahbarlarining dasturda
+            ko'zda tulilgan ishlarga oid barcha topshiriqlarini bajarish;
+        </p>
+
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - hisobotga tegishli hujjatlami o'z vaqtida rasmiylashtirish;
+        </p>
+
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - qabul qiluvchi tashkilot xodimlari faoliyatini tartibga soluvchi hujjatlar va ichki mehnat tartib-qoidalariga
+            rioya qilish majburiyatlari yuklatiladi.
+        </p>
+
+        
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            - malaka amaliyotini o'tagandan so'ng oliy ta’lim muassasasida malaka amaliyoti bo'yicha hisobotini kafedra yig'ilishi
+        bayoni bilan belgilangan muddatda himoya qiladi.
+
+        </p>
+
+
+        <p style='margin:0pt;font-size:13px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
+            
+            <strong>
+                3. TOMONLARNING JAVOBGARLIGI
+            </strong>
+        </p>
+        
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            3.1. Tomonlarning har biri ushbu shartnoma majburiyatlarini bajarmagan taqdirda boshqa tarafga yetkazilgan zararni
+            amaldagi qonunchilikda belgilangan tartibda javobgar bo'ladi.
+        </p>
+
+        <p style='margin:0pt;font-size:13px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
+            
+            <strong>
+                4. SHARTNOMANING AMAL QILISH MUDDATI VA UNI BEKOR QILISH TARTIBI
+            </strong>
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            
+            4.1. Taraflardan birining talabi bilan shartnoma quyidagi hollarda bekor qilinishi mumkin:
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            
+            - Amaliyotchi-talabaning malakasi, bilimi ushbu mutaxassis uchun amalda o'rnatilgan davlat ta’lim standartlari
+            talablariga javob bermasa;
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            
+            - Qabul qiluvchi muassasa tegishli hujjatlar asosida tugatilganda; 
+        </p>
+
+
+
+        <p style='margin:0cm;margin-bottom:.0001pt;font-size:13px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
+            
+            4.2. Ushbu shartnoma tomonlarning barchasi imzolaganidan so'ng kuchga kiradi, hamda shartnoma to'liq bajarilgunga
+            qadar amalda bo'ladi. 
+        </p>
+
+        <p style='margin:0pt;font-size:13px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
+            
+            <strong>
+                TOMONLARNING MANZILLARI:
+            </strong>
+        </p>
+
+        <table style="width:537.0pt;border-collapse:collapse;border:none;text-align :center; margin-left:auto;margin-right:auto;">
+            <tbody>
+                <tr>
+                    <td>salom1</td>
+                    <td>salom1</td>
+                    <td>
+                        <img src='https://avatars.mds.yandex.net/i?id=3d2139a6facd4343155d96552320947a47f7e48b-5219993-images-thumbs&n=13'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>salom1</td>
+                    <td>salom1</td>
+                    <td>salom1</td>
+                </tr>
+                <tr>
+                    <td>salom1</td>
+                    <td>salom1</td>
+                    <td>salom1</td>
+                </tr>
+                <tr>
+                    <td>salom1</td>
+                    <td>salom1</td>
+                    <td>salom1</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+
+       
+
     </div>
 
-    {% for p in pdf %}
-    <div style="max-width: 23cm; margin-left:1.5cm;margin-right:1cm;">
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;line-height:90%;'><strong><span style="font-size:13px;line-height:90%;color:black;">O'</span></strong><strong><span style="font-size:13px;line-height:90%;color:black;">ZBEKISTON RESPUBLIKASI OLIY VA&nbsp;</span></strong><strong><span style="font-size:13px;line-height:90%;color:black;">O'</span></strong><strong><span style="font-size:13px;line-height:90%;color:black;">RTA MAXSUS TA&rsquo;LIM VAZIRLIGI&nbsp;</span></strong></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;line-height:90%;'><strong><span style="font-size:13px;line-height:90%;color:black;">YOSH MUTAXASSISNI MALAKA AMALIYOTINI&nbsp;</span></strong><strong><span style="font-size:13px;line-height:90%;color:black;">O'</span></strong><strong><span style="font-size:13px;line-height:90%;color:black;">TASH VA KELGUSIDA ISH BILAN TA&rsquo;MINLASHGA K</span></strong><strong><span style="font-size:13px;line-height:90%;color:black;">O'</span></strong><strong><span style="font-size:13px;line-height:90%;color:black;">MAKLASHISH T</span></strong><strong><span style="font-size:13px;line-height:90%;color:black;">O'G'</span></strong><strong><span style="font-size:13px;line-height:90%;color:black;">RISIDA</span></strong></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;line-height:90%;'><strong><span style="font-size:13px;line-height:90%;color:black;">SHARTNOMA  {{p.id}} </span></strong></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;margin-left:318.6pt;text-align:justify;text-indent:35.4pt;line-height:90%;'><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;margin-left:318.6pt;text-align:justify;text-indent:35.4pt;line-height:90%;'><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-size:13px;line-height:90%;color:black;">{{hozir}}</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;margin-left:318.6pt;text-align:justify;text-indent:35.4pt;line-height:90%;'><span style="font-size:13px;line-height:90%;color:black;">&nbsp;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;text-indent:14.2pt;'><span style="font-size:13px;color:black;">&nbsp; O'</span><span style="font-size:13px;color:black;">zbekiston Respublikasi Prezidentining 2017-yil 27-iyuldagi PQ-3151-sonli, 2018-yil 5-iyundagi PQ-3775-sonli, 2021-yil 24-dekabrdagi PQ-60-son qarorlari va&nbsp;</span><span style="font-size:13px;color:black;">O'</span><span style="font-size:13px;color:black;">zbekiston Respublikasi Prezidenti Administratsiyasining 2022-yil 15-martdagi 04-593-sonli topshiriqlari ijrosi yuzasidan&nbsp;</span><span style="font-size:13px;color:black;">O'</span><span style="font-size:13px;color:black;">zbekiston Respublikasi Oliy va&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rta maxsus ta&rsquo;lim vazirligining 2022-yil 13-iyundagi 202-sonli buyru</span><span style="font-size:13px;color:black;">g'</span><span style="font-size:13px;color:black;">i asosida ishlab chiqilgan va tasdiqlangan Oliy ta&rsquo;lim muassasalari talabalarining malaka amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash tartibi t</span><span style="font-size:13px;color:black;">o'g'</span><span style="font-size:13px;color:black;">risidagi namunaviy Nizomga asosan bitiruvchilarni&nbsp;</span><span style="font-size:13px;">malaka amaliyotini&nbsp;</span><span style="font-size:13px;">o'</span><span style="font-size:13px;">tkazish va<span style="color:black;">&nbsp;ularni kelgusidagi ishga joylashishiga k</span></span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">maklashish maqsadida Q</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">qon davlat pedagogika instituti (keyingi&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rinlarda &ldquo;<strong>QDPI</strong>&rdquo; deb yuritiladi) nomidan ta&rsquo;lim muassasasi Ustavi hamda&nbsp;</span><span style="font-size:13px;color:black;">T</span><span style="font-size:13px;color:black;">alabalarining</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">malaka amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash tartibi t</span><span style="font-size:13px;color:black;">o'g'</span><span style="font-size:13px;color:black;">risidagi</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">Nizomiga asoslanib ish yurituvchi rektor</span><span style="font-size:13px;color:black;">&nbsp;</span><strong><span style="font-size:13px;color:black;">Xodjayeva Dilnoza Shavkatovna&nbsp;</span></strong><span style="font-size:13px;color:black;">bir tomondan, ish&nbsp;</span><span style="font-size:13px;">be</span><span style="font-size:13px;">ruvchi</span><span style="font-size:13px;">&nbsp;</span><span style="font-size:13px;color:black;">Ustaviga asoslanib &nbsp;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;text-indent:14.2pt;'><span style="font-size:13px;color:black;">&nbsp;____________________________________________</span><span style="font-size:13px;color:black;">_____</span><span style="font-size:13px;color:black;">____________</span><span style="font-size:13px;color:black;">________________</span><span style="font-size:13px;color:black;">____________</span><span style="font-size:13px;color:black;">_____ nomidan</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;line-height:90%;'><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></sup><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></sup><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(korxona, tashkilot, muassasa nomi) &nbsp; &nbsp; &nbsp; &nbsp;</span></sup></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;line-height:90%;'><span style="font-size:13px;line-height:90%;color:black;">________________________________________________________</span><span style="font-size:13px;line-height:90%;color:black;">______________</span><span style="font-size:13px;line-height:90%;color:black;">_ ikkinchi tomondan, (keyingi&nbsp;</span><span style="font-size:13px;line-height:90%;color:black;">o'</span><span style="font-size:13px;line-height:90%;color:black;">rinlarda<sup>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</sup></span><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></sup></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;line-height:90%;'><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></sup><sup><span style="font-size:13px;line-height:90%;color:black;">(muassasa rahbari ismi, familiyasi, otasining ismi)</span></sup></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;line-height:90%;'><strong><span style="font-size:13px;line-height:90%;color:black;">&ldquo;Qabul qiluvchi muassasa</span></strong><span style="font-size:13px;line-height:90%;color:black;">&rdquo; deb yuritiladi) va oliy ta&rsquo;lim muassasasi {{p.talaba_fakulteti}} fakulteti</span><span style="font-size:13px;line-height:90%;color:black;">&nbsp;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;line-height:90%;'><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (</span></sup><sup><span style="font-size:13px;line-height:90%;color:black;">fakultet nomi</span></sup><sup><span style="font-size:13px;line-height:90%;color:black;">)</span></sup></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;line-height:90%;'><span style="font-size:13px;line-height:90%;color:black;">_________________________________________________________________________ ta&rsquo;lim yo'nalishi&nbsp;</span><span style="font-size:13px;line-height:90%;color:black;">bitiruvchi talabasi&nbsp;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;line-height:90%;'><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (ta&rsquo;lim yo'nalishi nomi) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></sup></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;line-height:90%;'><span style="font-size:13px;line-height:90%;color:black;">______________________________________________________</span><span style="font-size:13px;line-height:90%;color:black;">____</span><span style="font-size:13px;line-height:90%;color:black;">___</span><span style="font-size:13px;line-height:90%;color:black;">_____________________________</span><span style="font-size:13px;line-height:90%;color:black;">__________</span><span style="font-size:13px;line-height:90%;color:black;">_</span><span style="font-size:13px;line-height:90%;color:black;">___&nbsp;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;line-height:90%;'><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></sup><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp;</span></sup><sup><span style="font-size:13px;line-height:90%;color:black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(talabaning ismi, familiyasi, otasining ismi)</span></sup></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;line-height:90%;'><span style="font-size:13px;line-height:90%;color:black;">(keyingi&nbsp;</span><span style="font-size:13px;line-height:90%;color:black;">o'</span><span style="font-size:13px;line-height:90%;color:black;">rinlarda &ldquo;<strong>Amaliyotchi-talaba</strong>&rdquo; deb yuritiladi) uchinchi tomondan ushbu shartnomani quy</span><span style="font-size:13px;line-height:90%;color:black;">i</span><span style="font-size:13px;line-height:90%;color:black;">dagilar haqida tuzdilar.</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;line-height:90%;'><span style="font-size:13px;line-height:90%;color:black;">&nbsp;</span></p>
-        <div style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;'>
-        <ol style="margin-bottom:0cm;list-style-type: decimal;margin-left:4.199999999999999px;">
-            <li style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;'><strong><span style="font-size:13px;color:black;">SHARTNOMANING PREDMETI&nbsp;</span></strong></li>
-        </ol>
-        </div>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;text-indent:14.2pt;'><span style="font-size:13px;color:black;">O'</span><span style="font-size:13px;color:black;">zbekiston Respublikasi&nbsp;</span><span style="font-size:13px;color:black;">Oliy va o'rta maxsus ta&rsquo;lim vazirligining 2022 yil 13-iyundagi &ldquo;</span><span style="font-size:13px;color:black;">Oliy ta&rsquo;lim muassasalari talabalarining malaka amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash tartibini takomillashtirish t</span><span style="font-size:13px;color:black;">o'g'</span><span style="font-size:13px;color:black;">risida</span><span style="font-size:13px;color:black;">&rdquo;gi 202-sonli buyrug'i&nbsp;</span><span style="font-size:13px;color:black;">ijrosini ta&rsquo;minlash maqsadida amalyotchi-talabani malaka amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tashi, oliy ma&rsquo;lumotga ega b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">lgan yosh mutaxassis (bakalavr)larning intellektual salohiyatidan unumli foydalanish va ularni ish bilan ta&rsquo;minlash</span><span style="font-size:13px;color:black;">g</span><span style="font-size:13px;color:black;">a k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">maklashish.</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;text-indent:14.2pt;'><span style="font-size:13px;color:black;">&nbsp;</span></p>
-        <div style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;'>
-        <ol style="margin-bottom:0cm;list-style-type: undefined;margin-left:4.199999999999999px;">
-            <li style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;'><strong><span style="font-size:13px;color:black;">TOMONLARNING MAJBURIYATLARI</span></strong></li>
-        </ol>
-        </div>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">2</span></strong><strong><span style="font-size:13px;color:black;">.1.&nbsp;</span></strong><strong><span style="font-size:13px;color:black;">QDPI</span></strong><strong><span style="font-size:13px;color:black;">:</span></strong></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">malaka amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash joylariga talabala</span><span style="font-size:13px;color:black;">rn</span><span style="font-size:13px;color:black;">i taqsimlashda ishtirok etish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">malaka &nbsp; amaliyotiga &nbsp;ketayotgan &nbsp;talaba</span><span style="font-size:13px;color:black;">l</span><span style="font-size:13px;color:black;">arga &nbsp;oldindan malaka &nbsp;amaliyoti</span><span style="font-size:13px;color:black;">&nbsp;o'</span><span style="font-size:13px;color:black;">tkazish tartiblari, &nbsp;xavfsizlik &nbsp;texnikasi &nbsp; haq</span><span style="font-size:13px;color:black;">i</span><span style="font-size:13px;color:black;">da zarur k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rsatmalar va y</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">l-y</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">riqlar</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rsatish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">zaruriyatga muvofiq&nbsp;</span><span style="font-size:13px;color:black;">Q</span><span style="font-size:13px;color:black;">abul qilu</span><span style="font-size:13px;color:black;">v</span><span style="font-size:13px;color:black;">chi tashkilotga malaka amaliyoti</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">boshlanishidan oldin borib, talabalar kelishiga &nbsp;zaruriy tayyorgarlik ishlarini tashkil</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">etish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">malaka amaliyotining butun davri uch</span><span style="font-size:13px;color:black;">u</span><span style="font-size:13px;color:black;">n talabalarga malaka amaliyoti dasturi</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">asosida reja-jadvalini tuzish, qabul &nbsp;qiluvchi tashkilotdan malaka amaliyoti rahbari</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">bilan birgalikda ishning hajmi va tarkibini &nbsp;b</span><span style="font-size:13px;color:black;">el</span><span style="font-size:13px;color:black;">gilash;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">talabala</span><span style="font-size:13px;color:black;">rni</span><span style="font-size:13px;color:black;">&nbsp;malaka amaliyoti reja-ja</span><span style="font-size:13px;color:black;">d</span><span style="font-size:13px;color:black;">vali va dasturi bilan</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">t</span><span style="font-size:13px;color:black;">a&rsquo;</span><span style="font-size:13px;color:black;">minlash;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">talabala</span><span style="font-size:13px;color:black;">rn</span><span style="font-size:13px;color:black;">ing malaka amaliyoti&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash joyiga yetib borishi va qaytishini</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">nazorat qilish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">qabul qiluvchi tashkilotdan malaka amaliyoti rahbari bilan talabaning malaka</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tashi holati b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">yicha &nbsp; muntaz</span><span style="font-size:13px;color:black;">a</span><span style="font-size:13px;color:black;">m ravishda aloqada b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">lish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">malaka amaliyoti muddatlariga r</span><span style="font-size:13px;color:black;">io</span><span style="font-size:13px;color:black;">ya qilinishini, shuningdek, malaka</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">amaliyoti reja-jadvali va dasturi bajarilishini hamda kundalikni har kunlik</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">t</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">ldirishini nazoratini olib borish, uslubiy yordam k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rsatish ishlarini, zarur</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">hollarda, &nbsp; talabalarning malaka amaliyoti&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash joylariga borib k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rish y</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">li bilan</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">amalga oshirish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">talabala</span><span style="font-size:13px;color:black;">rn</span><span style="font-size:13px;color:black;">ing malaka amaliyoti hisobotini yozishga k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rsatma va tavsiyalar</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">berish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">talabala</span><span style="font-size:13px;color:black;">rn</span><span style="font-size:13px;color:black;">ing malaka amaliyoti b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">yicha hisobot himoyasida ishtirok etish</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">va baholash;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">malaka amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tashni takomillashtirish yuzasidan za</span><span style="font-size:13px;color:black;">rur</span><span style="font-size:13px;color:black;">&nbsp;hollarda&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">z</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">taklif va mulohazalarini kafedra mudiriga (fakultet va oliy ta</span><span style="font-size:13px;color:black;">&rsquo;</span><span style="font-size:13px;color:black;">lim muassasasi</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">Kengashida k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rib chiqish uchun) taqdim e</span><span style="font-size:13px;color:black;">t</span><span style="font-size:13px;color:black;">ish</span><span style="font-size:13px;color:black;">;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- p</span><span style="font-size:13px;color:black;">rofessor-</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">qituvchining malaka amaliyotiga rahbarlik qilganligi oliy</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">ta</span><span style="font-size:13px;color:black;">&rsquo;</span><span style="font-size:13px;color:black;">lim muassasasi rektorining malaka &nbsp;amaliyoti &nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">yicha buyru</span><span style="font-size:13px;color:black;">g'</span><span style="font-size:13px;color:black;">i,</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">talabaning malaka amaliyoti kundaligi, hisoboti va malaka amaliyoti uchun baho</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">q</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">yilgan tegishli qaydnomalar asosida ani</span><span style="font-size:13px;color:black;">q</span><span style="font-size:13px;color:black;">lanadi</span><span style="font-size:13px;color:black;">.</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">&nbsp;</span></strong></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">2</span></strong><strong><span style="font-size:13px;color:black;">.2. &ldquo;QABUL QILUVCHI MUASSASA&rdquo;:</span></strong></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- o</span><span style="font-size:13px;color:black;">liy &nbsp; ta</span><span style="font-size:13px;color:black;">&rsquo;</span><span style="font-size:13px;color:black;">lim &nbsp;muassasalari &nbsp;bilan &nbsp; talabalar &nbsp;malaka amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tashi t</span><span style="font-size:13px;color:black;">o'g'</span><span style="font-size:13px;color:black;">risida</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">shartnomalar tuzadi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">malaka amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash davrida talabalarga amaliyotchi maqomini beradi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">malaka amaliyotini &nbsp;tashkil &nbsp; etishga &nbsp;ko&apos;maklashadi, &nbsp;malakali &nbsp; va &nbsp;tajribali</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">mutaxassislar orasidan amaliyotchi bilan &nbsp;ishlash k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">nikmasiga ega b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">lgan malaka</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">amaliyoti rahbarini tayinlaydi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">amaliyotchilar uchun ish joyi</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">va ama</span><span style="font-size:13px;color:black;">l</span><span style="font-size:13px;color:black;">iyot davrida foydalanish uchun zaruriy</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">materiallar ajratilishini tashkil etadi, faoliya</span><span style="font-size:13px;color:black;">t</span><span style="font-size:13px;color:black;">i do</span><span style="font-size:13px;color:black;">i</span><span style="font-size:13px;color:black;">rasida amaliyotchi talabalarga oylik</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">maoshlar belgilashi &nbsp;mumkin;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">amaliyotchiga biriktirilgan mas</span><span style="font-size:13px;color:black;">&rsquo;</span><span style="font-size:13px;color:black;">ul&nbsp;</span><span style="font-size:13px;color:black;">x</span><span style="font-size:13px;color:black;">odimla</span><span style="font-size:13px;color:black;">rn</span><span style="font-size:13px;color:black;">i moliyaviy imkoniyatlardan</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">kelib chiqib moddiy ra</span><span style="font-size:13px;color:black;">g'</span><span style="font-size:13px;color:black;">batlantirish &nbsp;ishlarini y</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">lga q</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">yadi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">hayot faoliyati va texnika xavfsizligi b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">yicha zaruriy k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rsatmalar beradi,</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">zarur b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">lgan hollarda talabalarga &nbsp;mehnatning xavfsiz usullarini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rgatadi va bu</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">haqda tegishli hujjatlami rasmiylashtiradi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">malaka amaliyoti dasturiga muvofiq talabalarga joriy qilinadigan shart</span><span style="font-size:13px;color:black;">-</span><span style="font-size:13px;color:black;">sharoitlar (shaxsiy himoya vositalari, maxsus ovqat va boshqalar)ni &nbsp; yaratadi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">talabalarga mavjud adabiyotlar, texnik va boshqa hujjatlardan foydalanish</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">imkoniyatlarini &nbsp;beradi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">malaka amaliyoti dasturiga muvofiq talabalar malaka amaliyoti&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tkazishining</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">samaradorligini ta</span><span style="font-size:13px;color:black;">&rsquo;</span><span style="font-size:13px;color:black;">minlovchi ish &nbsp;joylari</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">sharoitini ta</span><span style="font-size:13px;color:black;">&rsquo;</span><span style="font-size:13px;color:black;">minlaydi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">amaliyotchiga malaka amaliyoti davri davomida moliyaviy imkoniyat</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">doirasida ish haqi t</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">lanadigan lavozimga &nbsp;ishga qabul qilish masalasini hal qiladi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">tashkilotning ichki mehnat intizomini buzgan talaba haqida oliy ta</span><span style="font-size:13px;color:black;">&rsquo;</span><span style="font-size:13px;color:black;">lim muassasasi rektoriga &nbsp;</span><span style="font-size:13px;color:black;">x</span><span style="font-size:13px;color:black;">abar qiladi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">talaba malaka amaliyotini&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash davrida amaliyot&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">tash joyida baxtsiz</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">hodisaga uch</span><span style="font-size:13px;color:black;">ra</span><span style="font-size:13px;color:black;">gan holatlar b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">yicha &nbsp; javobgarlik</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">masalalarini qonunchilik hujjatlari</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">asosida k</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rib chiqadi;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-&nbsp;</span><span style="font-size:13px;color:black;">shartnoma asosida talabalar yashashi uchun qulay sharoitli vaqtinchalik turar</span><span style="font-size:13px;color:black;">&nbsp;</span><span style="font-size:13px;color:black;">joylar bilan &nbsp;ta</span><span style="font-size:13px;color:black;">&rsquo;</span><span style="font-size:13px;color:black;">minlashi &nbsp;mumkin.<strong>&nbsp;</strong></span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Qabul qiluvchi tashkilot rahbari talaba ta&rsquo;lim olayotgan yo'nalishi (mutaxassisligi) bo'yicha &nbsp; bo'sh &nbsp;ish joylari &nbsp;mavjud &nbsp; bo'lgan taqdirda, uni vaqtinchalik ish haqi to'lanadigan lavozimga tayinlashi hamda talaba o'qishni bitirgandan so'ng to'liq ish bilan ta&rsquo;minlashi &nbsp;mumkin.</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">2</span></strong><strong><span style="font-size:13px;color:black;">.3</span></strong><span style="font-size:13px;color:black;">. <strong>&ldquo;AMALIYOTCHI-TALABA&rdquo;:</strong></span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- malaka &nbsp; amaliyotini &nbsp;o'tash &nbsp;joyi, reja-jadvali, &nbsp;dasturi &nbsp; va &nbsp;tartibi &nbsp;bilan &nbsp; oldindan tanishish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- malaka &nbsp; amaliyotini &nbsp;o'tkazish &nbsp;bo'yicla &nbsp; o'z &nbsp;fikr-mulohazalarni bildirish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- malaka &nbsp; amaliyotini &nbsp;o'tash yuzasidan &nbsp;zarur &nbsp; axborotlar &nbsp;olish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- malaka amaliyoti &nbsp; bo'yicha &nbsp;uslubiy &nbsp;materiallar bilan &nbsp;tanishish &nbsp; hamda &nbsp;malaka amaliyoti &nbsp;rahbarlaridan &nbsp; yo'l-yo'riqlar &nbsp;olish &nbsp;huquqlariga &nbsp; ega;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- malaka amaliyotini uzrli sabablarga ko'ra o'tay olmagan talabalar oliy ta&rsquo;lim muassasasi rektorining buyrug'iga muvofiq belgilangan boshqa muddatda amaliyotni o'tashi shart;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- malaka &nbsp; amaliyoti &nbsp;dasturida &nbsp;nazarda &nbsp; tutilgan &nbsp;barcha &nbsp;topshiriqlami &nbsp; reja-jadvaliga &nbsp;muvofiq &nbsp;to'liq &nbsp; hajmda &nbsp;va &nbsp;sifatli bajarish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- malaka &nbsp; amaliyoti &nbsp;kundaligini &nbsp;har kuni &nbsp; va tartibli &nbsp;yuritish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- oliy &nbsp;ta&rsquo;lim &nbsp;muassasasi &nbsp; va qabul &nbsp;qiluvchi &nbsp;tashkilotdan &nbsp; tayinlangan &nbsp;malaka amaliyoti rahbarlarining dasturda &nbsp;ko'zda &nbsp;tulilgan &nbsp; ishlarga &nbsp;oid &nbsp;barcha &nbsp; topshiriqlarini bajarish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- hisobotga &nbsp; tegishli &nbsp;hujjatlami o'z &nbsp;vaqtida rasmiylashtirish;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- qabul &nbsp; qiluvchi &nbsp;tashkilot &nbsp;xodimlari &nbsp; faoliyatini &nbsp;tartibga &nbsp;soluvchi &nbsp; hujjatlar va &nbsp;ichki &nbsp;mehnat tartib-qoidalariga &nbsp;rioya &nbsp; qilish &nbsp;majburiyatlari &nbsp;yuklatiladi.</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">- malaka amaliyotini o'tagandan so'ng oliy ta&rsquo;lim &nbsp;muassasasida malaka amaliyoti bo'yicha hisobotini kafedra yig'ilishi bayoni bilan belgilangan muddatda himoya qiladi.</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">&nbsp;</span></p>
-        <div style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;'>
-        <ol style="margin-bottom:0cm;list-style-type: undefined;margin-left:4.199999999999999px;">
-            <li style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;'><strong><span style="font-size:13px;color:black;">TOMONLARNING JAVOBGARLIGI</span></strong></li>
-        </ol>
-        </div>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">3</span><span style="font-size:13px;color:black;">.1. Tomonlarning har biri ushbu shartnoma majburiyatlarini bajarmagan taqdirda boshqa tarafga yetkazilgan zararni amaldagi qonunchilikda belgilangan tartibda&nbsp;</span><span style="font-size:13px;color:black;">javobgar bo'ladi</span><span style="font-size:13px;color:black;">.</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">&nbsp;</span></p>
-        <div style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;'>
-        <ol style="margin-bottom:0cm;list-style-type: undefined;margin-left:4.199999999999999px;">
-            <li style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;'><strong><span style="font-size:13px;color:black;">SHARTNOMANING AMAL QILISH MUDDATI VA UNI BEKOR QILISH TARTIBI</span></strong></li>
-        </ol>
-        </div>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">4</span><span style="font-size:13px;color:black;">.1. Tara</span><span style="font-size:13px;color:black;">f</span><span style="font-size:13px;color:black;">lardan birining talabi bilan shartnoma quyidagi&nbsp;</span><span style="font-size:13px;color:black;">h</span><span style="font-size:13px;color:black;">ollarda bekor qilinishi mumk</span><span style="font-size:13px;color:black;">i</span><span style="font-size:13px;color:black;">n:</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-</span><span style="font-size:13px;color:black;">&nbsp;</span><strong><span style="font-size:13px;color:black;">Amaliyotchi-talaba</span></strong><span style="font-size:13px;color:black;">ning malakasi, bilimi ushbu mutaxassis uchun amalda&nbsp;</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">rnatilgan davlat ta&rsquo;lim standartlari talablariga javob bermasa;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">-</span><span style="font-size:13px;color:black;">&nbsp;</span><strong><span style="font-size:13px;color:black;">Qabul qiluvchi muassasa</span></strong><strong><span style="font-size:13px;color:black;">&nbsp;</span></strong><span style="font-size:13px;color:black;">tegishli&nbsp;</span><span style="font-size:13px;color:black;">h</span><span style="font-size:13px;color:black;">ujjatlar asosida tugatilganda;</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">4</span><span style="font-size:13px;color:black;">.</span><span style="font-size:13px;color:black;">2</span><span style="font-size:13px;color:black;">. Ushbu shartnoma tomonlarning barchasi imzolaganidan s</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">ng kuchga kiradi, hamda shartnoma t</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">liq bajarilgunga qadar amalda b</span><span style="font-size:13px;color:black;">o'</span><span style="font-size:13px;color:black;">ladi.</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;'><strong><span style="font-size:13px;color:black;">&nbsp;</span></strong></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;'><strong><span style="font-size:13px;color:black;">TOMONLARNING MANZILLARI</span></strong><span style="font-size:13px;color:black;">:</span></p>
-        <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;'><span style="font-size:13px;color:black;">&nbsp;</span></p>
-        <table style="width:537.0pt;border-collapse:collapse;border:none; margin-left:auto;margin-right:auto;">
-        <tbody>
-            <tr>
-                <td style="width: 168.55pt;border: 1pt solid windowtext;padding: 0cm 5.4pt;height: 119.7pt;vertical-align: top;">
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;'><strong><span style="font-size:13px;color:black;">&ldquo;Oliy ta&rsquo;lim muassasasi &rdquo;</span></strong></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;'><strong><span style="font-size:13px;color:black;">Muqimiy nomidagi QDPI</span></strong></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;margin-right:1.8pt;text-align:justify;'><span style="font-size:13px;">Manzil: 150700, Qo&rsquo;qon sh</span><span style="font-size:13px;">ahar</span><span style="font-size:13px;">, Turon k</span><span style="font-size:13px;">o'</span><span style="font-size:13px;">chasi</span><span style="font-size:13px;">,</span><span style="font-size:13px;">&nbsp;23</span><span style="font-size:13px;">-uy.</span><span style="font-size:13px;">&nbsp;</span><span style="font-size:13px;">&nbsp;</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;margin-right:30.15pt;text-align:justify;'><span style="font-size:13px;">Telefon:(0373) 542-38-38</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;margin-right:30.15pt;text-align:justify;'><span style="font-size:13px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size:13px;">&nbsp;</span><span style="font-size:13px;">&nbsp; &nbsp; (0373) 542-17-83</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;">Faks: &nbsp; &nbsp; (0373) 542-02-57</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">__________________________________</span></strong></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">__________________________________</span></strong></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Manzil</span><span style="font-size:13px;color:black;">:</span><span style="font-size:13px;color:black;">_____<strong>_____________</strong>__________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">________<strong>____________</strong>______________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">&nbsp;</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Imzo: _________<strong>____________</strong>________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">&nbsp;</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">M.</span></strong><strong><span style="font-size:13px;color:black;">O'</span></strong><span style="font-size:13px;color:black;">.</span></p>
-                </td>
-                <td style="width: 169.4pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;padding: 0cm 5.4pt;height: 119.7pt;vertical-align: top;">
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;'><strong><span style="font-size:13px;color:black;">&ldquo;Amaliyotchi-talaba&rdquo;</span></strong></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">F.I.S</span><span style="font-size:13px;color:black;">h</span><span style="font-size:13px;color:black;">.__________<strong>_____</strong>________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">_____________________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Uy manzili</span><span style="font-size:13px;color:black;">:</span><span style="font-size:13px;color:black;">____________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">_____________________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">_____________________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Telefon:______________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Uy telefoni:___________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Imzo: ________________________</span></p>
-                </td>
-            </tr>
-        </tbody>
-        </table>
-    </div>      <td style="width: 199.05pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;padding: 0cm 5.4pt;height: 119.7pt;vertical-align: top;">
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;'><strong><span style="font-size:13px;color:black;">&ldquo;Qabul qiluvchi muassasa&rdquo;</span></strong></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">__________________________________</span></strong></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">__________________________________</span></strong></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Manzil</span><span style="font-size:13px;color:black;">:</span><span style="font-size:13px;color:black;">_____<strong>_____________</strong>__________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">________<strong>____________</strong>______________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">&nbsp;</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Imzo: _________<strong>____________</strong>________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">&nbsp;</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><strong><span style="font-size:13px;color:black;">M.</span></strong><strong><span style="font-size:13px;color:black;">O'</span></strong><span style="font-size:13px;color:black;">.</span></p>
-                </td>
-                <td style="width: 169.4pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;padding: 0cm 5.4pt;height: 119.7pt;vertical-align: top;">
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:center;'><strong><span style="font-size:13px;color:black;">&ldquo;Amaliyotchi-talaba&rdquo;</span></strong></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">F.I.S</span><span style="font-size:13px;color:black;">h</span><span style="font-size:13px;color:black;">.__________<strong>_____</strong>________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">_____________________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Uy manzili</span><span style="font-size:13px;color:black;">:</span><span style="font-size:13px;color:black;">____________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">_____________________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">_____________________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Telefon:______________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Uy telefoni:___________________</span></p>
-                    <p style='margin:0cm;margin-bottom:.0001pt;font-size:16px;font-family:"Times New Roman",serif;text-align:justify;'><span style="font-size:13px;color:black;">Imzo: ________________________</span></p>
-                </td>
-            </tr>
-        </tbody>
-        </table>
-    </div>
+    
+    
     {% endfor %}
 </body>
 </html>
