@@ -350,8 +350,9 @@
                     <td>salom1</td>
                     <td>salom1</td>
                     <td>                       
-                        {% for r in rasmlar %}
-                        ali {{r.link}} <img src='{{r.rasm.url}}'>
+                        {% for r in qrcode %}
+                            {{r.rasm.url}}
+                            <img src="{{r.rasm.path}}">
                         {% endfor %}
                     </td>
                     

@@ -1,17 +1,120 @@
 import os
 import datetime as dt
-from   django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 import csv
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
 from django.contrib.staticfiles import finders
 from reportlab.lib.pagesizes import letter
 from amaliyot.models import Amaliyot
 from users.models import User
-from .models import Pdf
+from .models import Pdf, Rasm
+
+
+
+
+
+
+
+@csrf_exempt
+def qrcode(request):
+    a = request.user.pk     
+    
+    talaba_id = User.objects.all()
+    for t in talaba_id:
+        import qrcode
+
+        data = f"https://shartnoma.kspi.uz/pdf/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
+
+        # QR-kod obyektini yaratish
+        qr = qrcode.QRCode(version=1, box_size=10, border=4)
+
+        # Ma'lumotni QR-kodga qo'shish
+        qr.add_data(data)
+
+        # QR-kodni yaratish
+        qr.make()
+
+        # QR-koddan tasvir yaratish
+        img = qr.make_image()
+
+        # Tasvirni saqlash
+        img.save(f"media/code/qrcode{t.id}.png")
+        
+        link = f'https://shartnoma.kspi.uz/pdf/qrcode/{t.id}/'
+        rasmlar = Rasm.objects.filter(user_id=t.id)
+        
+        
+        media_url = '/code/'
+        image_path = f'qrcode{t.id}.png'
+        image_url = f'{media_url}{image_path}'
+        if rasmlar:
+            data = get_object_or_404(Rasm, user_id=t.id)
+            data.user_id = t.id
+            data.link = link 
+            data.rasm = image_url
+            data.save()
+            print('update qilindi ')
+        else:
+            data = Rasm.objects.create(
+                user_id = t.id,
+                link = link,
+                rasm = image_url
+            )
+            data.save()
+            print('create qilindi ')
+    
+    template_path = 'amaliyot/qrcode.html' 
+    # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
+    talaba_id = request.user.id
+    talaba = User.objects.get(id=talaba_id)
+    amaliyot = Amaliyot.objects.get(talaba=talaba_id)
+    pdf = Pdf.objects.filter(talaba_id=talaba_id)   
+    qrcode = Rasm.objects.all()
+    
+    
+    hozir = dt.datetime.now()
+    yil = hozir.year
+    oy = hozir.month
+    kun = hozir.day
+    
+    context = {        
+        'talaba':talaba,
+        'amaliyot':amaliyot,
+        'pdf':pdf,
+        'yil':yil,
+        'oy':oy,
+        'kun':kun,
+        'hozir':hozir,
+        'qrcode':qrcode        
+    }
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    # korib keyin saqlab olish
+    response['Content-Disposition'] = 'filename="qrcode.pdf"'
+#     avto saqlab olish
+#     response['Content-Disposition'] = 'attachment; filename="report.pdf"
+
+
+    # find the template and render it.
+    template = get_template(template_path)
+    
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(html, dest=response)
+
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse("Bizda ba'zi xatolar bor edi " + html + " serverda texnik ish lar olib borilmoqda !!!")
+   
+      
+    return response
 
 
 @csrf_exempt

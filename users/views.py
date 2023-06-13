@@ -28,6 +28,7 @@ def home(request):
     talaba = request.user.id
     userlar = User.objects.all()
     amaliyotlar = Amaliyot.objects.filter(talaba=talaba)
+    
     contex = {
         'userlar': userlar,
         'amaliyotlar':amaliyotlar,
