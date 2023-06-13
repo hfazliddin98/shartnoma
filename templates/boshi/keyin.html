@@ -20,8 +20,7 @@
      <link rel="stylesheet" href="{% static '/css/contract.css' %}"> 
      <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
     
-    <title>Shartnoma</title>
-    <link rel="icon" type="image/x-icon" href="{% static '/img/kspi-logo.png' %}">
+    <title>Contract</title>
 </head>
 <body>
     <!-- Header section -->
@@ -35,7 +34,7 @@
                 <div class="btn-group">
                     <button class="btn dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="account-img" src="{% static '/img/account.png' %}" alt="Account" width="48">
-                        <span class="user-name">{{user.last_name}} {{user.first_name}}</span>
+                        <span>{{user.last_name}} {{user.first_name}}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">{{user.last_name}} {{user.first_name}}</a></li>                        
@@ -56,21 +55,21 @@
             <div class="carousel-item active">
                 <picture>
                     <source srcset="{% static '/img/extra.jpg' %}" media="(min-width: 1000px)" />
-                    <source class="medium" srcset="{% static '/img/medium.jpg' %}" media="(min-width: 700px)" />
+                    <source class="medium" srcset="img/medium.jpg" media="(min-width: 700px)" />
                     <img src="{% static '/img/small.jpg' %}" alt="contract picture" width="100%"/>
                 </picture>
             </div>
             <div class="carousel-item">
                 <picture>
                     <source srcset="{% static '/img/extra2.jpg' %}" media="(min-width: 1000px)" />
-                    <source class="medium" srcset="{% static '/img/medium2.jpg' %}" media="(min-width: 700px)" />
+                    <source class="medium" srcset="img/medium2.jpg" media="(min-width: 700px)" />
                     <img src="{% static '/img/small2.jpg' %}" alt="contract picture" width="100%"/>
                 </picture>
             </div>
             <div class="carousel-item">
                 <picture>
                     <source srcset="{% static '/img/extra3.jpg' %}" media="(min-width: 1000px)" />
-                    <source class="medium" srcset="{% static '/img/medium3.jpg' %}" media="(min-width: 700px)" />
+                    <source class="medium" srcset="img/medium3.jpg" media="(min-width: 700px)" />
                     <img src="{% static '/img/small3.jpg' %}" alt="contract picture" width="100%"/>
                 </picture>
             </div>
@@ -144,7 +143,7 @@
                                 <img src="{% static '/img/kspi-logo.png' %}" alt="kspi logotip">
                             </span>
                         </div>
-                        <h5 class="col-9">amaliyot.kspi.uz</h5>
+                        <h5 class="col-9">kspi.amaliyot.uz</h5>
                     </div>
                     <p>"Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi" dasturiy majmuasi</p>
                 </div>

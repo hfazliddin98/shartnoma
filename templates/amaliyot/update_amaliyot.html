@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
     
     <title>Amaliyot</title>
-    <link rel="icon" type="image/x-icon" href="{% static '/img/kspi-logo.png' %}">
+    <link rel="icon" type="image/x-icon" href="{% static '/img/logout.svg' %}">
 </head>
 <body>
     <!-- Header section -->
@@ -35,7 +35,7 @@
                 <div class="btn-group">
                     <button class="btn dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="account-img" src="{% static '/img/account.png' %}" alt="Account" width="48">
-                        <span class="user-name">{{user.last_name}} {{user.first_name}}</span>
+                        <span>{{user.last_name}} {{user.first_name}}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">{{user.last_name}} {{user.first_name}}</a></li>                        
@@ -99,8 +99,8 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 mb-2">
-                            <label for="validationCustom02" class="form-label">Direktor F.I.SH</label>
-                            <input name="d_ism" type="text" class="form-control" id="validationCustom02" placeholder="Familiya Ism Sharif" required>
+                            <label for="validationCustom02" class="form-label">Direktor ismi</label>
+                            <input name="d_ism" type="text" class="form-control" id="validationCustom02" placeholder="Ismi..." required>
                             <div class="invalid-feedback">
                                 Direktor ismini kiriting.!
                             </div>
@@ -126,17 +126,17 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 mb-2">
-                            <label for="validationCustom04" class="form-label">Tashkilotdagi amaliyot rahbari F.I.SH</label>
-                            <input name="a_rahbari" type="text" class="form-control" id="validationCustom04" placeholder="Familiya Ism Sharif" required>
+                            <label for="validationCustom04" class="form-label">Tashkilotdagi amaliyot rahbari</label>
+                            <input name="a_rahbari" type="text" class="form-control" id="validationCustom04" placeholder="Amaliyot rahbari ismi..." required>
                             <div class="invalid-feedback">
-                                Amaliyot o'tash joyi(korxona, tashkilot)dagi amaliyot rahbari ismi, familiyasi va otasi ismini kiriting.!
+                                Amaliyot o'tash joyi(korxona, tashkilot)dagi amaliyot rahbari ismini kiriting.!
                             </div>
                         </div>                  
                         <div class="col-md-4 col-sm-6 mb-2">
-                            <label for="validationCustom05" class="form-label">OTMdagi amaliyot rahbari F.I.SH</label>
-                            <input name="o_a_rahbari" type="text" class="form-control" id="validationCustom05" placeholder="Familiya Ism Sharif" required>
+                            <label for="validationCustom05" class="form-label">OTMdagi amaliyot rahbari</label>
+                            <input name="o_a_rahbari" type="text" class="form-control" id="validationCustom05" placeholder="Amaliyot rahbari ismi..." required>
                             <div class="invalid-feedback">
-                                OTMdan biriktirilgan amaliyot rahbari ismi, familiyasi va otasi ismini kiriting.!
+                                OTMdan biriktirilgan amaliyot rahbari ismini kiriting.!
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 mb-2">
@@ -177,7 +177,7 @@
                                 <img src="{% static '/img/kspi-logo.png' %}" alt="kspi logotip">
                             </span>
                         </div>
-                        <h5 class="col-9">amaliyot.kspi.uz</h5>
+                        <h5 class="col-9">kspi.amaliyot.uz</h5>
                     </div>
                     <p>"Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi" dasturiy majmuasi</p>
                 </div>

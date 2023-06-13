@@ -192,9 +192,6 @@ footer {
 }
 
 @media screen and (max-width: 576px) {
-    .user-name {
-        display: none;
-    }
     .statute-section {
         padding: 2rem 0;
     }
