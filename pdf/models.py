@@ -24,4 +24,10 @@ class Pdf(models.Model):
     amaliyot_buyruq_raqami = models.CharField(max_length=100, blank=True)
     korxona_nomi = models.CharField(max_length=200, blank=True)
     
+    
+class Rasm(models.Model):
+    user_id = models.CharField(max_length=100)
+    link = models.CharField(max_length=100)
+    rasm = models.ImageField(upload_to='code/')
+    
 

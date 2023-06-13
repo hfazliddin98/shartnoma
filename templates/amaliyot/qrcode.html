@@ -351,15 +351,17 @@
                     <td>salom1</td>
 <<<<<<< HEAD
                     <td>                       
-                        {% for r in rasmlar %}
-                        ali {{r.link}} <img src='{{r.rasm.url}}'>
+                        {% for r in qrcode %}
+                            {{r.rasm.url}}
+                            <img src="{{r.rasm.path}}">
                         {% endfor %}
+                    </td>
+                    
 =======
                     <td>
                         <img src="{% static '/media/code/qrcode.png' %}">
->>>>>>> f8ad595ec5659fdbb31b80d323d58a3dce5c5690
                     </td>
-                    
+>>>>>>> f8ad595ec5659fdbb31b80d323d58a3dce5c5690
                 </tr>
                 <tr>
                     <td>salom1</td>
