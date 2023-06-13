@@ -7,8 +7,27 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 import csv
+<<<<<<< HEAD
 from django.http import HttpResponse
 from reportlab.pdfgen import canvas
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8ff632ce1a1cb6fa89d4f695f037482237717b5b
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
+=======
+
+>>>>>>> f8ad595ec5659fdbb31b80d323d58a3dce5c5690
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> f8ad595ec5659fdbb31b80d323d58a3dce5c5690
+>>>>>>> 8ff632ce1a1cb6fa89d4f695f037482237717b5b
+>>>>>>> 1ed66e2223eb550811673cb47b9ef40516d98acf
 from django.contrib.staticfiles import finders
 from reportlab.lib.pagesizes import letter
 from amaliyot.models import Amaliyot
@@ -115,8 +134,160 @@ def qrcode(request):
    
       
     return response
+<<<<<<< HEAD
+=======
 
 
+<<<<<<< HEAD
+=======
+
+
+
+@csrf_exempt
+def qrcode(request, pk): 
+    a = request.user.id
+
+
+
+
+    template_path = 'amaliyot/shartnoma.html' 
+    # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
+    talaba_id = request.user.id
+    talaba = User.objects.get(id=talaba_id)
+    amaliyot = Amaliyot.objects.get(talaba=talaba_id)
+    pdf = Pdf.objects.filter(talaba_id=talaba_id)
+    
+    hozir = dt.datetime.now()
+    yil = hozir.year
+    oy = hozir.month
+    kun = hozir.day
+    
+
+
+
+    import qrcode
+    data = f'https://shartnoma.kspi.uz/pdf/qrcode/{pk}/'
+
+    qr = qrcode.QRCode(version=1, box_size=10, border=4)
+
+    qr.add_data(data)
+
+    qr.make()
+
+    img = qr.make_image()
+
+    img.save(f'media/code/qrcode{pk}.png')
+
+    context = {        
+        'talaba':talaba,
+        'amaliyot':amaliyot,
+        'pdf':pdf,
+        'yil':yil,
+        'oy':oy,
+        'kun':kun,
+        'hozir':hozir,
+    }
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    # korib keyin saqlab olish
+    response['Content-Disposition'] = 'filename="shartnoma.pdf"'
+#     avto saqlab olish
+#     response['Content-Disposition'] = 'attachment; filename="report.pdf"
+
+
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(html, dest=response)
+
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse("Bizda ba'zi xatolar bor edi " + html + " serverda texnik ish lar olib borilmoqda !!!")
+    return response
+
+
+  
+
+
+>>>>>>> 8ff632ce1a1cb6fa89d4f695f037482237717b5b
+
+
+
+
+
+@csrf_exempt
+def qrcode(request, pk): 
+    a = request.user.id
+
+
+
+
+    template_path = 'amaliyot/shartnoma.html' 
+    # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
+    talaba_id = request.user.id
+    talaba = User.objects.get(id=talaba_id)
+    amaliyot = Amaliyot.objects.get(talaba=talaba_id)
+    pdf = Pdf.objects.filter(talaba_id=talaba_id)
+    
+    hozir = dt.datetime.now()
+    yil = hozir.year
+    oy = hozir.month
+    kun = hozir.day
+    
+
+
+
+    import qrcode
+    data = f'https://shartnoma.kspi.uz/pdf/qrcode/{pk}/'
+
+    qr = qrcode.QRCode(version=1, box_size=10, border=4)
+
+    qr.add_data(data)
+
+    qr.make()
+
+    img = qr.make_image()
+
+    img.save(f'media/code/qrcode{pk}.png')
+
+    context = {        
+        'talaba':talaba,
+        'amaliyot':amaliyot,
+        'pdf':pdf,
+        'yil':yil,
+        'oy':oy,
+        'kun':kun,
+        'hozir':hozir,
+    }
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    # korib keyin saqlab olish
+    response['Content-Disposition'] = 'filename="shartnoma.pdf"'
+#     avto saqlab olish
+#     response['Content-Disposition'] = 'attachment; filename="report.pdf"
+
+
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(html, dest=response)
+
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse("Bizda ba'zi xatolar bor edi " + html + " serverda texnik ish lar olib borilmoqda !!!")
+    return response
+
+
+  
+
+
+
+
+>>>>>>> 1ed66e2223eb550811673cb47b9ef40516d98acf
 @csrf_exempt
 def pdf(request):  
     pdf = Pdf.objects.all()
