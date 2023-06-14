@@ -27,7 +27,7 @@ def qrcode(request, pk):
     for t in talaba_id:
         import qrcode
 
-        data = f"https://shartnoma.kspi.uz/pdf/{pk}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
+        data = f"https://shartnoma.kspi.uz/pdf/qrcode/{pk}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
 
         # QR-kod obyektini yaratish
         qr = qrcode.QRCode(version=1, box_size=10, border=4)
@@ -44,7 +44,7 @@ def qrcode(request, pk):
         # Tasvirni saqlash
         img.save(f"media/code/qrcode{pk}.png")
         
-        link = f'http://127.0.0.1:8000/media/code/qrcode{pk}.png'
+        link = f'https://shartnoma.kspi.uz/media/code/qrcode{pk}.png'
         rasmlar = Rasm.objects.filter(user_id=t.id)
         
         
@@ -179,6 +179,7 @@ def pdf(request):
                     print('create qilindi ')
         else:
             amaliyot = 'Hozirda mavjud emas'
+            
 
     template_path = 'amaliyot/shartnoma.html' 
     # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
@@ -186,7 +187,7 @@ def pdf(request):
     talaba = User.objects.get(id=talaba_id)
     amaliyot = Amaliyot.objects.get(talaba=talaba_id)
     pdf = Pdf.objects.filter(talaba_id=talaba_id)
-    qrcode = Rasm.objects.filter(user_id=t.id)
+    qrcode = Rasm.objects.filter(user_id=talaba_id)
     
     hozir = dt.datetime.now()
     yil = hozir.year
