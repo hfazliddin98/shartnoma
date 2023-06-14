@@ -22,14 +22,12 @@ from .models import Pdf, Rasm
 
 
 @csrf_exempt
-def qrcode(request):
-    a = request.user.pk     
-    
-    talaba_id = User.objects.all()
+def qrcode(request, pk):    
+    talaba_id = Amaliyot.objects.all()
     for t in talaba_id:
         import qrcode
 
-        data = f"https://shartnoma.kspi.uz/pdf/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
+        data = f"https://shartnoma.kspi.uz/pdf/{pk}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
 
         # QR-kod obyektini yaratish
         qr = qrcode.QRCode(version=1, box_size=10, border=4)
@@ -44,9 +42,9 @@ def qrcode(request):
         img = qr.make_image()
 
         # Tasvirni saqlash
-        img.save(f"media/code/qrcode{t.id}.png")
+        img.save(f"media/code/qrcode{pk}.png")
         
-        link = f'https://shartnoma.kspi.uz/pdf/qrcode/{t.id}/'
+        link = f'http://127.0.0.1:8000/media/code/qrcode{pk}.png'
         rasmlar = Rasm.objects.filter(user_id=t.id)
         
         
@@ -59,7 +57,7 @@ def qrcode(request):
             data.link = link 
             data.rasm = image_url
             data.save()
-            print('update qilindi ')
+            print('update qilindi')
         else:
             data = Rasm.objects.create(
                 user_id = t.id,
@@ -67,31 +65,27 @@ def qrcode(request):
                 rasm = image_url
             )
             data.save()
-            print('create qilindi ')
+            print('create qilindi')
     
     template_path = 'amaliyot/qrcode.html' 
     # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
-    talaba_id = request.user.id
-    talaba = User.objects.get(id=talaba_id)
-    amaliyot = Amaliyot.objects.get(talaba=talaba_id)
-    pdf = Pdf.objects.filter(talaba_id=talaba_id)   
-    qrcode = Rasm.objects.all()
-    
+    talaba_id = request.user.id   
+    pdf = Pdf.objects.filter(talaba_id=pk)   
+    qrcode = Rasm.objects.filter(user_id=t.id)
+   
     
     hozir = dt.datetime.now()
     yil = hozir.year
     oy = hozir.month
     kun = hozir.day
     
-    context = {        
-        'talaba':talaba,
-        'amaliyot':amaliyot,
+    context = {       
         'pdf':pdf,
         'yil':yil,
         'oy':oy,
         'kun':kun,
         'hozir':hozir,
-        'qrcode':qrcode        
+        'qrcode':qrcode,              
     }
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
@@ -105,6 +99,8 @@ def qrcode(request):
     template = get_template(template_path)
     
     html = template.render(context)
+    
+    
 
     # create a pdf
     pisa_status = pisa.CreatePDF(html, dest=response)
@@ -130,16 +126,20 @@ def pdf(request):
                 talabalar = Pdf.objects.filter(talaba_id=t.id)
                 if talabalar:
                     # update qilyapti
-                    talaba = f'{t.first_name} {t.last_name} {t.sharif}'                        
+                    talaba = f'{t.first_name} {t.last_name} {t.sharif}'
+                    talaba_manzil = f'{t.viloyat} {t.tuman} {t.kocha_uy}'
+                    amaliyot_manzil = f'{a.viloyat_a} {a.tuman_a} {a.kocha_uy_a}'                        
                     data = get_object_or_404(Pdf, talaba_id=t.id)
                     data.talaba_f_i_sh = talaba
-                    data.talaba_manzil = t.tuman
+                    data.talaba_manzil = talaba_manzil
                     data.talaba_kurs = t.kurs
                     data.talaba_shifr=shifr
                     data.talaba_fakulteti = t.fakultet
                     data.talaba_yonalishi=t.yonalish
+                    data.talaba_nomer = t.t_nomer
+                    data.derektor_nomer = a.d_nomeri
                     data.amaliyot_joyi=a.muassasa
-                    data.amaliyot_manzili=a.tuman_a
+                    data.amaliyot_manzili = amaliyot_manzil
                     data.amaliyot_rahbari=a.a_rahbari
                     data.biriktirilgan_rahbar=a.o_a_rahbari
                     data.amaliyot_turi=a.a_turi
@@ -153,17 +153,21 @@ def pdf(request):
                     shifr = ''
                     buyruq_raqam = ''
                     talaba= f'{t.first_name} {t.last_name} {t.sharif}'
+                    talaba_manzil = f'{t.viloyat} {t.tuman} {t.kocha_uy}'
+                    amaliyot_manzil = f'{a.viloyat_a} {a.tuman_a} {a.kocha_uy_a}'
                     data = Pdf.objects.create(
                         talaba_id=t.id, 
                         shartnoma_raqami=a.id,
                         talaba_f_i_sh=talaba, 
-                        talaba_manzil=t.tuman, 
+                        talaba_manzil = talaba_manzil, 
                         talaba_kurs=t.kurs, 
                         talaba_shifr=shifr, 
                         talaba_yonalishi=t.yonalish,
                         talaba_fakulteti = t.fakultet, 
+                        talaba_nomer = t.t_nomer,
+                        derektor_nomer = a.d_nomeri,
                         amaliyot_joyi=a.muassasa, 
-                        amaliyot_manzili=a.tuman_a, 
+                        amaliyot_manzili = amaliyot_manzil, 
                         amaliyot_rahbari=a.a_rahbari, 
                         biriktirilgan_rahbar=a.o_a_rahbari, 
                         amaliyot_turi=a.a_turi, 
@@ -182,6 +186,7 @@ def pdf(request):
     talaba = User.objects.get(id=talaba_id)
     amaliyot = Amaliyot.objects.get(talaba=talaba_id)
     pdf = Pdf.objects.filter(talaba_id=talaba_id)
+    qrcode = Rasm.objects.filter(user_id=t.id)
     
     hozir = dt.datetime.now()
     yil = hozir.year
@@ -196,6 +201,7 @@ def pdf(request):
         'oy':oy,
         'kun':kun,
         'hozir':hozir,
+        'qrcode':qrcode,
     }
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')

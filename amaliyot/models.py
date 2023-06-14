@@ -16,3 +16,6 @@ class Amaliyot(models.Model):
     b_sana = models.CharField(max_length=100, blank=True)
     t_sana = models.CharField(max_length=100, blank=True)
     talaba = models.IntegerField()
+    
+    def __str__(self):
+        return self.muassasa
