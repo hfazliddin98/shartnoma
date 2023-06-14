@@ -23,11 +23,11 @@ from .models import Pdf, Rasm
 
 @csrf_exempt
 def qrcode(request, pk):    
-    talaba_id = Amaliyot.objects.all()
+    talaba_id = User.objects.all()
     for t in talaba_id:
         import qrcode
 
-        data = f"https://shartnoma.kspi.uz/pdf/qrcode/{pk}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
+        data = f"https://shartnoma.kspi.uz/pdf/qrcode/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
 
         # QR-kod obyektini yaratish
         qr = qrcode.QRCode(version=1, box_size=10, border=4)
@@ -42,10 +42,11 @@ def qrcode(request, pk):
         img = qr.make_image()
 
         # Tasvirni saqlash
-        img.save(f"media/code/qrcode{pk}.png")
+        img.save(f"media/code/qrcode{t.id}.png")
         
-        link = f'https://shartnoma.kspi.uz/media/code/qrcode{pk}.png'
+        link = f'http://shartnoma.kspi.uz/media/code/qrcode{t.id}.png'
         rasmlar = Rasm.objects.filter(user_id=t.id)
+        qrcode = Rasm.objects.filter(user_id=t.id)
         
         
         media_url = '/code/'
@@ -71,7 +72,7 @@ def qrcode(request, pk):
     # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
     talaba_id = request.user.id   
     pdf = Pdf.objects.filter(talaba_id=pk)   
-    qrcode = Rasm.objects.filter(user_id=t.id)
+    
    
     
     hozir = dt.datetime.now()
@@ -90,7 +91,7 @@ def qrcode(request, pk):
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
     # korib keyin saqlab olish
-    response['Content-Disposition'] = 'filename="qrcode.pdf"'
+    response['Content-Disposition'] = 'filename="shartnoma.pdf"'
 #     avto saqlab olish
 #     response['Content-Disposition'] = 'attachment; filename="report.pdf"
 
@@ -179,13 +180,57 @@ def pdf(request):
                     print('create qilindi ')
         else:
             amaliyot = 'Hozirda mavjud emas'
+
+
+    talaba_id = User.objects.all()
+    for t in talaba_id:
+        import qrcode
+
+        data = f"https://shartnoma.kspi.uz/pdf/qrcode/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
+
+        # QR-kod obyektini yaratish
+        qr = qrcode.QRCode(version=1, box_size=10, border=4)
+
+        # Ma'lumotni QR-kodga qo'shish
+        qr.add_data(data)
+
+        # QR-kodni yaratish
+        qr.make()
+
+        # QR-koddan tasvir yaratish
+        img = qr.make_image()
+
+        # Tasvirni saqlash
+        img.save(f"media/code/qrcode{t.id}.png")
+        
+        link = f'http://shartnoma.kspi.uz/media/code/qrcode{t.id}.png'
+        rasmlar = Rasm.objects.filter(user_id=t.id)
+        
+        
+        media_url = '/code/'
+        image_path = f'qrcode{t.id}.png'
+        image_url = f'{media_url}{image_path}'
+        if rasmlar:
+            data = get_object_or_404(Rasm, user_id=t.id)
+            data.user_id = t.id
+            data.link = link 
+            data.rasm = image_url
+            data.save()
+            print('update qilindi')
+        else:
+            data = Rasm.objects.create(
+                user_id = t.id,
+                link = link,
+                rasm = image_url
+            )
+            data.save()
+            print('create qilindi')
+    
             
 
     template_path = 'amaliyot/shartnoma.html' 
     # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
-    talaba_id = request.user.id
-    talaba = User.objects.get(id=talaba_id)
-    amaliyot = Amaliyot.objects.get(talaba=talaba_id)
+    talaba_id = request.user.id    
     pdf = Pdf.objects.filter(talaba_id=talaba_id)
     qrcode = Rasm.objects.filter(user_id=talaba_id)
     
