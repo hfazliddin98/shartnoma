@@ -1,3 +1,7 @@
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+}
 /* Header section  */
 .navbar-bg {
     background-color: #f5f5f581;
@@ -44,6 +48,7 @@
     display: flex;
     align-items: center;
 }
+
 
 button .link {
     text-decoration: none;
@@ -102,7 +107,7 @@ button:hover .link {
     width: 800px;
     margin-bottom: 50px;
     background-color: #fff;
-}
+} 
 
 
 /* Footer  */
@@ -166,11 +171,21 @@ footer {
     padding-right: 0;
     padding-left: 0;
 }
-
+@media screen and (max-width: 1380px) {
+    .add-cricle-bg {
+        width: 150px;
+        height: 150px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .add-cricle-bg {
+        width: 100px;
+        height: 100px;
+    }
+}
 @media screen and (max-width: 768px) {
     .logo-img {
         margin-left: 20px;
-        
     }
     .add-cricle-bg {
         width: 120px;

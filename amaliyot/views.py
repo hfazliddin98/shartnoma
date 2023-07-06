@@ -11,8 +11,7 @@ def amaliyotlar(request):
     habar = ''
     if request.method == 'POST':
         viloyat_a = request.POST['viloyat_a']
-        tuman_a = request.POST['tuman_a']
-        mfy_a = request.POST['mfy_a']
+        tuman_a = request.POST['tuman_a']        
         kocha_uy_a = request.POST['kocha_uy_a']
         muassasa = request.POST['muassasa']
         d_ism = request.POST['d_ism']
@@ -25,7 +24,7 @@ def amaliyotlar(request):
         if Amaliyot.objects.filter(talaba=user):
             habar = 'Sizga shartnoma berilgan yangilashingiz munkun'   
         else:        
-            Amaliyot.objects.create(talaba=user, viloyat_a=viloyat_a,tuman_a=tuman_a,mfy_a=mfy_a, kocha_uy_a=kocha_uy_a, muassasa=muassasa, d_ism=d_ism, d_nomeri=d_nomeri, kurs=kurs, a_rahbari=a_rahbari, o_a_rahbari=o_a_rahbari, a_turi=a_turi) 
+            Amaliyot.objects.create(talaba=user, viloyat_a=viloyat_a,tuman_a=tuman_a, kocha_uy_a=kocha_uy_a, muassasa=muassasa, d_ism=d_ism, d_nomeri=d_nomeri, kurs=kurs, a_rahbari=a_rahbari, o_a_rahbari=o_a_rahbari, a_turi=a_turi) 
             return redirect('/') 
     
     contex = {
@@ -41,8 +40,7 @@ def update_amaliyot(request, pk):
     data = get_object_or_404(Amaliyot, pk=pk)    
     if request.method == 'POST':
         viloyat_a = request.POST['viloyat_a']
-        tuman_a = request.POST['tuman_a']
-        mfy_a = request.POST['mfy_a']
+        tuman_a = request.POST['tuman_a']        
         kocha_uy_a = request.POST['kocha_uy_a']
         muassasa = request.POST['muassasa']
         d_ism = request.POST['d_ism']
@@ -54,8 +52,7 @@ def update_amaliyot(request, pk):
             
 
         data.viloyat_a = viloyat_a
-        data.tuman_a = tuman_a
-        data.mfy_a = mfy_a
+        data.tuman_a = tuman_a        
         kocha_uy_a = kocha_uy_a
         data.muassasa = muassasa
         data.d_ism = d_ism

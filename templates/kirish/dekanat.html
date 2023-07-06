@@ -20,9 +20,11 @@
     <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
     
     <title>Ro'yxatdan o'tish</title>
+    <link rel="icon" type="image/x-icon" href="{% static '/img/kspi-logo.png' %}">
 </head>
 
 <body>
+    {% if user.is_authenticated %} 
     <div class="add-cricle">
         <span class="add-cricle-bg"></span>
     </div>
@@ -130,7 +132,7 @@
                                 <img src="{% static '/img/kspi-logo.png' %}" alt="kspi logotip">
                             </span>
                         </div>
-                        <h5 class="col-9">kspi.amaliyot.uz</h5>
+                        <h5 class="col-9">shartnoma.kspi.uz</h5>
                     </div>
                     <p>"Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi" dasturiy majmuasi</p>
                 </div>
@@ -166,7 +168,7 @@
             <h5 class="col">2023 &#169 QDPI IT-park</h5>
         </div>
     </footer>
-    
+    {% endif %}
     
     <!-- BOOTSTRAP-JAVASCRIPT -->
     <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

@@ -20,6 +20,7 @@
      <link rel="stylesheet" href="{% static '/css/normalize.css' %}"> 
     
     <title>Shartnomalar-Home</title>
+    <link rel="icon" type="image/x-icon" href="{% static '/img/kspi-logo.png' %}">
     
 </head>
 <body>
@@ -35,6 +36,14 @@
                     <img src="{% static '/img/kspi-logo.png' %}" alt="Logo" class="logo-img col">
                     <div class="logo-title col">KSPI <br>Shartnomalar</div>
                 </a>
+                <div style="margin-right: 5%; z-index: 1000;">
+                    <a class="btn section-btn d-none d-md-block border border-white align-items-center" href="https://youtu.be/RwHDhmZxHQ4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"/>
+                      </svg>
+                      <span>Video qo'llanma</span>
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
@@ -44,11 +53,12 @@
         <div class="container">
             <div class="hero">
                 <div class="col col-md-4 col-lg-6 col-xl-5 col-xxl-4">
-                    <h1 class="section-title">Amaliyotga marxamat</h1>
+                    <h1 class="section-title">Amaliyotga marhamat</h1>
                     <p class="section-info">Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi</p>
                     <div class="d-grid gap-2 d-md-block">
                         <button class="btn section-btn col" type="button"><a class="link" href="{% url 'kirish' %}">Kirish</a></button>
                         <button class="btn section-btn col" type="button"><a class="link" href="{% url 'royhat' %}">Ro'yxatdan o'tish</a></button>
+                        <a class="btn section-btn d-inline-block d-md-none" href="https://youtu.be/RwHDhmZxHQ4">Video qo'llanma</a>
                     </div>
                 </div>
                 <div class="col col-md-8 col-lg-6 col-xl-7 col-xxl-8">
@@ -91,7 +101,7 @@
                                 <img src="{% static '/img/kspi-logo.png' %}" alt="kspi logotip">
                             </span>
                         </div>
-                        <h5 class="col-9">kspi.amaliyot.uz</h5>
+                        <h5 class="col-9">shartnoma.kspi.uz</h5>
                     </div>
                     <p>"Talabalarning o'quv amaliyoti uchun shartnoma olish axborot tizimi" dasturiy majmuasi</p>
                 </div>

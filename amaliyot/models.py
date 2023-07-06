@@ -4,7 +4,7 @@ from users.models import User
 class Amaliyot(models.Model):
     viloyat_a = models.CharField(max_length=100)
     tuman_a = models.CharField(max_length=100)
-    mfy_a = models.CharField(max_length=100)
+    mfy_a = models.CharField(max_length=100 ,blank=True)
     kocha_uy_a = models.CharField(max_length=100)
     muassasa = models.CharField(max_length=200)
     d_ism = models.CharField(max_length=100)

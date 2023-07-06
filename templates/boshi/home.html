@@ -1,12 +1,10 @@
 {% if user.is_authenticated %} 
 
-  {% if user.is_superuser or user.lavozim == 'superadmin' %}
-  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
+  {% if user.is_superuser or user.lavozim == 'superadmin' %}  
     {% include 'adminlar/superadmin/home.html' %}
   {% endif %}  
   
-  {% if user.lavozim == 'dekanat' %}
-  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
+  {% if user.lavozim == 'dekanat' %}  
     {% include 'adminlar/dekanat/home.html' %}
   {% endif %}  
 
