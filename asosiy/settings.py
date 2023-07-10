@@ -1,5 +1,10 @@
-import os
 from pathlib import Path
+from environs import Env
+import os 
+
+env = Env()
+env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +17,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@7+(y@88nep@vq@lv00^g=wbp^3-ck52temmpdykq)rv(se0$q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = ['shartnoma.kspi.uz','localhost','192.168.0.21','127.0.0.1']
 
