@@ -45,7 +45,7 @@
             <h1 class="text-center">Ro'yxatdan o'tish</h1>
             <div class="text-center h4 text-primary">
                 {% for h in habar %}
-                    {{h}}
+                {{h}}
                 {% endfor %}
             </div>
             <!-- LOGIN -->
@@ -53,35 +53,35 @@
                 {% csrf_token %}
                 <div class="col-md-4 col-sm-6">
                     <label for="validationCustom01" class="form-label">Talaba ID</label>
-                    <input name="username" type="text" class="form-control" id="validationCustom01" placeholder="ID" required>
+                    <input name="username" type="text" class="form-control" id="validationCustom01" minlength="12" maxlength="12" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="ID" required>
                     <div class="invalid-feedback">
-                        IDni kiriting.!
+                        Talaba hemis IDni kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <label for="validationCustom02" class="form-label">Ism</label>
-                    <input name="ism" type="text" class="form-control" id="validationCustom02" placeholder="Ism" required>
+                    <input name="ism" type="text" class="form-control bosh-harf" id="validationCustom02" placeholder="Ism" required>
                     <div class="invalid-feedback">
                         Ismingizni kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <label for="validationCustom03" class="form-label">Familiya</label>
-                    <input name="familya" type="text" class="form-control" id="validationCustom03" placeholder="Familiya" required>
+                    <input name="familya" type="text" class="form-control bosh-harf" id="validationCustom03" placeholder="Familiya" required>
                     <div class="invalid-feedback">
                         Familiyangizni kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <label for="validationCustom04" class="form-label">Otangizning ismi</label>
-                    <input name="sharif" type="text" class="form-control" id="validationCustom04" placeholder="Sharif" required>
+                    <input name="sharif" type="text" class="form-control bosh-harf" id="validationCustom04" placeholder="Sharif" required>
                     <div class="invalid-feedback">
                         Otangizning ismini kiriting.!
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <label for="validationCustom05" class="form-label">Telefon raqam</label>
-                    <input name="t_nomer" type="text" class="form-control" id="validationCustom05" data-mdb-input-mask="+998 90 000 00 00" placeholder="+998 (Telefon raqam)" required>
+                    <input name="t_nomer" type="text" class="form-control" id="validationCustom05" value="+998 " minlength="13" maxlength="14" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="+998 (Telefon raqam)" required>
                     <div class="invalid-feedback">
                         Telefon raqamingizni kiriting.!
                     </div>
@@ -100,30 +100,30 @@
                         O`qishga kirgan yilingizni kiriting.!
                     </div>
                 </div>
-                    <div class="col-md-4 col-sm-6">
-                        <label for="jins" class="form-label">Jins</label>
-                        <select name="gender" id="jins" class="form-select" size="1" required aria-label="select example">
-                            <option selected="selected" value="" disabled>Jins</option>
-                            <option >Erkak</option>
-                            <option >Ayol</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Jinsingizni tanlang.!
-                        </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="jins" class="form-label">Jins</label>
+                    <select name="gender" id="jins" class="form-select" size="1" required aria-label="select example">
+                        <option selected="selected" value="" disabled>Jins</option>
+                        <option >Erkak</option>
+                        <option >Ayol</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Jinsingizni tanlang.!
                     </div>
-                    <div class="col-md-4 col-sm-6">
-                        <label for="jins" class="form-label">Ta'lim shakli</label>
-                        <select name="talim_turi" id="jins" class="form-select" size="1" required aria-label="select example">
-                            <option selected="selected" value="" disabled>Ta'lim shakli</option>
-                            <option >Kunduzgi</option>
-                            <option >Sirtqi</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Ta'lim shaklini tanlang.!
-                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="jins" class="form-label">Ta'lim shakli</label>
+                    <select name="talim_turi" id="jins" class="form-select" size="1" required aria-label="select example">
+                        <option selected="selected" value="" disabled>Ta'lim shakli</option>
+                        <option >Kunduzgi</option>
+                        <option >Sirtqi</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Ta'lim shaklini tanlang.!
                     </div>
+                </div>
                 
-
+                
                 <!-- FAKULTET -->
                 <div class="fakultet">
                     <h3 class="text-center">Fakultet(yo'nalish va guruh)</h3>
@@ -147,7 +147,7 @@
                                 Yo'nalishingizni tanlang.!
                             </div>
                         </div>
-                       
+                        
                         <div class="col-md-4 col-sm-6">
                             <label for="kurs" class="form-label">Kurs</label>
                             <select name="kurs" id="kurs" class="form-select" size="1" required aria-label="select example">
@@ -168,7 +168,7 @@
                                 Guruhingizni kiriting.!
                             </div>
                         </div>
-                                                
+                        
                     </div>
                 </div>
                 
@@ -204,12 +204,12 @@
                         </div>
                         <div class="col-md-4">
                             <label for="village" class="form-label">Ko'cha va uy raqami</label>
-                            <input name="kocha_uy" type="text" id="village"  class="form-control" placeholder="Ko'changiz va uy nomeringiz" required>
+                            <input name="kocha_uy" type="text" id="village"  class="form-control bosh-harf" placeholder="Ko'changiz va uy nomeringiz" required>
                             <div class="invalid-feedback">
                                 Yashash manzilingizni kiriting.!
                             </div>
                         </div>
-                                             
+                        
                         <div class="col-md-4 col-sm-6">
                             <label for="password" class="form-label">Parol</label>
                             <input name="password1" type="password" class="form-control" id="password" placeholder="Parol o'ylab toping" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
@@ -226,8 +226,8 @@
                         </div>
                     </div>
                 </div>  
-
-               
+                
+                
                 
                 <div class="col-12 text-center mb-4">
                     <button class="btn btn-primary" type="submit">Saqlash</button>
@@ -236,9 +236,9 @@
             
         </div>
     </div>
-
-
-<!-- FOOTER -->
+    
+    
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="row py-5">
@@ -289,8 +289,17 @@
     
     <!-- BOOTSTRAP-JAVASCRIPT -->
     <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-            
+    
     <!-- JAVASCRIPT -->
-    <script src="{% static '/js/register.js' %}"></script>    
+    <script src="{% static '/js/register.js' %}"></script>   
+    <script>
+        let boshHarf = document.querySelectorAll('.bosh-harf');
+        boshHarf.forEach((e) => {
+            e.addEventListener('keyup', function(event) {
+                event.preventDefault();
+                e.value = e.value.charAt(0).toUpperCase() + e.value.slice(1);
+            })
+        })
+    </script> 
 </body>
 </html> 

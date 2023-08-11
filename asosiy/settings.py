@@ -26,6 +26,7 @@ ALLOWED_HOSTS = ['shartnoma.kspi.uz','localhost','192.168.0.21','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

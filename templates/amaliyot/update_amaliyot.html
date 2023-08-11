@@ -207,8 +207,14 @@
             <h5>2023 &#169 QDPI IT-park</h5>
         </div>
     </footer>
-    
+    {% else %}
+        <h2 class="text-center">
+            Bunday sahifa mavjud emas
+        </h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Bosh sahifa</a>
     {% endif %}
+
+
     <!-- BOOTSTRAP-JAVASCRIPT -->
     <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
         

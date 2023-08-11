@@ -21,117 +21,28 @@ from .models import Pdf, Rasm
 
 
 
-@csrf_exempt
-def qrcode(request, pk):    
-    talaba_id = User.objects.all()
-    for t in talaba_id:
-        import qrcode
-
-        data = f"https://shartnoma.kspi.uz/pdf/qrcode/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
-
-        # QR-kod obyektini yaratish
-        qr = qrcode.QRCode(version=1, box_size=10, border=4)
-
-        # Ma'lumotni QR-kodga qo'shish
-        qr.add_data(data)
-
-        # QR-kodni yaratish
-        qr.make()
-
-        # QR-koddan tasvir yaratish
-        img = qr.make_image()
-
-        # Tasvirni saqlash
-        img.save(f"media/code/qrcode{t.id}.png")
-        
-        link = f'http://shartnoma.kspi.uz/media/code/qrcode{t.id}.png'
-        rasmlar = Rasm.objects.filter(user_id=t.id)
-        qrcode = Rasm.objects.filter(user_id=t.id)
-        
-        
-        media_url = '/code/'
-        image_path = f'qrcode{t.id}.png'
-        image_url = f'{media_url}{image_path}'
-        if rasmlar:
-            data = get_object_or_404(Rasm, user_id=t.id)
-            data.user_id = t.id
-            data.link = link 
-            data.rasm = image_url
-            data.save()
-            print('update qilindi')
-        else:
-            data = Rasm.objects.create(
-                user_id = t.id,
-                link = link,
-                rasm = image_url
-            )
-            data.save()
-            print('create qilindi')
-    
-    template_path = 'amaliyot/qrcode.html' 
-    # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
-    talaba_id = request.user.id   
-    pdf = Pdf.objects.filter(talaba_id=pk)   
-    
-   
-    
-    hozir = dt.datetime.now()
-    yil = hozir.year
-    oy = hozir.month
-    kun = hozir.day
-    
-    context = {       
-        'pdf':pdf,
-        'yil':yil,
-        'oy':oy,
-        'kun':kun,
-        'hozir':hozir,
-        'qrcode':qrcode,              
-    }
-    # Create a Django response object, and specify content_type as pdf
-    response = HttpResponse(content_type='application/pdf')
-    # korib keyin saqlab olish
-    response['Content-Disposition'] = 'filename="shartnoma.pdf"'
-#     avto saqlab olish
-#     response['Content-Disposition'] = 'attachment; filename="report.pdf"
-
-
-    # find the template and render it.
-    template = get_template(template_path)
-    
-    html = template.render(context)
-    
-    
-
-    # create a pdf
-    pisa_status = pisa.CreatePDF(html, dest=response)
-
-    # if error then show some funny view
-    if pisa_status.err:
-       return HttpResponse("Bizda ba'zi xatolar bor edi " + html + " serverda texnik ish lar olib borilmoqda !!!")
-   
-      
-    return response
 
 
 @csrf_exempt
-def pdf(request):  
+def pdf(request, pk):  
     pdf = Pdf.objects.all()
     talaba_id = User.objects.all()
-    for t in talaba_id:
-        amaliyotlar = Amaliyot.objects.filter(talaba=t.id)
-        if amaliyotlar:
-            for a in  amaliyotlar:  
+    talaba = User.objects.filter(id=pk)
+    for t in talaba:
+        talaba_fish = f'{t.first_name} {t.last_name} {t.sharif}'
+        talaba_manzil = f'{t.viloyat} {t.tuman} {t.kocha_uy}'
+
+    amaliyotlar = Amaliyot.objects.filter(talaba=pk)
+    print('bajarildi')
+    if amaliyotlar:
+        for a in  amaliyotlar:  
                 shifr = ''
-                buyruq_raqam = ''             
-                talabalar = Pdf.objects.filter(talaba_id=t.id)
-                if talabalar:
-                    # update qilyapti
-                    talaba = f'{t.first_name} {t.last_name} {t.sharif}'
-                    talaba_manzil = f'{t.viloyat} {t.tuman} {t.kocha_uy}'
-                    amaliyot_manzil = f'{a.viloyat_a} {a.tuman_a} {a.kocha_uy_a}'                        
-                    data = get_object_or_404(Pdf, talaba_id=t.id)
-                    data.talaba_f_i_sh = talaba
+                buyruq_raqam = '' 
+                amaliyot_manzil = f'{a.viloyat_a} {a.tuman_a} {a.kocha_uy_a}'              
+                talabalar = Pdf.objects.filter(talaba_id=pk)
+                if talabalar:                                      
+                    data = get_object_or_404(Pdf, talaba_id=pk)
+                    data.talaba_f_i_sh = talaba_fish
                     data.talaba_manzil = talaba_manzil
                     data.talaba_kurs = t.kurs
                     data.talaba_shifr=shifr
@@ -148,18 +59,12 @@ def pdf(request):
                     data.amaliyot_tugashi=a.t_sana
                     data.amaliyot_buyruq_raqami=buyruq_raqam
                     data.save()                        
-                    print('update qilindi ')
-                else:
-                    # create qilyapti                    
-                    shifr = ''
-                    buyruq_raqam = ''
-                    talaba= f'{t.first_name} {t.last_name} {t.sharif}'
-                    talaba_manzil = f'{t.viloyat} {t.tuman} {t.kocha_uy}'
-                    amaliyot_manzil = f'{a.viloyat_a} {a.tuman_a} {a.kocha_uy_a}'
+                    print('update qilindi  pdf')
+                else:                 
                     data = Pdf.objects.create(
-                        talaba_id=t.id, 
+                        talaba_id=pk, 
                         shartnoma_raqami=a.id,
-                        talaba_f_i_sh=talaba, 
+                        talaba_f_i_sh=talaba_fish, 
                         talaba_manzil = talaba_manzil, 
                         talaba_kurs=t.kurs, 
                         talaba_shifr=shifr, 
@@ -177,75 +82,73 @@ def pdf(request):
                         amaliyot_buyruq_raqami=buyruq_raqam
                         )
                     data.save()
-                    print('create qilindi ')
+                    print('create qilindi  pdf')
         else:
             amaliyot = 'Hozirda mavjud emas'
+        
 
 
-    talaba_id = User.objects.all()
-    for t in talaba_id:
-        import qrcode
+ 
+  
+    import qrcode
 
-        data = f"https://shartnoma.kspi.uz/pdf/qrcode/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
+    data = f"https://shartnoma.kspi.uz/pdf/shartnoma/{pk}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
 
         # QR-kod obyektini yaratish
-        qr = qrcode.QRCode(version=1, box_size=10, border=4)
+    qr = qrcode.QRCode(version=1, box_size=10, border=4)
 
         # Ma'lumotni QR-kodga qo'shish
-        qr.add_data(data)
+    qr.add_data(data)
 
         # QR-kodni yaratish
-        qr.make()
+    qr.make()
 
         # QR-koddan tasvir yaratish
-        img = qr.make_image()
+    img = qr.make_image()
 
         # Tasvirni saqlash
-        img.save(f"media/code/qrcode{t.id}.png")
+    img.save(f"media/code/qrcode{pk}.png")
         
-        link = f'http://shartnoma.kspi.uz/media/code/qrcode{t.id}.png'
-        rasmlar = Rasm.objects.filter(user_id=t.id)
+    link = f'http://shartnoma.kspi.uz/media/code/qrcode{pk}.png'
+    rasmlar = Rasm.objects.filter(user_id=pk)
         
         
-        media_url = '/code/'
-        image_path = f'qrcode{t.id}.png'
-        image_url = f'{media_url}{image_path}'
-        if rasmlar:
-            data = get_object_or_404(Rasm, user_id=t.id)
-            data.user_id = t.id
+    media_url = '/code/'
+    image_path = f'qrcode{pk}.png'
+    image_url = f'{media_url}{image_path}'
+    if rasmlar:
+            data = get_object_or_404(Rasm, user_id=pk)
+            data.user_id = pk
             data.link = link 
             data.rasm = image_url
             data.save()
-            print('update qilindi')
-        else:
+            print('update qilindi qr')
+    else:
             data = Rasm.objects.create(
-                user_id = t.id,
+                user_id = pk,
                 link = link,
                 rasm = image_url
             )
             data.save()
-            print('create qilindi')
+            print('create qilindi qr')
     
             
 
     template_path = 'amaliyot/shartnoma.html' 
     # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
-    talaba_id = request.user.id    
-    pdf = Pdf.objects.filter(talaba_id=talaba_id)
-    qrcode = Rasm.objects.filter(user_id=talaba_id)
+     
+    pdf = Pdf.objects.filter(talaba_id=pk)
+    qrcode = Rasm.objects.filter(user_id=pk)
+
     
-    hozir = dt.datetime.now()
-    yil = hozir.year
-    oy = hozir.month
-    kun = hozir.day
+    hozir = dt.datetime.now()    
+    for a in amaliyotlar:
+        deroktor_ismi = f'{a.d_ism}'
     
     context = {        
         'talaba':talaba,
-        'amaliyot':amaliyot,
-        'pdf':pdf,
-        'yil':yil,
-        'oy':oy,
-        'kun':kun,
+        'deroktor_ismi':deroktor_ismi,
+        'pdf':pdf,        
         'hozir':hozir,
         'qrcode':qrcode,
     }
