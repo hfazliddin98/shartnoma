@@ -1,4 +1,5 @@
 import os
+import xlwt
 import datetime as dt
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404
@@ -175,115 +176,152 @@ def pdf(request, pk):
 
 @csrf_exempt
 def malumot_csv(request):
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename=talabalar.csv'
+    # content-type of response
+        response = HttpResponse(content_type='application/ms-excel')
 
-    writer = csv.writer(response)
-    
-    
-    writer.writerow([
-        'Shartnoma raqami',
-        'Talaba F.I.SH',
-        'Talabaning yashash manzili',
-        'Kursi',
-        'Talaba yo`nalish shifri',
-        'Talaba yo`nalish nomi',
-        'Amaliyot o`tash joyi (korxona, tashkilot)ning nomi',
-        'Amaliyot o`tash joyi (korxona, tashkilot)ning manzili',
-        'Amaliyot o`tash joyi (korxona, tashkilot)dagi amaliyot rahbari',
-        'OTMdan biriktirilgan amaliyot rahbari F.I.SH',
-        'Amaliyot turi',
-        'Amaliyotning boshlanish muddati',
-        'Amaliyotning tugash muddati',
-        'Amaliyot bo`yicha buyruq raqami, sanasi',                    
-    ])   
-    
+        #decide file name
+        response['Content-Disposition'] = 'attachment; filename="arizalar.xls"'
 
-    talabalar = User.objects.all()
-    for t in talabalar:             
-        shartnoma = Pdf.objects.filter(talaba_id=t.id)
-        if shartnoma:            
-            for s in shartnoma:               
-                print(s.talaba_id)
-                print(t.id)
-                print(s.amaliyot_buyruq_raqami)              
-                 
-            
-                writer.writerow([
-                    s.shartnoma_raqami,
-                    s.talaba_f_i_sh,
-                    s.talaba_manzil,
-                    s.talaba_kurs,
-                    s.talaba_shifr,
-                    s.talaba_yonalishi,
-                    s.amaliyot_joyi,
-                    s.amaliyot_manzili,
-                    s.amaliyot_rahbari,
-                    s.biriktirilgan_rahbar,
-                    s.amaliyot_turi,
-                    s.amaliyot_boshlanishi,
-                    s.amaliyot_tugashi,
-                    s.amaliyot_buyruq_raqami
-                ])
+        #creating workbook
+        wb = xlwt.Workbook(encoding='utf-8')
 
-    return response
+        #adding sheet
+        ws = wb.add_sheet("sheet1")
 
+        # Sheet header, first row
+        row_num = 0
 
+        font_style = xlwt.XFStyle()
+        # headers are bold
+        font_style.font.bold = True
+
+        #column header names, you can use your own headers here
+        columns = [
+            'Shartnoma raqami',
+            'Talaba F.I.SH',
+            'Talabaning yashash manzili',
+            'Kursi',
+            'Talaba yo`nalish shifri',
+            'Talaba yo`nalish nomi',
+            'Amaliyot o`tash joyi (korxona, tashkilot)ning nomi',
+            'Amaliyot o`tash joyi (korxona, tashkilot)ning manzili',
+            'Amaliyot o`tash joyi (korxona, tashkilot)dagi amaliyot rahbari',
+            'OTMdan biriktirilgan amaliyot rahbari F.I.SH',
+            'Amaliyot turi',
+            'Amaliyotning boshlanish muddati',
+            'Amaliyotning tugash muddati',
+            'Amaliyot bo`yicha buyruq raqami, sanasi',                    
+        ]
+
+        #write column headers in sheet
+        for col_num in range(len(columns)):
+            ws.write(row_num, col_num, columns[col_num], font_style)
+
+        # Sheet body, remaining rows
+        font_style = xlwt.XFStyle()
+
+        #get your data, from database or from a text file...
+        shartnomalar = Pdf.objects.all()
+        if shartnomalar:            
+            for my_row in shartnomalar:                
+                row_num = row_num + 1
+                ws.write(row_num, 0, my_row.shartnoma_raqami, font_style)
+                ws.write(row_num, 1, my_row.talaba_f_i_sh, font_style)
+                ws.write(row_num, 2, my_row.talaba_manzil, font_style)
+                ws.write(row_num, 3, my_row.talaba_kurs, font_style)
+                ws.write(row_num, 4, my_row.talaba_shifr, font_style)
+                ws.write(row_num, 5, my_row.talaba_yonalishi, font_style)
+                ws.write(row_num, 6, my_row.amaliyot_joyi, font_style)
+                ws.write(row_num, 7, my_row.amaliyot_manzili, font_style)
+                ws.write(row_num, 8, my_row.amaliyot_rahbari, font_style)
+                ws.write(row_num, 9, my_row.biriktirilgan_rahbar, font_style)
+                ws.write(row_num, 10, my_row.amaliyot_turi, font_style)
+                ws.write(row_num, 11, my_row.amaliyot_boshlanishi, font_style)
+                ws.write(row_num, 12, my_row.amaliyot_tugashi, font_style)
+                ws.write(row_num, 13, my_row.amaliyot_buyruq_raqami, font_style)               
+
+            wb.save(response)
+            return response
+        else:
+            return redirect('/shartnoma_olgan/')
+        
+   
+   
 @csrf_exempt
 def dekanat_csv(request):
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename=talabalar.csv'
+        # content-type of response
+        response = HttpResponse(content_type='application/ms-excel')
 
-    writer = csv.writer(response)
-    
-    
-    writer.writerow([
-        'Shartnoma raqami',
-        'Talaba F.I.SH',
-        'Talabaning yashash manzili',
-        'Kursi',
-        'Talaba yo`nalish shifri',
-        'Talaba yo`nalish nomi',
-        'Amaliyot o`tash joyi (korxona, tashkilot)ning nomi',
-        'Amaliyot o`tash joyi (korxona, tashkilot)ning manzili',
-        'Amaliyot o`tash joyi (korxona, tashkilot)dagi amaliyot rahbari',
-        'OTMdan biriktirilgan amaliyot rahbari F.I.SH',
-        'Amaliyot turi',
-        'Amaliyotning boshlanish muddati',
-        'Amaliyotning tugash muddati',
-        'Amaliyot bo`yicha buyruq raqami, sanasi',                    
-    ])   
-    
-    fakultet = request.user.dekanat_fakultet
-    talabalar = User.objects.filter(fakultet=fakultet)
-    for t in talabalar:             
-        shartnoma = Pdf.objects.filter(talaba_id=t.id)
-        if shartnoma:            
-            for s in shartnoma:               
-                print(s.talaba_id)
-                print(t.id)
-                print(s.amaliyot_buyruq_raqami)              
-                 
-            
-                writer.writerow([
-                    s.shartnoma_raqami,
-                    s.talaba_f_i_sh,
-                    s.talaba_manzil,
-                    s.talaba_kurs,
-                    s.talaba_shifr,
-                    s.talaba_yonalishi,
-                    s.amaliyot_joyi,
-                    s.amaliyot_manzili,
-                    s.amaliyot_rahbari,
-                    s.biriktirilgan_rahbar,
-                    s.amaliyot_turi,
-                    s.amaliyot_boshlanishi,
-                    s.amaliyot_tugashi,
-                    s.amaliyot_buyruq_raqami
-                ])
+        #decide file name
+        response['Content-Disposition'] = 'attachment; filename="arizalar.xls"'
 
-    return response
-       
+        #creating workbook
+        wb = xlwt.Workbook(encoding='utf-8')
+
+        #adding sheet
+        ws = wb.add_sheet("sheet1")
+
+        # Sheet header, first row
+        row_num = 0
+
+        font_style = xlwt.XFStyle()
+        # headers are bold
+        font_style.font.bold = True
+
+        #column header names, you can use your own headers here
+        columns = [
+            'Shartnoma raqami',
+            'Talaba F.I.SH',
+            'Talabaning yashash manzili',
+            'Kursi',
+            'Talaba yo`nalish shifri',
+            'Talaba yo`nalish nomi',
+            'Amaliyot o`tash joyi (korxona, tashkilot)ning nomi',
+            'Amaliyot o`tash joyi (korxona, tashkilot)ning manzili',
+            'Amaliyot o`tash joyi (korxona, tashkilot)dagi amaliyot rahbari',
+            'OTMdan biriktirilgan amaliyot rahbari F.I.SH',
+            'Amaliyot turi',
+            'Amaliyotning boshlanish muddati',
+            'Amaliyotning tugash muddati',
+            'Amaliyot bo`yicha buyruq raqami, sanasi',                    
+        ]
+
+        #write column headers in sheet
+        for col_num in range(len(columns)):
+            ws.write(row_num, col_num, columns[col_num], font_style)
+
+        # Sheet body, remaining rows
+        font_style = xlwt.XFStyle()
+
+        #get your data, from database or from a text file...
+        fakultet = request.user.dekanat_fakultet
+        print(fakultet)
+        print(Pdf.objects.filter(talaba_fakulteti=fakultet))
+        shartnomalar = Pdf.objects.filter(talaba_fakulteti=fakultet)
+        if shartnomalar:            
+            for my_row in shartnomalar:                
+                row_num = row_num + 1
+                ws.write(row_num, 0, my_row.shartnoma_raqami, font_style)
+                ws.write(row_num, 1, my_row.talaba_f_i_sh, font_style)
+                ws.write(row_num, 2, my_row.talaba_manzil, font_style)
+                ws.write(row_num, 3, my_row.talaba_kurs, font_style)
+                ws.write(row_num, 4, my_row.talaba_shifr, font_style)
+                ws.write(row_num, 5, my_row.talaba_yonalishi, font_style)
+                ws.write(row_num, 6, my_row.amaliyot_joyi, font_style)
+                ws.write(row_num, 7, my_row.amaliyot_manzili, font_style)
+                ws.write(row_num, 8, my_row.amaliyot_rahbari, font_style)
+                ws.write(row_num, 9, my_row.biriktirilgan_rahbar, font_style)
+                ws.write(row_num, 10, my_row.amaliyot_turi, font_style)
+                ws.write(row_num, 11, my_row.amaliyot_boshlanishi, font_style)
+                ws.write(row_num, 12, my_row.amaliyot_tugashi, font_style)
+                ws.write(row_num, 13, my_row.amaliyot_buyruq_raqami, font_style)               
+
+            wb.save(response)
+            return response
+        else:
+            return redirect('/dekanat_shartnoma_olgan/')
+
+    
 
                 
                 

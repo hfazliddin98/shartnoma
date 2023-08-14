@@ -168,12 +168,65 @@ def dekanat_talaba(request):
 
 
 @csrf_exempt
-def dekanat_shartnoma_olgan(request):
-    fakultet = request.user.dekanat_fakultet
-    talabalar = User.objects.filter(fakultet=fakultet)
-    for t in talabalar:             
-        shartnoma = Pdf.objects.filter(talaba_id=t.id)
-    
+def dekanat_shartnoma_olgan(request):    
+    talaba_id = User.objects.all()
+    for t in talaba_id:
+        amaliyotlar = Amaliyot.objects.filter(talaba=t.id)
+        if amaliyotlar:
+            for a in  amaliyotlar:  
+                shifr = ''
+                buyruq_raqam = ''             
+                talabalar = Pdf.objects.filter(talaba_id=t.id)
+                if talabalar:
+                    # update qilyapti
+                    talaba = f'{t.first_name} {t.last_name} {t.sharif}'                        
+                    data = get_object_or_404(Pdf, talaba_id=t.id)
+                    data.talaba_f_i_sh = talaba
+                    data.talaba_manzil = t.tuman
+                    data.talaba_kurs = t.kurs
+                    data.talaba_shifr=shifr
+                    data.talaba_yonalishi=t.yonalish
+                    data.talaba_fakulteti=t.fakultet
+                    data.amaliyot_joyi=a.muassasa
+                    data.amaliyot_manzili=a.tuman_a
+                    data.amaliyot_rahbari=a.a_rahbari
+                    data.biriktirilgan_rahbar=a.o_a_rahbari
+                    data.amaliyot_turi=a.a_turi
+                    data.amaliyot_boshlanishi=a.b_sana
+                    data.amaliyot_tugashi=a.t_sana
+                    data.amaliyot_buyruq_raqami=buyruq_raqam
+                    data.save()                        
+                    print('update qilindi ')
+                else:
+                    # create qilyapti                    
+                    shifr = ''
+                    buyruq_raqam = ''
+                    talaba= f'{t.first_name} {t.last_name} {t.sharif}'
+                    data = Pdf.objects.create(
+                        talaba_id=t.id, 
+                        shartnoma_raqami=a.id,
+                        talaba_f_i_sh=talaba, 
+                        talaba_manzil=t.tuman, 
+                        talaba_kurs=t.kurs, 
+                        talaba_shifr=shifr, 
+                        talaba_yonalishi=t.yonalish, 
+                        talaba_fakulteti=t.fakultet,
+                        amaliyot_joyi=a.muassasa, 
+                        amaliyot_manzili=a.tuman_a, 
+                        amaliyot_rahbari=a.a_rahbari, 
+                        biriktirilgan_rahbar=a.o_a_rahbari, 
+                        amaliyot_turi=a.a_turi, 
+                        amaliyot_boshlanishi=a.b_sana, 
+                        amaliyot_tugashi=a.t_sana, 
+                        amaliyot_buyruq_raqami=buyruq_raqam
+                        )
+                    data.save()
+                    print('create qilindi ')
+        else:
+            amaliyot = 'Hozirda mavjud emas'
+
+
+    shartnoma = Pdf.objects.filter(talaba_fakulteti=request.user.dekanat_fakultet)    
     
     contex = {
         'shartnoma':shartnoma,       
@@ -202,6 +255,7 @@ def shartnoma_olgan(request):
                     data.talaba_kurs = t.kurs
                     data.talaba_shifr=shifr
                     data.talaba_yonalishi=t.yonalish
+                    data.talaba_fakulteti=t.fakultet
                     data.amaliyot_joyi=a.muassasa
                     data.amaliyot_manzili=a.tuman_a
                     data.amaliyot_rahbari=a.a_rahbari
@@ -224,7 +278,8 @@ def shartnoma_olgan(request):
                         talaba_manzil=t.tuman, 
                         talaba_kurs=t.kurs, 
                         talaba_shifr=shifr, 
-                        talaba_yonalishi=t.yonalish, 
+                        talaba_yonalishi=t.yonalish,
+                        talaba_fakulteti=t.fakultet, 
                         amaliyot_joyi=a.muassasa, 
                         amaliyot_manzili=a.tuman_a, 
                         amaliyot_rahbari=a.a_rahbari, 
