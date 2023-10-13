@@ -6,7 +6,7 @@ class Amaliyot(models.Model):
     tuman_a = models.CharField(max_length=100)
     mfy_a = models.CharField(max_length=100 ,blank=True)
     kocha_uy_a = models.CharField(max_length=100)
-    muassasa = models.CharField(max_length=200)
+    muassasa = models.CharField(max_length=400)
     d_ism = models.CharField(max_length=100)
     d_nomeri = models.CharField(max_length=100)
     kurs = models.CharField(max_length=100)    

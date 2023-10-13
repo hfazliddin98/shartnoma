@@ -5,9 +5,9 @@ from .models import User
 
 class UserAdmin(admin.ModelAdmin):
     list_display = [
-        'id', 'username'
+        'id', 'username', 'first_name', 'last_name', 'kurs', 'tuman', 't_yil', 'fakultet'
     ]
-    search_fields = ['id', 'username']
+    search_fields = ['id', 'username', 'first_name', 'last_name', 'kurs', 'tuman','mfy', 'fakultet']
 admin.site.register(User, UserAdmin)
 
 admin.site.unregister(Group)

@@ -100,6 +100,7 @@
                                         <th>Familiyasi</th>
                                         <th>Ismi</th>
                                         <th>Telefon raqami</th>
+                                        <th>Parol</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -108,18 +109,21 @@
                                         <th>Familiyasi</th>
                                         <th>Ismi</th>
                                         <th>Telefon raqami</th>
+                                        <th>Parol</th>
                                     </tr>
                                 </tfoot>
-                                {% for s in data %}
-                                    <tbody>
+                                
+                                <tbody>
+                                    {% for s in data %}
                                         <tr>
                                             <td>{{s.username}}</td>
                                             <td>{{s.first_name}}</td>
                                             <td>{{s.last_name}}</td>                                            
                                             <td>{{s.t_nomer}}</td>
+                                            <td>{{s.parol}}</td>
                                         </tr>
-                                    </tbody>
-                                {% endfor %}
+                                        {% endfor %}
+                                </tbody>                                
                             </table>
                         </div>
                     </div>
