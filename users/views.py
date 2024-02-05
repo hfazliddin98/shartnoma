@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, get_user_model
 from django.contrib.auth.hashers import make_password
+from django.http import HttpResponse
 from django.contrib import messages
 from .models import User
 from amaliyot.models import Amaliyot
@@ -39,37 +40,40 @@ def home(request):
 @csrf_exempt
 def royhat(request):
     habar = ''
-    if request.method == 'POST':
-        username = request.POST['username']
-        familya = request.POST['familya']
-        ism = request.POST['ism']
-        sharif = request.POST['sharif']
-        t_yil = request.POST['t_yil']
-        t_nomer = request.POST['t_nomer']
-        k_yil = request.POST['k_yil']
-        gender = request.POST['gender']
-        talim_turi = request.POST['talim_turi']
+    try:
+        if request.method == 'POST':
+            username = request.POST['username']
+            familya = request.POST['familya']
+            ism = request.POST['ism']
+            sharif = request.POST['sharif']
+            t_yil = request.POST['t_yil']
+            t_nomer = request.POST['t_nomer']
+            k_yil = request.POST['k_yil']
+            gender = request.POST['gender']
+            talim_turi = request.POST['talim_turi']
+            fakultet = request.POST['fakultet']
+            yonalish = request.POST['yonalish']
+            kurs = request.POST['kurs']
+            guruh = request.POST['guruh']          
 
-        fakultet = request.POST['fakultet']
-        yonalish = request.POST['yonalish']
-        kurs = request.POST['kurs']
-        guruh = request.POST['guruh']           
+            viloyat = request.POST['viloyat']
+            tuman = request.POST['tuman']
+            mfy = request.POST['mfy']
+            kocha_uy = request.POST['kocha_uy']                
+            password1 = request.POST['password1']
+            password2 = request.POST['password2']
+            if User.objects.filter(username=username):
+                habar = 'Bu talaba mavjud mavjud'        
+            else:
+                user = get_user_model().objects.create(lavozim='talaba', username = username, last_name = familya, first_name = ism, sharif=sharif, t_yil=t_yil, t_nomer=t_nomer, k_yil=k_yil, gender=gender, talim_turi=talim_turi, fakultet=fakultet, yonalish=yonalish, kurs=kurs, guruh=guruh, viloyat=viloyat, tuman=tuman, mfy=mfy, kocha_uy=kocha_uy, password = make_password(password1), parol=password2) 
+                user.is_active = False
+                user.is_staff = False
+                
+                return redirect('/kirish/')
+    except:
+        habar = 'Malumotlar to`gri kiritilmadi'
+        return HttpResponse("<h1 >Malumotlar to`gri kiritilmadi</h1>")
 
-        viloyat = request.POST['viloyat']
-        tuman = request.POST['tuman']
-        mfy = request.POST['mfy']
-        kocha_uy = request.POST['kocha_uy']
-              
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
-        if User.objects.filter(username=username):
-            habar = 'Bunday ID mavjud'        
-        else:
-            user = get_user_model().objects.create(lavozim='talaba', username = username, last_name = familya, first_name = ism, sharif=sharif, t_yil=t_yil, t_nomer=t_nomer, k_yil=k_yil, gender=gender, talim_turi=talim_turi, fakultet=fakultet, yonalish=yonalish, kurs=kurs, guruh=guruh, viloyat=viloyat, tuman=tuman, mfy=mfy, kocha_uy=kocha_uy, password = make_password(password1), parol=password2) 
-            user.is_active = False
-            user.is_staff = False
-            
-            return redirect('/')
     
     return render(request, 'kirish/talaba.html', {'habar':habar})
 
@@ -250,30 +254,30 @@ def shartnoma_olgan(request):
                 buyruq_raqam = ''             
                 talabalar = Pdf.objects.filter(talaba_id=t.id)
                 if talabalar:
-                    pass
-                    # try:
-                    #     # update qilyapti
-                    #     talaba = f'{t.first_name} {t.last_name} {t.sharif}'                        
-                    #     data = get_object_or_404(Pdf, talaba_id=a.talaba)
-                    #     # data = Pdf.objects.filter(talaba_id=t.id)
-                    #     data.talaba_f_i_sh = talaba
-                    #     data.talaba_manzil = t.tuman
-                    #     data.talaba_kurs = t.kurs
-                    #     data.talaba_shifr=shifr
-                    #     data.talaba_yonalishi=t.yonalish
-                    #     data.talaba_fakulteti=t.fakultet
-                    #     data.amaliyot_joyi=a.muassasa
-                    #     data.amaliyot_manzili=a.tuman_a
-                    #     data.amaliyot_rahbari=a.a_rahbari
-                    #     data.biriktirilgan_rahbar=a.o_a_rahbari
-                    #     data.amaliyot_turi=a.a_turi
-                    #     data.amaliyot_boshlanishi=a.b_sana
-                    #     data.amaliyot_tugashi=a.t_sana
-                    #     data.amaliyot_buyruq_raqami=buyruq_raqam
-                    #     data.save()                        
-                    #     print('update qilindi ')
-                    # except:
-                    #     print('update qilinmadi')
+                    # pass
+                    try:
+                        # update qilyapti
+                        talaba = f'{t.first_name} {t.last_name} {t.sharif}'                        
+                        data = get_object_or_404(Pdf, talaba_id=a.talaba)
+                        # data = Pdf.objects.filter(talaba_id=t.id)
+                        data.talaba_f_i_sh = talaba
+                        data.talaba_manzil = t.tuman
+                        data.talaba_kurs = t.kurs
+                        data.talaba_shifr=shifr
+                        data.talaba_yonalishi=t.yonalish
+                        data.talaba_fakulteti=t.fakultet
+                        data.amaliyot_joyi=a.muassasa
+                        data.amaliyot_manzili=a.tuman_a
+                        data.amaliyot_rahbari=a.a_rahbari
+                        data.biriktirilgan_rahbar=a.o_a_rahbari
+                        data.amaliyot_turi=a.a_turi
+                        data.amaliyot_boshlanishi=a.b_sana
+                        data.amaliyot_tugashi=a.t_sana
+                        data.amaliyot_buyruq_raqami=buyruq_raqam
+                        data.save()                        
+                        print('update qilindi ')
+                    except:
+                        print('update qilinmadi')
                 else:
                     # create qilyapti                    
                     shifr = ''
