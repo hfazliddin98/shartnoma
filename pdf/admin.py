@@ -4,6 +4,8 @@ from .models import Pdf, Rasm
 admin.site.register([Rasm])
 class PdfAdmin(admin.ModelAdmin):
     list_display = [
-        'id'
+        'id',
+        'talaba_id'
     ]
+    search_fields = ['talaba_id']
 admin.site.register(Pdf, PdfAdmin)

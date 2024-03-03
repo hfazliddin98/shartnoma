@@ -178,7 +178,7 @@ def dekanat_shartnoma_olgan(request):
         if amaliyotlar:
             for a in  amaliyotlar:  
                 shifr = ''
-                buyruq_raqam = ''             
+                buyruq_raqam = f'{a.d_ism} tel:{a.d_nomeri}'             
                 talabalar = Pdf.objects.filter(talaba_id=t.id)
                 if talabalar:
                     try:
@@ -207,7 +207,7 @@ def dekanat_shartnoma_olgan(request):
                 else:
                     # create qilyapti                    
                     shifr = ''
-                    buyruq_raqam = ''
+                    buyruq_raqam = f'{a.d_ism} tel:{a.d_nomeri}'
                     talaba= f'{t.first_name} {t.last_name} {t.sharif}'
                     data = Pdf.objects.create(
                         talaba_id=t.id, 
@@ -251,7 +251,7 @@ def shartnoma_olgan(request):
         if amaliyotlar:
             for a in  amaliyotlar:  
                 shifr = ''
-                buyruq_raqam = ''             
+                buyruq_raqam = f'{a.d_ism} tel:{a.d_nomeri}'             
                 talabalar = Pdf.objects.filter(talaba_id=t.id)
                 if talabalar:
                     # pass
@@ -281,7 +281,7 @@ def shartnoma_olgan(request):
                 else:
                     # create qilyapti                    
                     shifr = ''
-                    buyruq_raqam = ''
+                    buyruq_raqam = f'{a.d_ism} tel:{a.d_nomeri}'
                     talaba= f'{t.first_name} {t.last_name} {t.sharif}'
                     data = Pdf.objects.create(
                         talaba_id=t.id, 

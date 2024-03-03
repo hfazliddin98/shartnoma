@@ -26,19 +26,16 @@ from .models import Pdf, Rasm
 
 @csrf_exempt
 def pdf(request, pk):  
-    pdf = Pdf.objects.all()
-    talaba_id = User.objects.all()
     talaba = User.objects.filter(id=pk)
     for t in talaba:
         talaba_fish = f'{t.first_name} {t.last_name} {t.sharif}'
         talaba_manzil = f'{t.viloyat} {t.tuman} {t.kocha_uy}'
 
     amaliyotlar = Amaliyot.objects.filter(talaba=pk)
-    print('bajarildi')
     if amaliyotlar:
         for a in  amaliyotlar:  
                 shifr = ''
-                buyruq_raqam = '' 
+                buyruq_raqam = f'{a.d_ism} tel:{a.d_nomeri}'
                 amaliyot_manzil = f'{a.viloyat_a} {a.tuman_a} {a.kocha_uy_a}'              
                 talabalar = Pdf.objects.filter(talaba_id=pk)
                 if talabalar:                                      
@@ -138,6 +135,7 @@ def pdf(request, pk):
     template_path = 'amaliyot/shartnoma.html' 
     # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
      
+    # pdf = Pdf.objects.filter(talaba_id=pk)
     pdf = Pdf.objects.filter(talaba_id=pk)
     qrcode = Rasm.objects.filter(user_id=pk)
 
@@ -153,22 +151,16 @@ def pdf(request, pk):
         'hozir':hozir,
         'qrcode':qrcode,
     }
-    # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')
-    # korib keyin saqlab olish
     response['Content-Disposition'] = 'filename="shartnoma.pdf"'
-#     avto saqlab olish
-#     response['Content-Disposition'] = 'attachment; filename="report.pdf"
+#   
 
 
-    # find the template and render it.
     template = get_template(template_path)
     html = template.render(context)
 
-    # create a pdf
     pisa_status = pisa.CreatePDF(html, dest=response)
 
-    # if error then show some funny view
     if pisa_status.err:
        return HttpResponse("Bizda ba'zi xatolar bor edi " + html + " serverda texnik ish lar olib borilmoqda !!!")
     return response
@@ -210,7 +202,7 @@ def malumot_csv(request):
             'Amaliyot turi',
             'Amaliyotning boshlanish muddati',
             'Amaliyotning tugash muddati',
-            'Amaliyot bo`yicha buyruq raqami, sanasi',                    
+            'Muassasa rahbari va tel nomeri',                 
         ]
 
         #write column headers in sheet
@@ -283,7 +275,7 @@ def dekanat_csv(request):
             'Amaliyot turi',
             'Amaliyotning boshlanish muddati',
             'Amaliyotning tugash muddati',
-            'Amaliyot bo`yicha buyruq raqami, sanasi',                    
+            'Muassasa rahbari va tel nomeri',                    
         ]
 
         #write column headers in sheet
@@ -320,8 +312,21 @@ def dekanat_csv(request):
             return response
         else:
             return redirect('/dekanat_shartnoma_olgan/')
+        
 
-    
+
+@csrf_exempt
+def qoshimcha(request):
+
+
+     return render(request, 'adminlar/superadmin/qoshimcha.html')
+
+
+@csrf_exempt
+def qoshimcha_csv(request):     
+     amaliyot = Amaliyot.objects.all()
+
+     return HttpResponse('Bajarildi')
 
                 
                 
