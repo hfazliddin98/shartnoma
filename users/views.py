@@ -197,7 +197,7 @@ def dekanat_shartnoma_olgan(request):
                         data.biriktirilgan_rahbar=a.o_a_rahbari
                         data.amaliyot_turi=a.a_turi
                         data.amaliyot_boshlanishi=a.b_sana
-                        data.amaliyot_tugashi=a.t_sana
+                        data.amaliyot_tugashi=t.talim_turi
                         data.amaliyot_buyruq_raqami=buyruq_raqam
                         data.save() 
                         print('update qilindi ')    
@@ -224,7 +224,7 @@ def dekanat_shartnoma_olgan(request):
                         biriktirilgan_rahbar=a.o_a_rahbari, 
                         amaliyot_turi=a.a_turi, 
                         amaliyot_boshlanishi=a.b_sana, 
-                        amaliyot_tugashi=a.t_sana, 
+                        amaliyot_tugashi=t.talim_turi, 
                         amaliyot_buyruq_raqami=buyruq_raqam
                         )
                     data.save()
@@ -272,7 +272,7 @@ def shartnoma_olgan(request):
                         data.biriktirilgan_rahbar=a.o_a_rahbari
                         data.amaliyot_turi=a.a_turi
                         data.amaliyot_boshlanishi=a.b_sana
-                        data.amaliyot_tugashi=a.t_sana
+                        data.amaliyot_tugashi=t.talim_turi
                         data.amaliyot_buyruq_raqami=buyruq_raqam
                         data.save()                        
                         print('update qilindi ')
@@ -298,7 +298,7 @@ def shartnoma_olgan(request):
                         biriktirilgan_rahbar=a.o_a_rahbari, 
                         amaliyot_turi=a.a_turi, 
                         amaliyot_boshlanishi=a.b_sana, 
-                        amaliyot_tugashi=a.t_sana, 
+                        amaliyot_tugashi=t.talim_turi, 
                         amaliyot_buyruq_raqami=buyruq_raqam
                         )
                     data.save()
@@ -318,5 +318,34 @@ def shartnoma_olgan(request):
 @csrf_exempt
 def adminlar(request):
     return render(request, 'adminlar/admin/adminlar.html')
+
+
+
+@csrf_exempt
+def talaba_qidiruv(request):
+    try:
+        if request.method == 'POST':
+            talaba_username = request.POST['talaba_username']
+            talaba = User.objects.filter(username=talaba_username)                        
+
+        context = {
+            'talaba':talaba,
+        }
+        return render(request, 'boshi/talaba_qidiruv.html', context)
+    except:
+        
+        return render(request, 'boshi/talaba_qidiruv.html')
+    
+
+@csrf_exempt
+def talaba_ochirish(request, pk):
+    try:
+        data = User.objects.get(id=pk)
+        data.delete()
+        return redirect('/talaba_qidiruv/')
+    except:
+        return HttpResponse('<h1>Malumot topilmadi</h1>')
+
+    # return redirect('/talaba_qidiruv/')
 
 

@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import kirish, home, royhat, superadmin, dekanat, talabalar, adminlar
-from .views import super_admin, dekanat_admin, shartnoma_olgan, dekanat_shartnoma_olgan, dekanat_talaba
+from .views import super_admin, dekanat_admin, shartnoma_olgan, dekanat_shartnoma_olgan
+from .views import dekanat_talaba, talaba_qidiruv, talaba_ochirish
+
+
 
 urlpatterns = [
     path('kirish/', kirish, name='kirish'),
@@ -15,4 +18,6 @@ urlpatterns = [
     path('shartnoma_olgan/', shartnoma_olgan, name='shartnoma_olgan'),
     path('dekanat_shartnoma_olgan/', dekanat_shartnoma_olgan, name='dekanat_shartnoma_olgan'),
     path('dekanat_talaba/', dekanat_talaba, name='dekanat_talaba'),
+    path('talaba_qidiruv/', talaba_qidiruv, name='talaba_qidiruv'),
+    path('talaba_ochirish/<int:pk>/', talaba_ochirish, name='talaba_ochirish'),
 ]

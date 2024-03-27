@@ -54,7 +54,7 @@ def pdf(request, pk):
                     data.biriktirilgan_rahbar=a.o_a_rahbari
                     data.amaliyot_turi=a.a_turi
                     data.amaliyot_boshlanishi=a.b_sana
-                    data.amaliyot_tugashi=a.t_sana
+                    data.amaliyot_tugashi=t.talim_turi
                     data.amaliyot_buyruq_raqami=buyruq_raqam
                     data.save()                        
                     print('update qilindi  pdf')
@@ -76,7 +76,7 @@ def pdf(request, pk):
                         biriktirilgan_rahbar=a.o_a_rahbari, 
                         amaliyot_turi=a.a_turi, 
                         amaliyot_boshlanishi=a.b_sana, 
-                        amaliyot_tugashi=a.t_sana, 
+                        amaliyot_tugashi=t.talim_turi, 
                         amaliyot_buyruq_raqami=buyruq_raqam
                         )
                     data.save()
@@ -201,7 +201,7 @@ def malumot_csv(request):
             'OTMdan biriktirilgan amaliyot rahbari F.I.SH',
             'Amaliyot turi',
             'Amaliyotning boshlanish muddati',
-            'Amaliyotning tugash muddati',
+            'Talim turi',
             'Muassasa rahbari va tel nomeri',                 
         ]
 
@@ -327,6 +327,30 @@ def qoshimcha_csv(request):
      amaliyot = Amaliyot.objects.all()
 
      return HttpResponse('Bajarildi')
+
+@csrf_exempt
+def botirov_pdf(request):
+    try:
+        template_path = 'pdf.html' 
+        context = {        
+       
+        }
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'filename="shartnoma.pdf"'   
+
+
+        template = get_template(template_path)
+        html = template.render(context)
+
+        pisa_status = pisa.CreatePDF(html, dest=response)
+
+        if pisa_status.err:
+            return HttpResponse("Bizda ba'zi xatolar bor edi " + html + " serverda texnik ish lar olib borilmoqda !!!")
+        return response
+    except:       
+
+        
+        return HttpResponse('Malumot yuborilmadi !!!')
 
                 
                 

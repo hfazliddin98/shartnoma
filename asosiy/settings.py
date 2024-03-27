@@ -21,6 +21,7 @@ SECRET_KEY = 'django-insecure-@7+(y@88nep@vq@lv00^g=wbp^3-ck52temmpdykq)rv(se0$q
 DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = ['shartnoma.kspi.uz','localhost','192.168.0.202','127.0.0.1']
+CSRF_TRUSTED_ORIGINS=['https://shartnoma.kspi.uz', 'http://192.168.0.202', 'http://127.0.0.1']
 
 
 # Application definition

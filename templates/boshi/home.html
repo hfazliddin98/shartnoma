@@ -11,6 +11,10 @@
   {% if user.lavozim == 'talaba'%}
     {% include 'boshi/keyin.html' %}
   {% endif %}  
+
+  {% if user.lavozim == 'it_park'%}
+    {% include 'boshi/admin.html' %}
+  {% endif %}  
  
 {% else %}
   {% include 'boshi/oldin.html' %}
